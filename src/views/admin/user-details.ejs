@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - User Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/admin/user-details.css">
+</head>
+
+<body>
+<%- include('../partials/navbar') %>
+<%- include('../partials/info') %>
+
+<div class="main-content">
+    <%- include('../partials/admin-sidebar') %>
+    <div class="main-content">
+        <div class="dashboard-container">
+
+            <div class="section welcome-section">
+                <h2 class="section-title">User Details</h2>
+            </div>
+                <h1>User Details</h1>
+                <div class="profile-box">
+                    <% if (user.profilePicture) { %>
+                        <img src="<%= user.profilePicture %>" alt="Profile Picture">
+                    <% } else { %>
+                        <div class="profile-picture"></div>
+                    <% } %>
+                    <div class="profile-info">
+                        <h3><%= user.username %></h3>
+                        <p>ID: <%= user.discordId %></p>
+                        <p>Email: <%= user.email %></p>
+                        <button onclick="restrictAccess('<%= user.discordId %>')">Restrict Access</button>
+                        <button onclick="banUser('<%= user.discordId %>')">Ban from Website</button>
+                        <button onclick="viewLinks('<%= user.discordId %>')">View Links</button>
+                        <button onclick="viewActivityLogs('<%= user.discordId %>')">View Activity Logs</button>
+                        <button onclick="exportUserData('<%= user.discordId %>')">Export User Data</button>
+                        <button onclick="deleteUserAccount('<%= user.discordId %>')">Delete User Account</button>
+                    </div>
+                </div>
+            <div id="links-container"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="/javascripts/admin/user-details.js"></script>

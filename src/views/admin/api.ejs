@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+
+<body>
+<div class="main-content">
+    <div class="api-container">
+        <h2>API Keys</h2>
+        <ul class="api-key-list">
+            <% apiKeys.forEach(apiKey => { %>
+                <li class="api-key-item">
+                    <div class="api-key"><%= apiKey.key %></div>
+                    <div class="actions">
+                        <a href="#" class="delete-btn" data-key="<%= apiKey.key %>">Delete</a>
+                        <a href="#" class="edit-btn" data-key="<%= apiKey.key %>">Edit</a>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+
+        <form id="add-api-key-form" action="/api/addApiKey" method="POST">
+            <input type="text" name="newApiKey" placeholder="Enter new API key" required>
+            <button type="submit">Add</button>
+        </form>
+
+        <form id="modify-api-key-form" style="display: none;">
+            <input type="text" name="apiKeyToModify" placeholder="Enter API key to modify" required>
+            <input type="text" name="modifiedApiKey" placeholder="Enter modified API key" required>
+            <button type="submit">Modify</button>
+        </form>
+    </div>
+</div>
+<script src="/javascripts/admin/api.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnipLink | Link Shortener</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta property="og:title" content="SnipLink.xyz - Link Shortener">
+    <meta property="og:description" content="Shorten your long URLs and share them easily with SnipLink.xyz.">
+    <meta property="og:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta property="og:url" content="https://sniplink.xyz/shortener">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SnipLink.xyz">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:title" content="SnipLink.xyz - Link Shortener">
+    <meta name="twitter:description" content="Shorten your long URLs and share them easily with SnipLink.xyz.">
+    <meta name="twitter:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="keywords" content="SnipLink, SnipLink.xyz, link shortener, URL shortener, shorten links, custom link, link customization, link management, link branding, QR code links, API support, upcoming features">
+    <meta name="author" content="SnipLink">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="referrer" content="always">
+    <meta name="apple-mobile-web-app-title" content="SnipLink">
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="stylesheet" href="/stylesheets/shortener.css">
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfhPE4pAAAAAAU1BneAC3uTEHRJKvhRqK_CpqF7" async defer></script>
+
+
+
+</head>
+
+<body>
+<%- include('partials/preloader') %>
+
+<%- include('partials/navbar') %>
+<%- include('partials/info') %>
+
+<div class="main-content">
+    <%- include('partials/sidebar') %>
+    <div class="center-container">
+        <div class="linkshortener-container">
+            <div class="section">
+                <div class="header">
+                    <h1>SnipLink.xyz</h1>
+                    <h2>Shorten your long URLs and share them easily!</h2>
+                </div>
+                <form id="shortenForm">
+                    <input type="url" name="longUrl" id="longUrlInput" placeholder="Enter your long URL..." required>
+                    <select name="metadataSource" id="metadataSource">
+                        <option value="original">Use original link's metadata</option>
+                        <option value="custom">Use custom metadata</option>
+                    </select>
+                    <input type="text" name="title" id="titleInput" placeholder="Enter custom title..." style="display: none;">
+                    <textarea name="description" id="descriptionInput" placeholder="Enter custom description..." style="display: none; max-width: 100%;"></textarea>
+                    <div id="customMetadataAlert">
+                        Custom title and description are required for custom metadata.
+                    </div>
+
+                    <div class="custom-path-container">
+                        <div class="url-input-container">
+                            <span class="base-url">https://sniplink.xyz/</span>
+                            <input type="text" name="customPath" id="customPathInput" placeholder="Enter your custom path... (optional)">
+                        </div>
+                        <div id="availabilityContainer" style="margin-top: 10px;">
+                            <p id="availabilityMessage">
+                                <span id="availabilityStaticText"></span>
+                                <span id="availabilityDynamicText"></span>
+                                <i id="availabilitySpinner" class="fas fa-spinner fa-pulse" style="display: none;"></i>
+                            </p>
+                        </div>
+                    </div>
+
+                    <label for="expiryDateInput">Link will expire <span id="expiryDays">in 1 day</span></label>
+                    <input type="range" name="expiryDate" id="expiryDateInput" min="1" max="15" step="1" value="1">
+                    <div id="recaptchaContainer"></div>
+
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+                    <button type="submit">Shorten</button>
+                </form>
+
+                <div id="errorBox" style="display: none; color: red;">
+                    An error occurred while shortening the URL, or the service is currently unavailable. Please try again later.
+                </div>
+                <h2>Your Shortened Links</h2>
+                <ul class="link-list" id="linkList">
+
+                    <% if (userLinks && userLinks.length > 0) { %>
+                        <% userLinks.forEach((link) => { %>
+                            <li class="link-item">
+                                <p class="original-url">Original URL: <%= link.originalUrl.substring(0, 50) %>...</p>
+                                <p class="shortened-url">Shortened URL: <a href="https://sniplink.xyz/<%= link.shortenedUrl %>">https://sniplink.xyz/<%= link.shortenedUrl %></a></p>
+                                <button class="copy-button" data-clipboard-text="<%= 'https://sniplink.xyz/'+link.shortenedUrl %>">Copy</button>
+                            </li>
+                        <% }); %>
+                    <% } else { %>
+                        <p>No shortened Links yet...</p>
+                    <% } %>
+                </ul>
+                <button id="seeMoreButton">See More</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/javascripts/shortener.js"></script>
+<script>
+    const captchaSiteKey = '<%= process.env.CAPTCHA_SITE_KEY %>';
+</script>
+</body>
+</html>

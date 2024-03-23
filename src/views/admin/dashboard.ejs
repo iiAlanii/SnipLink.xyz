@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/admin/dashboard.css">
+</head>
+
+<body>
+<%- include('../partials/navbar') %>
+<%- include('../partials/info') %>
+
+<div class="main-content">
+    <%- include('../partials/admin-sidebar') %>
+
+    <div class="main-content">
+        <div class="dashboard-container">
+
+            <div class="section welcome-section">
+                <h2 class="section-title">Admin Panel</h2>
+            </div>
+
+            <div class="section">
+                <h2 class="section-titles">Search for Shortened URLs</h2>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Enter a part of the shortened URL">
+                    <button id="searchButton">Search</button>
+                </div>
+            </div>
+
+            <div id="searchResults">
+            </div>
+
+            <div class="pagination">
+                <button id="prevPage" disabled>&larr; Prev</button>
+                <span id="pageInfo">Page 1 of 1</span>
+                <button id="nextPage" disabled>Next &rarr;</button>
+                <span id="totalResults">Total Results: 0</span>
+            </div>
+
+            <div class="section ban-section">
+                <h2 class="section-title">Ban User-Agent/IP</h2>
+                <div class="ban-form">
+                    <input type="text" id="banUserAgent" placeholder="Enter User-Agent to ban">
+                    <input type="text" id="banIpAddress" placeholder="Enter IP Address to ban">
+                    <button id="banButton">Ban</button>
+                </div>
+                <div class="ban-message" id="banMessage"></div>
+                <div class="banned-list">
+                    <h3>Banned List</h3>
+                    <ul id="bannedList">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="module" src="/javascripts/admin/dashboard.js"></script>
+<script>
+    $(document).ready(function() {
+        fetchBannedItems();
+
+        $('#banButton').click(async function() {
+            var userAgent = $('#banUserAgent').val().trim();
+            var ipAddress = $('#banIpAddress').val().trim();
+
+            if (!userAgent && !ipAddress) {
+                $('#banMessage').text('Please provide User-Agent or IP Address to ban.');
+                return;
+            }
+
+            const authKey = await getAuthKey();
+
+            $.ajax({
+                url: '/admin/admin/ban',
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    'x-auth-key': authKey,
+                },
+                data: { userAgent: userAgent, ipAddress: ipAddress },
+                success: function(response) {
+                    $('#banMessage').text(response.message);
+                    $('#bannedList').append('<li>' + ipAddress + ' - ' + userAgent + ' <button class="deleteBtn">Delete</button></li>');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+
+        async function getAuthKey() {
+            const authKeyResponse = await fetch('/generateAuthKey');
+            const authKeyData = await authKeyResponse.json();
+            return authKeyData.authKey;
+        }
+
+        $(document).on('click', '.deleteBtn', async function() {
+            var listItem = $(this).parent();
+            listItem.remove();
+
+            var bannedItem = listItem.text().trim().split(' - ')[0];
+            const authKey = await getAuthKey();
+
+            $.ajax({
+                url: '/admin/admin/uiremove',
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    'x-auth-key': authKey,
+                },
+                data: { bannedItem: bannedItem },
+                success: function(response) {
+                    console.log('Banned item removed successfully');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+
+        async function fetchBannedItems() {
+            const authKey = await getAuthKey();
+
+            $.ajax({
+                url: '/admin/admin/uiretrieve',
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'x-auth-key': authKey,
+                },
+                success: function(response) {
+                    response.bannedItems.forEach(function(item) {
+                        $('#bannedList').append('<li>' + item.ipAddress + ' - ' + item.userAgent + ' <button class="deleteBtn">Delete</button></li>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching banned items:', error);
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
+<style>
+    .section {
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    .ban-form {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .ban-form input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-right: 10px;
+        flex: 1;
+    }
+
+    .ban-form button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .ban-form button:hover {
+        background-color: #0056b3;
+    }
+
+    .ban-message {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .ban-message.success {
+        color: #28a745; /*I dont see the success message after banning someone */
+    }
+
+    .banned-list {
+        margin-top: 20px;
+    }
+
+    .banned-list h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .banned-list ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .banned-list li {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .banned-list li:last-child {
+        border-bottom: none;
+    }
+
+    .banned-list li .deleteBtn {
+        padding: 5px 10px;
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-left: auto;
+        transition: background-color 0.3s ease;
+    }
+
+    .banned-list li .deleteBtn:hover {
+        background-color: #c82333;
+    }
+
+</style>

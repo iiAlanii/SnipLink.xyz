@@ -1,0 +1,249 @@
+body, h1, h2, p, input, button {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #333;
+  font-family: "Roboto", sans-serif;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #FF0066;
+}
+
+.navbar-login .discord-button {
+  background-color: #7289DA;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-login .discord-button:hover {
+  background-color: #5865a9;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 90%;
+  max-width: 800px;
+  padding: 80px;
+  background: linear-gradient(45deg, #FF0066, #6600CC, #00CCFF, #00FF99);
+  background-size: 300% 300%;
+  border-radius: 15px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  animation: gradientAnimation 10s ease infinite;
+  color: #fff;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+input[type="url"] {
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+input[type="url"]:focus {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+button {
+  display: block;
+  padding: 16px 30px;
+  font-size: 18px;
+  background-color: #FF0066;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #D40055;
+}
+
+#shortenedLinks {
+  margin-top: 40px;
+}
+
+#shortenedLinks p {
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 20px;
+  font-size: 16px;
+}
+
+#shortenedLinks p:last-child {
+  border: none;
+  padding-bottom: 0;
+}
+
+@keyframes newLinkAdded {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.new-link-animation {
+  animation: newLinkAdded 0.4s ease;
+}
+
+body {
+  color: #333;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #FF0066;
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+}
+
+.link-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.link-item a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link-item a:hover {
+  color: #FF0066;
+}
+
+.link-item button {
+  position: relative;
+  font-size: 14px;
+  background-color: #6600CC;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.link-item button:hover {
+  background-color: #5000A0;
+}
+
+.copied-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: none;
+}
+
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
+}
+
+.navbar-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navbar a:hover {
+  color: #FF0066;
+}
+
+.navbar-login .discord-button {
+  background-color: #7289DA;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-login .discord-button:hover {
+  background-color: #5865a9;
+}

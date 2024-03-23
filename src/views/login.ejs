@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/login.css">
+
+    <meta property="og:title" content="SnipLink.xyz - Link Shortener">
+    <meta property="og:description" content="Shorten your long URLs and share them easily with SnipLink.xyz.">
+    <meta property="og:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta property="og:url" content="https://sniplink.xyz">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SnipLink.xyz">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:title" content="SnipLink.xyz - Link Shortener">
+    <meta name="twitter:description" content="Shorten your long URLs and share them easily with SnipLink.xyz.">
+    <meta name="twitter:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="keywords" content="SnipLink, SnipLink.xyz, link shortener, shorten links, URL shortener, login">
+    <meta name="author" content="SnipLink">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="referrer" content="always">
+    <meta name="apple-mobile-web-app-title" content="SnipLink">
+    <meta name="theme-color" content="#007bff">
+    <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad" async defer></script>
+</head>
+
+<body>
+<div class="container">
+    <%- include('partials/info-login') %>
+
+    <div class="header">
+        <i class="fab fa-discord" style="color: #4285f4;"></i> Login
+    </div>
+    <p>Login with Discord for a fast and secure experience. Discord's OAuth integration ensures your data is safe, eliminating the need for extra credentials. Join now for hassle-free access to our features!</p>
+    <div id="recaptcha"></div>
+
+    <div class="action-buttons">
+        <a class="discord-button" href="#" onclick="validateCaptchaAndLogin()">Login with Discord</a>
+        <p id="captcha-error" style="color: red; display: none;">Please complete the reCAPTCHA challenge.</p>
+    </div>
+    <p class="terms-notice">By signing up, you agree to our <a href="/legal/terms-of-service" target="_blank" class="terms-link">Terms of Service</a> and<br> <a href="/legal/privacy-policy" target="_blank" class="terms-link">Privacy Policy</a>.</p>
+
+    <div class="footer">
+        Don't have a Discord account? <a href="https://discord.com/register" target="_blank">Create one now</a>.
+        <br> Or go back to <a href="/">home</a>.
+    </div>
+</div>
+</body>
+<style>
+
+</style>
+
+<script src="/javascripts/login.js"></script>
+<script>
+    const captchaSiteKey = '<%= process.env.CAPTCHA_V2_SITE_KEY %>';
+</script>

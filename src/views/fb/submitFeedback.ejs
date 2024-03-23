@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Submitted Successfully</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #232931;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #252525;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            margin: 150px auto 50px auto;
+            text-align: center;
+        }
+
+        .fa-check-circle {
+            color: #28a745;
+            font-size: 4rem;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: #ddd;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 24px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .fa-check-circle {
+                font-size: 3rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <i class="fas fa-check-circle"></i>
+    <h1>Feedback Submitted Successfully!</h1>
+    <p>Thank you for taking the time to share your feedback. Your input is invaluable to us as we strive to improve our services. We greatly appreciate your contribution.</p>
+    <button onclick="window.location.href='/home'">Back to Home</button>
+</div>
+</body>
+</html>

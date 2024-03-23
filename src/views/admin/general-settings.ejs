@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - General Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Merriweather, serif;
+            background-image: url('../../images/circle-background.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .dashboard-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .dashboard-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .main-content {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .dashboard-container {
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        .welcome-section {
+            background-image: linear-gradient(to right, #3498db, #9b59b6);
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .welcome-section h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            margin: 15px 0;
+            color: #f0f0f0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .column-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .toggle-section {
+            background-image: linear-gradient(to right, #ffffff, #ecf0f1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s ease;
+            flex-basis: calc(33.33% - 20px);
+            margin-bottom: 20px;
+        }
+
+        .toggle-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .toggle-button {
+            background-image: linear-gradient(to right, #3498db, #2980b9);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-image 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-image: linear-gradient(to right, #2980b9, #1f6781);
+        }
+
+        .status-message {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button,
+        a {
+            text-decoration: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+<%- include('../partials/navbar') %>
+<%- include('../partials/info') %>
+
+<div class="main-content">
+    <%- include('../partials/admin-sidebar') %>
+
+    <div class="main-content">
+        <div class="dashboard-container">
+            <div class="section welcome-section">
+                <h2 class="section-title">Admin Panel - General Settings</h2>
+            </div>
+
+            <div class="column-container">
+                <div class="toggle-section">
+                    <h2 class="section-title">API</h2>
+                    <button id="apiToggleBtn" class="toggle-button">Toggle API V1</button>
+                </div>
+
+                <div class="toggle-section">
+                    <h2 class="section-title">Link Shortener</h2>
+                    <button id="shortenerToggleBtn" class="toggle-button">Toggle Link Shortener</button>
+                </div>
+
+                <div class="toggle-section">
+                    <h2 class="section-title">Maintenance</h2>
+                    <button id="maintenanceToggleBtn" class="toggle-button">Toggle Maintenance Mode</button>
+                </div>
+
+                <div class="toggle-section" style="margin-right: 0;">
+                    <h2 class="section-title">Construction Page</h2>
+                    <button id="constructionToggleBtn" class="toggle-button">Toggle Construction Page</button>
+                </div>
+
+                <div class="toggle-section" style="margin-right: 0;">
+                    <h2 class="section-title">Testers Page</h2>
+                    <button id="testersToggleBtn" class="toggle-button">Toggle Testers Page</button>
+                </div>
+
+                <div class="toggle-section">
+                    <h2 class="section-title">User Registration</h2>
+                    <button id="userManagementToggleBtn" class="toggle-button">Toggle User Management</button>
+                </div>
+            </div>
+
+
+            <div id="apiStatusMessage" class="status-message"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/javascripts/admin/general-settings.js"></script>
+
+</body>
+</html>

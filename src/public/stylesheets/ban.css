@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #36393f;
+    font-family: Arial, sans-serif;
+}
+
+.ban-container {
+    text-align: center;
+    background-color: #2c2f33;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+}
+
+.ban-title {
+    font-size: 24px;
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.ban-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.ban-reason {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+.ban-reason strong {
+    color: #e74c3c;
+}
+
+.discord-link {
+    font-size: 16px;
+    color: #3498db;
+    text-decoration: none;
+}
+
+.discord-link:hover {
+    text-decoration: underline;
+}

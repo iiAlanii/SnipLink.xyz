@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Sniplink.xyz</title>
+    <meta name="description" content="Welcome to the Sniplink.xyz Help Center. Get answers to your questions about our link shortening and analytics service.">
+
+    <meta property="og:title" content="Help Center - Sniplink.xyz">
+    <meta property="og:description" content="Welcome to the Sniplink.xyz Help Center. Get answers to your questions about our link shortening and analytics service.">
+    <meta property="og:image" content="https://sniplink.xyz/images/sniplink-logo.png">
+    <meta property="og:url" content="https://sniplink.xyz">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:title" content="Help Center - Sniplink.xyz">
+    <meta name="twitter:description" content="Welcome to the Sniplink.xyz Help Center. Get answers to your questions about our link shortening and analytics service.">
+    <meta name="twitter:image" content="https://sniplink.xyz/images/sniplink-logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="keywords" content="Sniplink, SnipLink, link shortener, link analytics, URL shortener, shorten links, custom link, link customization, link management, analytics, link tracking, link branding, QR code links, API support, testers program, upcoming features, password protection">
+    <meta name="author" content="SnipLink">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="referrer" content="always">
+    <meta name="apple-mobile-web-app-title" content="Sniplink">
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/stylesheets/help-center.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<%- include('../partials/preloader') %>
+
+<%- include('../partials/navbar') %>
+
+<div class="container">
+    <h1>Help Center</h1>
+    <p>Welcome to the Sniplink.xyz Help Center. Here, you'll find answers to your questions about our link shortening and analytics service.</p>
+
+    <div class="faq-section section">
+        <h2>Frequently Asked Questions</h2>
+        <ul>
+            <li>
+                <h3>How do I shorten a link?</h3>
+                <p>To shorten a link with Sniplink.xyz, follow these steps:</p>
+                <ol>
+                    <li>Visit our <a href="http://<host>/shortener" target="_blank" rel="noopener">Shortener page</a>.</li>
+                    <li>Paste your long URL into the input field.</li>
+                    <li>
+                        Customize your link before shortening with the following options:
+                        <ul>
+                            <li>Expiry Date: Add an expiry date to your link.</li>
+                            <li>
+                                Custom Metadata: Provide additional information for your link.
+                                <ul>
+                                    <li>
+                                        Use original link's information (title and description) or provide your own.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Custom Link Path: Create a custom path for your shortened link (Optional).
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Click the "Shorten" button. Copy the generated shortened link for use on various platforms, such as Discord, Twitter, Snapchat, Facebook, WhatsApp, Telegram, etc.</li>
+                </ol>
+
+            </li>
+
+            <li>
+                <h3>Can I customize my shortened links?</h3>
+                <p>No, currently there is no option to customize your short links. However, stay tuned! We are actively working on introducing link customization features in future updates.</p>
+            </li>
+
+            <li>
+                <h3>How can I view link analytics?</h3>
+                <p>When logged in, navigate to the "Manage Links" section and select "View Analytics" for the desired link. You'll find information about clicks, and more.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="analytics-section section">
+        <h2>Link Analytics</h2>
+        <p>With Sniplink.xyz's link analytics, you can gain valuable insights into your shortened links' performance. Here's what you'll find in the analytics page for each link:</p>
+        <ul>
+            <li>Original URL</li>
+            <li>Shortened URL</li>
+            <li>Total Clicks (including Unique Clicks)</li>
+            <li>Clicks Over Time</li>
+            <li>Top Referrers (coming soon in V2)</li>
+            <li>Top Countries (coming soon in V2)</li>
+        </ul>
+    </div>
+
+    <div class="manage-links-section section">
+        <h2>Manage Links</h2>
+        <p>When logged in, you can easily manage your shortened links. Here are your options:</p>
+        <ul>
+            <li>Copy Link: Copy the shortened link for sharing.</li>
+            <li>Delete Link: Remove a link from your account.</li>
+            <li>View Analytics: Access detailed click statistics for each link.</li>
+        </ul>
+    </div>
+
+
+    <div class="future-features-section section">
+        <h2>Upcoming Features</h2>
+        <p>Exciting features are in the works! Here's a sneak peek at what's coming in future updates:</p>
+        <ul>
+            <li><b>Link Customization:</b> Personalize your short links to make them unique.</li>
+            <li><b>API Support:</b> Integrate Sniplink.xyz with your applications through our API.</li>
+            <li><b>QR Code Links:</b> Generate QR codes for your shortened links for easy mobile access.</li>
+            <li><b>Enhanced Link Analytics:</b> Dive deeper into click statistics with more detailed and insightful analytics.</li>
+            <li><b>Link Tags:</b> Organize your links effortlessly by assigning tags for better categorization.</li>
+            <li><b>Password Protection:</b> Safeguard your shortened links by adding an extra layer of security with password protection.</li>
+
+        </ul>
+    </div>
+
+
+    <div class="testers-section section">
+        <h2>Join Our Testers Program</h2>
+        <p>Interested in becoming a tester for Sniplink.xyz? You can join our testers program and request access via our Discord server (coming soon).</p>
+    </div>
+
+    <div class="report-section section">
+        <h2>Report Abuse or Issues</h2>
+        <p>If you encounter abusive or malicious links or experience technical issues, please report them to our dedicated support team. We take these reports seriously and are committed to maintaining a safe and reliable service for all users.</p>
+        <p>Contact on Email: support@sniplink.xyz<br> or Discord: https://discord.gg/gXCnF9NcE6</p>
+    </div>
+</div>
+<%- include('../partials/footer') %>
+</body>
+
+</html>

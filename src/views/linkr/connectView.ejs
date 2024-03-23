@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>Connect r.mtdv.me with SnipLink.xyz</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #3498db, #6dd5fa);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 90%;
+            margin: 20px;
+            transition: all 0.5s ease;
+        }
+
+        .loading-text {
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p, ul {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #34495e;
+            line-height: 1.6;
+        }
+
+        .connect-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #2ecc71;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .connect-btn:hover {
+            background-color: #27ae60;
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .wave svg {
+            fill: #3498db;
+            width: calc(100% + 10px);
+            height: auto;
+            display: block;
+            transform-origin: bottom;
+            animation: waveAnimation 5s ease-in-out infinite;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .wave {
+                position: fixed;
+                height: 70px;
+            }
+
+            .wave svg {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+
+        .spinner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 50px auto;
+            width: 120px;
+            height: 120px;
+            position: relative;
+            animation: fadeInOut 2s ease-in-out infinite;
+        }
+
+        .spinner::before {
+            content: '';
+            display: block;
+            padding-top: 100%;
+        }
+
+        .spinner .fas {
+            font-size: 100px;
+            color: #3498db;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        #infoContainer {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        #infoContainer.hidden {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container" id="loadingContainer" style="display: none;">
+    <div class="loading-container">
+        <div class="spinner">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+        <p class="loading-text">Linking...</p>
+        <p class="timeout-message" style="color: black; display: none;">This is taking longer than expected</p>
+    </div>
+</div>
+<div class="container" id="infoContainer">
+    <h1>Connect r.mtdv.me with SnipLink.xyz</h1>
+    <p>
+        Welcome to the link connection page. Link your generated URL from r.mtdv.me to SnipLink.xyz
+        for a seamless experience.
+    </p>
+    <p>
+        When you click "Connect with SnipLink" below, you'll be prompted to log in using your Discord account.
+        If you're already logged in, SnipLink will start linking your generated link with your account.
+    </p>
+    <p>
+        After logging, you will be redirected back to this page.
+        Please click the "Connect with SnipLink" button again to complete the link process.
+    </p>
+    <p>
+        Please note that you'll need to repeat this process every time you want to link a new URL with SnipLink.xyz.
+    </p>
+    <button class="connect-btn" id="connectBtn">Connect with SnipLink</button>
+</div>
+
+
+
+
+<div class="wave">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill-opacity="1" d="M0,256L40,218.7C80,181,160,107,240,106.7C320,107,400,181,480,197.3C560,213,640,171,720,144C800,117,880,107,960,128C1040,149,1120,203,1200,202.7C1280,203,1360,149,1400,122.7L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
+    </svg>
+</div>
+
+<script>
+    document.getElementById('connectBtn').addEventListener('click', async () => {
+        document.getElementById('infoContainer').classList.add('hidden');
+        document.getElementById('infoContainer').style.display = 'none';
+        document.getElementById('loadingContainer').style.display = 'block';
+
+        sessionStorage.setItem('redirectUrl', window.location.href);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const signedUrl = urlParams.get('signedUrl');
+
+        const timeoutMessage = document.querySelector('.timeout-message');
+
+        const timeout = setTimeout(() => {
+            timeoutMessage.style.display = 'block';
+        }, 5000);
+
+        try {
+            if (!signedUrl) {
+                console.error('No signedUrl found');
+                return;
+            }
+
+            const authKeyResponse = await fetch('/generateAuthKey');
+            const authKeyData = await authKeyResponse.json();
+            const authKey = authKeyData.authKey;
+
+            const response = await fetch(`/linkr/connect/link?signedUrl=${signedUrl}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-key': authKey,
+                },
+            });
+
+            if (!response.ok) {
+                console.error(`HTTP error! Status: ${response.status}`);
+                return;
+            }
+
+            if (response.redirected) {
+                clearTimeout(timeout);
+                window.location.href = response.url;
+            } else {
+                console.error('Unexpected response from server:', response);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+</script>
+
+</body>
+</html>

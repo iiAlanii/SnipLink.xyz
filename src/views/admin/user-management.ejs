@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/admin/user-management.css">
+</head>
+
+<body>
+<%- include('../partials/navbar') %>
+<%- include('../partials/info') %>
+
+<div class="main-content">
+    <%- include('../partials/admin-sidebar') %>
+
+        <div class="dashboard-container">
+
+            <div class="section welcome-section">
+                <h2 class="section-title">User Management</h2>
+            </div>
+
+                <h1>User Management</h1>
+                <% if (users.length > 0) { %>
+                    <% users.forEach((user) => { %>
+                        <div class="profile-box">
+                            <% if (user.profilePicture) { %>
+                                <img src="<%= user.profilePicture %>" alt="Profile Picture">
+                            <% } else { %>
+                                <div class="profile-picture"></div>
+                            <% } %>
+                            <div class="profile-info">
+                                <h3><%= user.username %></h3>
+                                <p>ID: <%= user.discordId %></p>
+                                <a href="/admin/user-management/<%= user.discordId %>">View Details</a>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p class="no-users">No users found.</p>
+                <% } %>
+        </div>
+    </div>
+</body>
+</html>

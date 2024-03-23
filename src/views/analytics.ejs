@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta property="og:title" content="SnipLink.xyz - Link Analytics">
+    <meta property="og:description" content="Gain valuable insights into your shortened links' performance with SnipLink.xyz's link analytics.">
+    <meta property="og:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta property="og:url" content="https://sniplink.xyz/analytics">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SnipLink.xyz">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:title" content="SnipLink.xyz - Link Analytics">
+    <meta name="twitter:description" content="Gain valuable insights into your shortened links' performance with SnipLink.xyz's link analytics.">
+    <meta name="twitter:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="keywords" content="SnipLink, SnipLink.xyz, link shortener, link analytics, URL shortener, shorten links, link tracking, link insights, click statistics, referrers, countries">
+    <meta name="author" content="SnipLink">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="referrer" content="always">
+    <meta name="apple-mobile-web-app-title" content="SnipLink">
+    <meta name="theme-color" content="#007bff">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+
+    <script>
+        Chart.register({
+            id: 'moment',
+            beforeBuildOrUpdate: function(chart, args, options) {
+                options = Chart.helpers.mergeIf({}, [options, Chart.defaults.plugins.moment]);
+                options.date = Chart.helpers.mergeIf({}, [options.date, {
+                    formatters: {
+                        millisecond: 'h:mm:ss.SSS a',
+                        second: 'h:mm:ss a',
+                        minute: 'h:mm a',
+                        hour: 'hA',
+                        day: 'MMM D',
+                        week: 'll',
+                        month: 'MMM YYYY',
+                        quarter: '[Q]Q - YYYY',
+                        year: 'YYYY'
+                    }
+                }]);
+            }
+        });
+    </script>
+
+
+    <link rel="stylesheet" href="/stylesheets/analytics.css">
+
+    <style>
+        canvas {
+            max-width: 1000px;
+            margin: 20px 0;
+        }
+
+        .analytics-item {
+            margin-bottom: 20px;
+        }
+
+        .analytics-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .beta-notification {
+            background-color: #FF8C00;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        canvas#clicksPieChart {
+            max-width: 400px;
+            max-height: 400px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+<%- include('partials/preloader') %>
+
+<%- include('partials/navbar') %>
+<%- include('partials/info') %>
+
+<div class="main-content">
+    <%- include('partials/sidebar') %>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Link Analytics</h1>
+            <h2>Analytics for: <%= req.protocol %>://<%= req.get('host') %>/<%= link.shortenedUrl %></h2>
+        </div>
+        <div class="url-details">
+            <div class="analytics-item">
+                <h3>Original URL</h3>
+                <p><%= link.originalUrl.length > 50 ? link.originalUrl.substring(0, 50) + '...' : link.originalUrl %></p>
+            </div>
+
+            <div class="analytics-item">
+                <h3>Shortened URL</h3>
+                <p><%= req.protocol %>://<%= req.get('host') %>/<%= link.shortenedUrl %></p>
+            </div>
+            <div class="analytics-item">
+                <h3>Link Creation Date</h3>
+                <p id="creationDate" data-unix-timestamp="<%= link.dateCreated.getTime() / 1000 %>">
+                    <%= link.dateCreated.toLocaleString() %>
+                </p>
+            </div>
+
+            <div class="analytics-item">
+                <h3>Link Expiry Date</h3>
+                <p id="expiryDate" data-unix-timestamp="<%= link.expiryDate || 0 %>">
+                    <% if (link.expiryDate) { %>
+                        Loading...
+                    <% } else { %>
+                        No expiry set
+                    <% } %>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="analytics-summary">
+            <div class="analytics-item">
+                <h3>Total Clicks</h3>
+                <p><%= totalClicks %></p>
+            </div>
+
+            <div class="analytics-item">
+                <h3>Unique Clicks</h3>
+                <p><%= uniqueClicks %></p>
+            </div>
+
+            <div class="analytics-item">
+                <h3>Average Clicks Per Day</h3>
+                <p><%= Math.floor(averageClicksPerDay) %></p>
+            </div>
+        </div>
+            <div class="analytics-item">
+                <div class="analytics-header">
+                    <h3>Unique and Total Clicks</h3>
+                    <div class="beta-notification">
+                        <p>Beta</p>
+                    </div>
+                </div>
+                <% if (uniqueClicks > 0 || totalClicks > 0) { %>
+                    <canvas id="clicksPieChart"></canvas>
+                <% } else { %>
+                    <p>No clicks recorded for this link yet.</p>
+                <% } %>
+            </div>
+
+            <div class="analytics-item">
+            <div class="analytics-header">
+                <h3>Clicks Over Time</h3>
+                <div class="beta-notification">
+                    <p>Beta</p>
+                </div>
+            </div>
+            <% if (Object.keys(clicksOverTime).length > 0) { %>
+                <canvas id="clicksOverTimeChart" width="800" height="400"></canvas>
+            <% } else { %>
+                <p>No clicks recorded for this link yet.</p>
+            <% } %>
+        </div>
+
+        <div class="analytics-item">
+            <h3>Top Referrers</h3>
+            <p>Coming soon</p>
+        </div>
+
+        <div class="analytics-item">
+            <h3>Total Clicks by Country</h3>
+            <p>
+                Coming soon
+            </p>
+        </div>
+
+        <div class="analytics-item">
+            <h3>Link Metadata</h3>
+            <p>
+                Coming soon
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let clicksOverTime = <%- JSON.stringify(clicksOverTime) %>;
+        if (!clicksOverTime) {
+            clicksOverTime = {};
+        }
+        if (Object.keys(clicksOverTime).length > 0) {
+            const formattedData = Object.entries(clicksOverTime).map(([date, count]) => ({
+                x: new Date(date),
+                y: count
+            }));
+
+            const ctx = document.getElementById('clicksOverTimeChart').getContext('2d');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    datasets: [{
+                        label: 'Clicks per Day',
+                        data: formattedData,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
+                                parser: 'YYYY-MM-DD',
+                                tooltipFormat: 'll',
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            stepSize: 1
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
+<script src="/javascripts/analytics.js"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let totalClicks = <%= totalClicks %>;
+        let uniqueClicks = <%= uniqueClicks %>;
+
+        if (!totalClicks) {
+            totalClicks = 0;
+        }
+        if (!uniqueClicks) {
+            uniqueClicks = 0;
+        }
+
+        const ctx = document.getElementById('clicksPieChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Total Clicks', 'Unique Clicks'],
+                datasets: [{
+                    data: [totalClicks, uniqueClicks],
+                    backgroundColor: ['#FF8C00', '#007bff'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    });
+</script>

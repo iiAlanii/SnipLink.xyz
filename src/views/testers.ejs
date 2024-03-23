@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testers Page | SnipLink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(12, 8, 8, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #070505;
+            margin-bottom: 30px;
+        }
+
+        .bug-container {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .bug {
+            margin-bottom: 40px;
+        }
+
+        .bug-title {
+            font-size: 24px;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .bug-description {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .bug-images {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .bug-image {
+            width: 48%;
+            max-height: 555px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+        }
+    </style>
+</head>
+<%- include('partials/preloader') %>
+
+<body>
+<header>
+    <h1>Welcome, Testers!</h1>
+    <p>This page is exclusively accessible to authorized testers only.</p>
+</header>
+
+<div class="content">
+    <div class="bug-container">
+        <div class="bug" style="margin-bottom: 20px;">
+            <div class="bug-title">#1 - Navbar Misalignment on Mobile Devices</div>
+            <div class="bug-description">On mobile devices, the navbar isn't positioned correctly. When users are logged in, the box containing their name is shifted more to the right side, causing a misalignment at the center. Additionally, when expanding the user dropdown, the icons and text are not displayed properly and the icons touch the navbar side.</div>
+            <div class="bug-images">
+                <img src="/images/bugs/mobile-navbar.png" alt="Bug 1 Screenshot" class="bug-image">
+                <img src="/images/bugs/mobile-navbar-2.png" alt="Bug 2 Screenshot" class="bug-image">
+
+            </div>
+        </div>
+
+        <div class="bug" style="margin-bottom: 20px;">
+            <div class="bug-title">#2 - Logout Button Position and Styling Issue</div>
+            <div class="bug-description">When users are signed in, the logout button exhibits unexpected behavior. It can change positions, and the blue highlighting around it may change in size, resulting in a styling inconsistency.</div>
+            <div class="bug-images">
+                <img src="/images/bugs/logout-1.png" alt="Bug 3 Screenshot" class="bug-image">
+                <img src="/images/bugs/logout-2.png" alt="Bug 4 Screenshot" class="bug-image">
+
+            </div>
+        </div>
+    </div>
+    <div class="bug" style="margin-bottom: 20px;">
+        <div class="bug-title">#3 - Navbar Page Title Visibility Issue</div>
+        <div class="bug-description">When users click on the navbar links containing texts such as About, Features, Partners, etc., the title of the respective page is slightly cut or not visible.</div>
+    </div>
+    <div class="upcoming-features" style="margin-top: 40px; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #007bff;">Upcoming Features</h2>
+        <p style="color: #555;">These are the upcoming features planned for Sniplink.xyz:</p>
+
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #007bff; margin-right: 5px;"></i>Link Customization: Personalize your short links to make them unique.</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #007bff; margin-right: 5px;"></i>API Support: Integrate Sniplink.xyz with your applications through our API.</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #007bff; margin-right: 5px;"></i>QR Code Links: Generate QR codes for your shortened links for easy mobile access.</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #007bff; margin-right: 5px;"></i>Enhanced Link Analytics: Dive deeper into click statistics with more detailed and insightful analytics.</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #007bff; margin-right: 5px;"></i>Link Tags: Organize your links effortlessly by assigning tags for better categorization.</li>
+            <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: #007bff; margin-right: 5px;"></i>Password Protection: Safeguard your shortened links by adding an extra layer of security with password protection.</li>
+        </ul>
+    </div>
+
+</div>
+</body><%- include('partials/footer') %>
+</html>

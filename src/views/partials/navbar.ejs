@@ -1,0 +1,183 @@
+<!-- The navbar might be broken considering the syntax errors. Investigate -->
+<header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/partials/navbar.css">
+    <style>
+        <% if (user) { %>
+        nav a:not(.login-button) {
+            background-color: #1c1f29;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        nav a:not(.login-button):hover {
+            background-color: #14161d;
+            transform: translateY(-2px);
+        }
+        <% } %>
+    </style>
+
+    <div class="navbar-container">
+        <div class="center-title">
+            <h1><span class="mobile-only">Sniplink.xyz</span></h1>
+        </div>
+        <div class="hamburger">
+            <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
+        </div>
+    </div>
+    <body>
+    <nav>
+
+        <a href="/">
+            <i class="fas fa-home"></i>
+            SnipLink.xyz
+        </a>
+        <a href="/#about">
+            <i class="fas fa-info-circle"></i>
+            About
+        </a>
+        <a href="/#features">
+            <i class="fas fa-th-list"></i>
+            Features
+        </a>
+        <a href="/#how-it-works">
+            <i class="fas fa-question-circle"></i>
+            How it works
+        </a>
+        <a href="/#partners">
+            <i class="fas fa-handshake"></i>
+            Partners
+        </a>
+        <a href="/#discord">
+            <i class="fab fa-discord"></i>
+            Join Discord
+        </a>
+
+        <% if (user) { %>
+            <div class="user-dropdown">
+                <button class="username-button">
+                    <i class="fas fa-user-circle"></i>
+                    <%= user.username %>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                    <a href="/help/help-center">
+                        <i class="fas fa-question-circle"></i>
+                        Help Center
+                    </a>
+                    <a href="/legal/privacy-policy">
+                        <i class="fas fa-lock"></i>
+                        Privacy Policy
+                    </a>
+                    <a href="/legal/terms-of-service">
+                        <i class="fas fa-file-alt"></i>
+                        Terms of Service
+                    </a>
+                    <a href="/feedback">
+                        <i class="fas fa-comments"></i>
+                        Feedback/Suggestions
+                    </a>
+                    <a href="/logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Log Out
+                    </a>
+                    <% if (user.id === '417237496007753738') { %>
+                        <a href="/admin/dashboard">
+                            <i class="fas fa-crown"></i>
+                            Admin
+                        </a>
+                    <% } %>
+                    <% if (allowedTesters.includes(user.id)) { %>
+                        <a href="/testers">
+                            <i class="fas fa-user-secret"></i>
+                            Testers
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+        <% } else { %>
+            <a href="/login" class="login-button">
+                <i class="fas fa-sign-in-alt"></i>
+                Login with Discord
+            </a>
+        <% } %>
+    </nav>
+    <div class="mobile-menu hidden">
+        <i class="fa-solid fa-times close-menu" id="close-mobile-menu"></i>
+        <ul class="mobile-menu-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#how-it-works">How it works</a></li>
+            <li><a href="/#partners">Partners</a></li>
+            <li><a href="/#discord">Join Discord</a></li>
+            <% if (user) { %>
+                <li class="user-dropdown">
+                    <button class="username-button">
+                        <i class="fas fa-user-circle"></i>
+                        <%= user.username %>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="/dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                        <a href="/help/help-center">
+                            <i class="fas fa-question-circle"></i>
+                            Help Center
+                        </a>
+                        <a href="/legal/privacy-policy">
+                            <i class="fas fa-lock"></i>
+                            Privacy Policy
+                        </a>
+                        <a href="/legal/terms-of-service">
+                            <i class="fas fa-file-alt"></i>
+                            Terms of Service
+                        </a>
+                        <a href="/feedback">
+                            <i class="fas fa-comments"></i>
+                            Feedback/Suggestions
+                        </a>
+                        <a href="/logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Log Out
+                        </a>
+                        <% if (user.id === '417237496007753738') { %>
+                            <a href="/admin/dashboard">
+                                <i class="fas fa-crown"></i>
+                                Admin
+                            </a>
+                        <% } %>
+                        <% if (allowedTesters.includes(user.id)) { %>
+                            <a href="/testers">
+                                <i class="fas fa-user-secret"></i>
+                                Testers
+                            </a>
+                        <% } %>
+                    </div>
+                </li>
+            <% } else { %>
+                <li><a href="/login" class="login-button">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login with Discord
+                    </a></li>
+            <% } %>
+        </ul>
+    </div>
+    </body>
+</header>
+</body>
+
+
+<script src="/javascripts/partials/navbar.js"></script>

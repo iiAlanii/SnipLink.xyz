@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-image: url("/images/circle-background.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  color: #495057;
+}
+
+.health-container {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.health-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.intro-section {
+  background-image: url("/images/bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.intro-section h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+  color: #007bff;
+  letter-spacing: 2px;
+}
+
+.intro-section p {
+  font-size: 24px;
+  margin: 20px 0;
+  color: #f0f0f0;
+  line-height: 1.5;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  color: #495057;
+}
+
+.section-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section-content ul li {
+  border-bottom: 1px solid #e9ecef;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.section-content ul li:hover {
+  background-color: #f1f3f5;
+}
+
+.section-content ul li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.section-content ul li a:hover {
+  color: #0056b3;
+}
+
+@media (min-width: 769px) {
+  .health-container {
+    margin-left: 240px;
+  }
+}
+@media (max-width: 768px) {
+  .health-container {
+    margin: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .health-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+/*# sourceMappingURL=health.css.map */

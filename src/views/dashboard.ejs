@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta property="og:title" content="SnipLink.xyz - Link Shortener">
+    <meta property="og:description" content="Manage and track your shortened links with ease on SnipLink.xyz's Dashboard. Shorten URLs, view analytics, and take control of your links.">
+    <meta property="og:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta property="og:url" content="https://sniplink.xyz">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SnipLink.xyz">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:title" content="SnipLink.xyz - Link Shortener">
+    <meta name="twitter:description" content="Manage and track your shortened links with ease on SnipLink.xyz's Dashboard. Shorten URLs, view analytics, and take control of your links.">
+    <meta name="twitter:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="keywords" content="SnipLink, SnipLink.xyz, link shortener, shorten links, dashboard, link management, link tracking, analytics, URL shortener, QR code links, API support, upcoming features, password protection">
+    <meta name="author" content="SnipLink">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="referrer" content="always">
+    <meta name="apple-mobile-web-app-title" content="SnipLink">
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+</head>
+
+<%- include('partials/preloader') %>
+
+<body>
+
+<%- include('partials/navbar') %>
+<%- include('partials/info') %>
+
+<div class="main-content">
+    <%- include('partials/sidebar') %>
+
+    <div class="main-content">
+        <div class="dashboard-container">
+
+            <div class="section welcome-section">
+                <h2 class="section-title">Welcome, <%= user.username %>!</h2>
+                <p class="section-content">We're glad to have you here! Explore and manage your shortened links with ease.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-titles">
+                    <i class="fas fa-link"></i> Recent Shortened Links
+                </h2>
+                <div class="section-content">
+                    <ul>
+                        <% if (recentLinks.length === 0) { %>
+                            <li class="empty-message">
+                                <p>No recent shortened links.</p>
+                            </li>
+                        <% } else { %>
+                            <% recentLinks.forEach((link) => { %>
+                                <li class="link-item">
+                                    <p class="original-url">Original URL: <%= link.originalUrl.substring(0, 50) %>...</p>
+                                    <p class="shortened-url">Shortened URL: https://sniplink.xyz/<%= link.shortenedUrl %></p>
+                                    <p class="date-created">Date Created: <%= link.dateCreated.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) %></p>
+                                </li>
+                            <% }); %>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-titles">
+                    <i class="fas fa-chart-bar"></i> Link Analytics
+                </h2>                <div class="section-content">
+                    <ul>
+                        <% if (linkAnalytics.length === 0) { %>
+                            <li class="empty-message">
+                                <p>No link analytics available.</p>
+                            </li>
+                        <% } else { %>
+                            <% linkAnalytics.forEach((analytics) => { %>
+                                <li class="analytics-item">
+                                    <p class="shortened-url">Shortened URL: <%= analytics.shortenedUrl %></p>
+                                    <p class="num-clicks">Number of Clicks: <%= analytics.numClicks || 0 %></p>
+                                    <p class="last-click-date">Last Click Date: <%= analytics.lastClickDate ? new Date(analytics.lastClickDate).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'Not available' %></p>
+                                    <div class="copy-button-container">
+                                        <button class="copy-button" data-clipboard-text="<%= 'https://sniplink.xyz/' + analytics.shortenedUrl %>">Copy Link</button>
+                                    </div>
+                                    <a class="view-analytics-link" href="/analytics/<%= analytics.shortenedUrl %>">View Detailed Analytics</a>
+                                </li>
+                            <% }); %>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+
+            <% if (totalLinks >= 10) { %>
+                <div class="section end-message">
+                    <h2 class="section-titles">You've reached the end!</h2>
+                    <div class="section-content">
+                        <p>That was a lot of scrolling, wasn't it? Great job on staying curious!</p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1720129279769578"
+        crossorigin="anonymous"></script>
+<!-- Square Responsive Ad -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1720129279769578"
+     data-ad-slot="2325492386"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script src="/javascripts/dashboard.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/partials/sidebar.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+    </script>
+</head>
+<body>
+<div class="toggle-button" id="toggleButton">
+    <i class="fas fa-bars"></i>
+</div>
+<div class="sidebar-container">
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">SnipLink.xyz</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="/dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="/shortener">
+                    <i class="fas fa-link"></i>
+                    Link Shortener
+                </a>
+            </li>
+            <li>
+                <a href="/manage-links">
+                    <i class="fas fa-history"></i>
+                    Manage Links
+                </a>
+            </li>
+            <li>
+                <a href="/help/help-center">
+                    <i class="fas fa-question-circle"></i>
+                    Help Center
+                </a>
+            </li>
+        </ul>
+        <ul class="sidebar-menu logout-menu">
+            <li>
+                <a href="/logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="/javascripts/partials/sidebar.js"></script>
+</body>
+</html>
