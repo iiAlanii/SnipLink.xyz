@@ -6,7 +6,8 @@ const Link = require('../models/link');
 const fs = require('fs').promises;
 const path = require('path');
 const logGeneralError = require('../middleware/generalErrorLogger');
-
+const defaultImage = 'https://sniplink.xyz/images/sniplink-logo.png';
+const ejs = require('ejs'); // Add this line
 
 const generateShortUUID = () => {
     return uuidv4().replace(/-/g, '');
@@ -21,7 +22,6 @@ router.get('/:shortCode', async (req, res, next) => {
     
 
     try {
-        const loadingContent = await fs.readFile(path.join(__dirname, '..', 'views', 'loading.ejs'), 'utf8');
         let link = await Link.findOne({ shortenedUrl: shortCode });
 
         if (!link) {
@@ -29,6 +29,11 @@ router.get('/:shortCode', async (req, res, next) => {
         }
 
         if (link) {
+            if (link.originalUrl === `https://sniplink.xyz/${shortCode}`) {
+                return res.status(400).send('A shortened URL cannot point to itself.');
+            }
+
+
             const clickId = generateShortUUID();
             const referrer = req.headers.referer || req.headers.Referrer || 'Direct';
             console.log('Referrer:', req.headers.referer);
@@ -53,9 +58,21 @@ router.get('/:shortCode', async (req, res, next) => {
             link.clicks.push(newClick);
             await link.save();
 
-            const title = link.linkPreview && link.linkPreview.title ? link.linkPreview.title : 'No title';
-            const description = link.linkPreview && link.linkPreview.description ? link.linkPreview.description : 'No description';
-            const image = link.linkPreview && link.linkPreview.image ? link.linkPreview.image : null;
+            let title, description, image;
+            if (link.linkPreview) {
+                title = link.linkPreview.title || 'No title';
+                description = link.linkPreview.description || 'No description';
+                image = link.linkPreview.image || null;
+            } else {
+                title = link.title || 'No title';
+                description = link.description || 'No description';
+                image = link.image || defaultImage;
+            }
+
+            const loadingTemplate = await fs.readFile(path.join(__dirname, '..', 'views', 'loading.ejs'), 'utf8');
+
+            // Render the EJS template to a string
+            const loadingContent = ejs.render(loadingTemplate, { link: link });
 
             const html = `
 <!DOCTYPE html>

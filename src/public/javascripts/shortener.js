@@ -1,38 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const linkListContainer = document.querySelector(".link-list");
     const seeMoreButton = document.getElementById("seeMoreButton");
-
     const defaultVisibleLinks = 3;
     let visibleLinks = defaultVisibleLinks;
 
-    function toggleLinkVisibility() {
+    const toggleLinkVisibility = () => {
+        // Store linkItems so we don't query the DOM every time
         const linkItems = linkListContainer.querySelectorAll(".link-item");
         linkItems.forEach((link, index) => {
-            if (index < visibleLinks) {
-                link.style.display = "block";
-            } else {
-                link.style.display = "none";
-            }
+            link.style.display = index < visibleLinks ? "block" : "none";
         });
-
-        if (linkItems.length <= defaultVisibleLinks) {
-            seeMoreButton.style.display = "none";
-        } else {
-            seeMoreButton.style.display = "block";
-        }
+        seeMoreButton.style.display = linkItems.length <= defaultVisibleLinks ? "none" : "block";
     }
 
     toggleLinkVisibility();
 
-    seeMoreButton.addEventListener("click", function () {
+    seeMoreButton.addEventListener("click", () => {
         const isExpanded = visibleLinks >= linkListContainer.children.length;
-        if (isExpanded) {
-            visibleLinks = defaultVisibleLinks;
-            seeMoreButton.textContent = "See More";
-        } else {
-            visibleLinks = linkListContainer.children.length;
-            seeMoreButton.textContent = "See Less";
-        }
+        visibleLinks = isExpanded ? defaultVisibleLinks : linkListContainer.children.length;
+        seeMoreButton.textContent = isExpanded ? "See More" : "See Less";
         toggleLinkVisibility();
     });
 });
@@ -54,6 +40,46 @@ document.getElementById('customPathInput').addEventListener('input', async funct
     }
 
     const customPath = inputField.value.trim();
+
+    const restrictedPaths = [
+        'shortener',
+        'login',
+        'admin',
+        '404',
+        '505',
+        'analytics',
+        'ban',
+        'dashboard',
+        'edit-link',
+        'loading',
+        'logout',
+        'manage-links',
+        'testers',
+        'underconstruction',
+        'ulban',
+        'alreadylinked',
+        'connectView',
+        'invalidlink',
+        'linkSuccess',
+        'privacy-policy',
+        'terms-of-service',
+        'help-center',
+        'feedback',
+        'submitFeedback'
+    ];
+    if (restrictedPaths.some(path => {
+        if (path === 'admin') {
+            return customPath.startsWith(path);
+        } else {
+            return customPath === path;
+        }
+    })) {
+        availabilityStaticText.textContent = 'This path is restricted. Please choose a different one.';
+        availabilityDynamicText.textContent = '';
+        shortenButton.disabled = true;
+        shortenButton.style.opacity = 0.5;
+        return;
+    }
 
     if (!customPath) {
         shortenButton.disabled = false;
@@ -162,6 +188,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     shortenForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const longUrl = longUrlInput.value.trim();
+        const baseUrl = `${window.location.protocol}//${window.location.host}/`;
+        if (longUrl.startsWith(baseUrl)) {
+            document.getElementById('errorBox').style.display = 'block';
+            document.getElementById('errorBox').textContent = 'A shortened URL cannot point to the base URL.';
+            return;
+        }
 
         const shortenButton = document.querySelector('#shortenForm button');
         shortenButton.disabled = true;
@@ -236,6 +269,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }, 5000);
             return;
         }
+
         if (metadataSource === 'custom' && description.length > 250) {
             customMetadataAlert.textContent = 'Your description must be 250 characters or less.';
             customMetadataAlert.style.display = 'block';
@@ -254,23 +288,45 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (metadataSource === 'custom' && !/^[a-zA-Z0-9\-_\. ,!`':?]+$/.test(title)) {
-            customMetadataAlert.textContent = 'Your title can only include numbers, letters, hyphens, underscores, periods, spaces, commas, exclamation marks, backticks, apostrophes, colons, and question marks.';
-            customMetadataAlert.style.display = 'block';
-            setTimeout(() => {
-                customMetadataAlert.style.display = 'none';
-            }, 5000);
-            return;
-        }
+            if (metadataSource === 'custom' && !/^[a-zA-Z0-9\-_\. ,!`':?]+$/.test(title)) {
+                customMetadataAlert.textContent = 'Your title can only include numbers, letters, hyphens, underscores, periods, spaces, commas, exclamation marks, backticks, apostrophes, colons, and question marks.';
+                customMetadataAlert.style.display = 'block';
 
-        if (metadataSource === 'custom' && !/^[a-zA-Z0-9\-_\. ,!`':?]+$/.test(description)) {
-            customMetadataAlert.textContent = 'Your description can only include numbers, letters, hyphens, underscores, periods, spaces, commas, exclamation marks, backticks, apostrophes, colons, and question marks.';
-            customMetadataAlert.style.display = 'block';
-            setTimeout(() => {
-                customMetadataAlert.style.display = 'none';
-            }, 5000);
-            return;
-        }
+                const shortenButton = document.querySelector('#shortenForm button');
+                shortenButton.innerHTML = 'Shorten';
+                shortenButton.disabled = false;
+                shortenButton.style.opacity = 1;
+
+                const formElements = document.querySelectorAll('#shortenForm input, #shortenForm select, #shortenForm button, #shortenForm textarea');
+                formElements.forEach(element => {
+                    element.disabled = false;
+                });
+
+                setTimeout(() => {
+                    customMetadataAlert.style.display = 'none';
+                }, 5000);
+                return;
+            }
+
+            if (metadataSource === 'custom' && !/^[a-zA-Z0-9\-_\. ,!`':?]+$/.test(description)) {
+                customMetadataAlert.textContent = 'Your description can only include numbers, letters, hyphens, underscores, periods, spaces, commas, exclamation marks, backticks, apostrophes, colons, and question marks.';
+                customMetadataAlert.style.display = 'block';
+
+                const shortenButton = document.querySelector('#shortenForm button');
+                shortenButton.innerHTML = 'Shorten';
+                shortenButton.disabled = false;
+                shortenButton.style.opacity = 1;
+
+                const formElements = document.querySelectorAll('#shortenForm input, #shortenForm select, #shortenForm button, #shortenForm textarea');
+                formElements.forEach(element => {
+                    element.disabled = false;
+                });
+
+                setTimeout(() => {
+                    customMetadataAlert.style.display = 'none';
+                }, 5000);
+                return;
+            }
 
         if (longUrl) {
             await shortenUrl(longUrlInput.value.trim());
@@ -394,8 +450,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
-                    document.getElementById('errorBox').style.display = 'block';
+                    if (error.message === 'INVALID_URL') {
+                        document.getElementById('errorBox').style.display = 'block';
+                        document.getElementById('errorBox').textContent = 'A shortened URL cannot point to the base URL.';
+                    } else {
+                        console.error('Error:', error);
+                        document.getElementById('errorBox').style.display = 'block';
+                    }
 
                     shortenButton.disabled = false;
                     shortenButton.style.opacity = 1;

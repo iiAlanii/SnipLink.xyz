@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const MaintenanceStatus = require('../models/maintenanceStatus');
+const apiLink = require('../models/apiLink'); // Assuming this is the correct path to your apiLink model
 
 let mongoConnection;
 
@@ -19,6 +20,8 @@ const connectDB = async () => {
                 console.log('Mongoose disconnected from MongoDB server');
                 mongoConnection = null;
             });
+            await apiLink.createIndexes();
+
 
             const existingStatus = await MaintenanceStatus.findOne();
             if (!existingStatus) {

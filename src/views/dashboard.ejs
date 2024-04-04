@@ -32,6 +32,10 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/stylesheets/dashboard.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1720129279769578"
+            crossorigin="anonymous"></script>
+
 </head>
 
 <%- include('partials/preloader') %>
@@ -78,7 +82,8 @@
             <div class="section">
                 <h2 class="section-titles">
                     <i class="fas fa-chart-bar"></i> Link Analytics
-                </h2>                <div class="section-content">
+                </h2>
+                <div class="section-content">
                     <ul>
                         <% if (linkAnalytics.length === 0) { %>
                             <li class="empty-message">
@@ -89,8 +94,7 @@
                                 <li class="analytics-item">
                                     <p class="shortened-url">Shortened URL: <%= analytics.shortenedUrl %></p>
                                     <p class="num-clicks">Number of Clicks: <%= analytics.numClicks || 0 %></p>
-                                    <p class="last-click-date">Last Click Date: <%= analytics.lastClickDate ? new Date(analytics.lastClickDate).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'Not available' %></p>
-                                    <div class="copy-button-container">
+                                    <p class="last-click-date">Last Click Date: <%= analytics.lastClickDate ? new Date(analytics.lastClickDate).toLocaleString() : 'Not available' %></p>                                    <div class="copy-button-container">
                                         <button class="copy-button" data-clipboard-text="<%= 'https://sniplink.xyz/' + analytics.shortenedUrl %>">Copy Link</button>
                                     </div>
                                     <a class="view-analytics-link" href="/analytics/<%= analytics.shortenedUrl %>">View Detailed Analytics</a>

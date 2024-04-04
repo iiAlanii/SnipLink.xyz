@@ -46,7 +46,7 @@ router.post(
             const shortCode = customPath ? customPath.replace(/[^\w]/gi, '') : await generateShortCode(isUnique);
 
             const parsedExpiryDate = expiryDate === 'never' || expiryDate === null ? null : Math.floor(new Date(expiryDate).getTime() / 1000);
-            const defaultImage = `${req.protocol}://${req.get('host')}/images/link.png`;
+            const defaultImage = `${req.protocol}://${req.get('host')}/images/sniplink-logo.png`;
 
 
             const fetchMetadata = async (targetUrl, retryCount = 3) => {

@@ -70,7 +70,7 @@ router.get('/:shortCode', async (req, res, next) => {
 const generateShortUUID = () => {
     return uuidv4().replace(/-/g, '');
 };
-
+//TODO: Implement link preview in api
 function identifySocialMedia(referrer, userAgent) {
     if (referrer) {
         if (referrer.includes('discord.com') || referrer.includes('discord.gg')) {

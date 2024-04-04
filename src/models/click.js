@@ -17,16 +17,16 @@ clickSchema.virtual('clickCount').get(function () {
 
 clickSchema.statics.getTopReferrers = async function (linkId, limit) {
     try {
-        const topReferrers = await this.aggregate([
-            { $match: { linkId: linkId, referrer: { $ne: null } } },
+        return await this.aggregate([
+            {$match: {linkId: linkId, referrer: {$ne: null}}},
             {
                 $group: {
                     _id: '$referrer',
-                    count: { $sum: 1 },
+                    count: {$sum: 1},
                 },
             },
-            { $sort: { count: -1 } },
-            { $limit: limit },
+            {$sort: {count: -1}},
+            {$limit: limit},
             {
                 $lookup: {
                     from: 'User',
@@ -49,8 +49,6 @@ clickSchema.statics.getTopReferrers = async function (linkId, limit) {
                 },
             },
         ]).exec();
-
-        return topReferrers;
     } catch (error) {
         console.error('Error fetching top referrers:', error);
         throw error;

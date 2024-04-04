@@ -1,0 +1,102 @@
+2024-03-26T19:31:42.342Z [info]: {
+  "discordId": "1025396233864491068",
+  "username": "diwithacck",
+  "email": "thesupergamerchannel572@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/1025396233864491068/bd606a682a8ff4d8685be3708c69ba5b.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-26T19:31:50.619Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-26T19:32:04.490Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:32:06.606Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-26T19:34:27.467Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-26T19:34:50.397Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:34:52.980Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-26T19:34:55.229Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:34:56.418Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-26T19:35:01.183Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:35:02.701Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-26T19:36:19.984Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:36:21.367Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-26T19:37:38.782Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-26T19:37:52.843Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:37:54.755Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-26T19:37:56.514Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:37:58.149Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-26T19:38:02.179Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:38:03.521Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-26T19:38:03.889Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-26T19:38:04.986Z [info]: {
+  "page": "/shorten",
+  "actionDetails": {}
+}
+2024-03-26T19:38:05.599Z [info]: {
+  "page": "/shorten",
+  "action": "Link shortened",
+  "actionDetails": {
+    "date": "3/26/2024, 9:38:05 PM",
+    "title": "r",
+    "description": "r",
+    "customUrl": "5QCY33"
+  }
+}

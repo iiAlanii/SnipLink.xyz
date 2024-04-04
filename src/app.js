@@ -19,6 +19,19 @@ const accessLogger = require('./ServerLogging/AccessLogger');
 // const securityHeadersMiddleware = require('./middleware/securityHeadersMiddleware');
 const middlewares = require('../src/middleware/serverRestrictions'); // Import the middleware
 
+app.use((req, res, next) => {
+  try {
+    decodeURIComponent(req.path);
+    next();
+  } catch (e) {
+    if (e instanceof URIError) {
+      res.status(400).send('Invalid URL');
+    } else {
+      next(e);
+    }
+  }
+});
+
 
 // Routes
 const authRoutes = require('./routes/auth');
@@ -32,6 +45,7 @@ const shortCodeRedirectRoute = require('./routes/shortCodeRedirect');
 const adminRoute = require('./routes/admin');
 const availabilityRoute = require('./routes/availability');
 const apiRoute = require('./routes/api/v1/shorten');
+const apiRoute2 = require('./routes/api/v2/shorten');
 const apiShortenRoute = require('./routes/apiShorten');
 const editLinkRoute = require('./routes/editLink');
 const apiPageRoute = require('./routes/apiPage');
@@ -134,6 +148,11 @@ app.use(express.static(path.join(__dirname, 'public'), {
   maxAge: oneDayInSeconds * 1000,
 }));
 
+app.use('/src', express.static('src', {
+  setHeaders: (res, path) => {
+    res.setHeader('Content-Disposition', 'inline');
+  }
+}));
 
 
 app.use(bodyParser.json());
@@ -324,6 +343,7 @@ app.use('/ad', adRoute); //TODO: Replace this with /ad if you want to use the sh
 app.use('/analytics', analyticsRoute);
 app.use('/api', apiShortenRoute);
 app.use('/api/v1/shorten', apiRoute);
+app.use('/api/v2/shorten', apiRoute2);
 apiLinks = require('./models/apiLink');
 
 

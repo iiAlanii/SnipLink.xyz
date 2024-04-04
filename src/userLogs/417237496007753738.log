@@ -1,0 +1,752 @@
+2024-03-25T13:50:53.848Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T13:51:02.828Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T13:51:27.025Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T13:51:28.150Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T13:51:29.279Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T13:56:01.016Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T13:56:03.908Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T13:56:09.239Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T13:56:10.386Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T13:56:10.434Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T13:56:11.488Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T13:56:11.515Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T13:56:11.567Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T13:56:12.629Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T13:56:12.702Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T13:56:12.708Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T13:57:12.772Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:18:06.935Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:18:09.722Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:18:14.001Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:18:15.094Z [info]: {
+  "page": "/fb/submitFeedbackfunc",
+  "actionDetails": {}
+}
+2024-03-25T14:18:16.187Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:19:34.446Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:19:37.038Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:19:41.968Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:19:43.141Z [info]: {
+  "page": "/fb/submitFeedbackfunc",
+  "actionDetails": {}
+}
+2024-03-25T14:20:45.088Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:20:51.248Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:20:52.397Z [info]: {
+  "page": "/fb/submitFeedbackfunc",
+  "actionDetails": {}
+}
+2024-03-25T14:21:39.647Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:21:46.157Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:21:47.275Z [info]: {
+  "page": "/fb/submitFeedbackfunc",
+  "actionDetails": {}
+}
+2024-03-25T14:22:54.800Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:22:57.503Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:23:00.927Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:23:04.904Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:23:06.036Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:23:07.149Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:23:22.076Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:25:20.068Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:25:23.088Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:25:29.418Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:25:30.552Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:25:31.659Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:29:44.892Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:29:48.957Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:29:53.268Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:29:54.362Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:29:55.477Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:31:05.695Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:31:08.411Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:31:12.162Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:31:13.260Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:31:29.509Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:31:33.362Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:31:34.552Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:31:35.691Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:34:36.555Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:34:39.325Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:34:42.101Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:34:46.200Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:34:47.299Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:34:48.389Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:37:24.204Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:37:33.946Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:37:39.215Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:37:42.624Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:37:57.642Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:38:02.455Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:38:05.674Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:38:32.247Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:38:43.754Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:39:03.003Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:39:08.459Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:39:11.346Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:41:04.532Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:41:09.823Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:41:14.479Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:41:15.631Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:41:16.769Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:41:22.727Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:43:27.597Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-25T14:43:30.122Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:43:33.994Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:43:35.086Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:43:50.656Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:44:03.725Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T14:44:12.971Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T14:44:14.082Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T14:44:15.182Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T15:01:37.766Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T15:01:43.419Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T15:24:50.904Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T15:24:54.347Z [info]: {
+  "page": "/fb/feedback",
+  "actionDetails": {}
+}
+2024-03-25T15:24:58.059Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-25T15:24:59.152Z [info]: {
+  "page": "/feedback/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-25T15:25:00.246Z [info]: {
+  "page": "/fb/submitFeedback",
+  "actionDetails": {}
+}
+2024-03-27T09:29:22.087Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-27T09:29:23.098Z [info]: {
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-27T09:29:30.885Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T09:33:53.085Z [info]: {
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-27T09:55:24.133Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-27T09:55:29.391Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T09:55:35.008Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T09:55:36.362Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-27T09:55:36.428Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T09:55:37.992Z [info]: {
+  "page": "/shorten",
+  "actionDetails": {}
+}
+2024-03-27T09:55:41.229Z [info]: {
+  "page": "/shorten",
+  "action": "Link shortened",
+  "actionDetails": {
+    "date": "3/27/2024, 11:55:41 AM",
+    "title": "SnipLink.xyz - Link Shortener",
+    "description": "Shorten your long URLs and share them easily with SnipLink.xyz.",
+    "customUrl": "TS3OK1"
+  }
+}
+2024-03-27T09:55:44.804Z [info]: {
+  "page": "/TS3OK1",
+  "actionDetails": {}
+}
+2024-03-27T09:56:01.342Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T09:56:05.954Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T09:56:07.205Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T09:56:07.251Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-27T09:56:08.465Z [info]: {
+  "page": "/shorten",
+  "actionDetails": {}
+}
+2024-03-27T09:56:08.760Z [info]: {
+  "page": "/shorten",
+  "action": "Link shortened",
+  "actionDetails": {
+    "date": "3/27/2024, 11:56:08 AM",
+    "title": "d",
+    "description": "d",
+    "customUrl": "dddd"
+  }
+}
+2024-03-27T09:56:12.680Z [info]: {
+  "page": "/dddd",
+  "actionDetails": {}
+}
+2024-03-27T10:21:39.973Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-27T10:21:43.004Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T10:22:00.997Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:23:31.117Z [info]: {
+  "page": "/admin/dashboard",
+  "actionDetails": {}
+}
+2024-03-27T10:23:32.924Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:23:34.121Z [info]: {
+  "page": "/admin/admin/uiretrieve",
+  "actionDetails": {}
+}
+2024-03-27T10:23:34.886Z [info]: {
+  "page": "/admin/user-management",
+  "actionDetails": {}
+}
+2024-03-27T10:25:18.104Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T10:25:24.930Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:25:49.497Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:25:50.999Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:25:51.033Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-27T10:25:52.390Z [info]: {
+  "page": "/shorten",
+  "actionDetails": {}
+}
+2024-03-27T10:30:49.579Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T10:31:13.918Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:31:20.631Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:31:21.994Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:31:22.341Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-27T10:31:23.336Z [info]: {
+  "page": "/shorten",
+  "actionDetails": {}
+}
+2024-03-27T10:31:36.654Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T10:31:46.144Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:31:50.101Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:31:51.387Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:31:51.444Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-27T10:31:53.192Z [info]: {
+  "page": "/shorten",
+  "actionDetails": {}
+}
+2024-03-27T10:31:56.443Z [info]: {
+  "page": "/shorten",
+  "action": "Link shortened",
+  "actionDetails": {
+    "date": "3/27/2024, 12:31:56 PM",
+    "title": "Steam Community :: MiddlingTick1",
+    "description": "No information given.",
+    "customUrl": "s"
+  }
+}
+2024-03-27T10:32:12.865Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T10:32:31.989Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:32:38.006Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:32:39.475Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T10:32:40.013Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-27T10:32:41.102Z [info]: {
+  "page": "/shorten",
+  "actionDetails": {}
+}
+2024-03-27T10:53:37.735Z [info]: {
+  "discordId": "417237496007753738",
+  "username": "iialanii",
+  "email": "falkmirko522@gmail.com",
+  "pfp": "https://cdn.discordapp.com/avatars/417237496007753738/e5bd7841f70270468b1622134a46d633.png",
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-27T10:53:40.866Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T10:53:56.127Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T11:09:23.169Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T11:09:39.355Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T11:09:43.126Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T11:09:44.518Z [info]: {
+  "page": "/getCaptchaKey",
+  "actionDetails": {}
+}
+2024-03-27T11:09:44.722Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T11:09:46.130Z [info]: {
+  "page": "/shorten",
+  "actionDetails": {}
+}
+2024-03-27T11:09:48.977Z [info]: {
+  "page": "/shorten",
+  "action": "Link shortened",
+  "actionDetails": {
+    "date": "3/27/2024, 1:09:48 PM",
+    "title": "Steam Community :: MiddlingTick1",
+    "description": "No information given.",
+    "customUrl": "login"
+  }
+}
+2024-03-27T11:09:55.521Z [info]: {
+  "page": "/dashboard",
+  "actionDetails": {}
+}
+2024-03-27T11:10:24.075Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T11:10:37.594Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T11:16:08.810Z [info]: {
+  "page": "/shortener",
+  "actionDetails": {}
+}
+2024-03-27T11:16:20.963Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T11:16:34.305Z [info]: {
+  "page": "/generateAuthKey",
+  "actionDetails": {}
+}
+2024-03-27T11:19:16.341Z [info]: {
+  "page": "/404",
+  "actionDetails": {}
+}
+2024-03-27T11:19:20.830Z [info]: {
+  "page": "/505",
+  "actionDetails": {}
+}

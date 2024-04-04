@@ -42,9 +42,9 @@ const workerQueue = async.queue(async function(task, callback) {
 
         const newLink = new apiLinks({
             ...task,
-            title: titleFromLink,
-            description: descriptionFromLink,
-            image: imageFromLink || null,
+            title: task.title || titleFromLink,
+            description: task.description || descriptionFromLink,
+            image: imageFromLink || defaultImage || null,
         });
 
         await newLink.save();
@@ -89,6 +89,11 @@ function authenticateApiKey(req, res, next) {
         return res.status(401).json({ error: 'Unauthorized. Invalid client identifier for health check.' });
     }
 
+    if (validKey.identifier !== clientIdentifier) {
+        logSecurityEvent(`/api Unauthorized access attempt with mismatched client identifier: ${clientIdentifier}, API key: ${apiKey}, IP: ${ip}, User-Agent: ${userAgent}`);
+        return res.status(401).json({ error: 'Unauthorized. Client identifier does not match the one associated with the API key.' });
+    }
+
     next();
 }
 
@@ -124,6 +129,30 @@ router.post('/', authenticateApiKey, async (req, res) => {
     if (!expiryDate || isNaN(expiryDate) || expiryDate < 0 || !Number.isInteger(Number(expiryDate)) || expiryDate <= currentUnixTimestamp) {
         return res.status(400).json({ error: 'Invalid expiryDate. Please provide a valid Unix timestamp in the future.' });
     }
+
+    if (!/^https?:\/\//i.test(longUrl)) {
+        return res.status(400).json({ error: 'The URL must start with "http://" or "https://"' });
+    }
+
+    if (/[\s<>%@]/.test(longUrl)) {
+        return res.status(400).json({ error: 'The URL must not contain any spaces, less than (<), greater than (>), percent (%), or at (@) characters.' });
+    }
+
+    if (title && title.length > 60) {
+        return res.status(400).json({ error: 'The title must be 60 characters or less.' });
+    }
+    if (description && description.length > 250) {
+        return res.status(400).json({ error: 'The description must be 250 characters or less.' });
+    }
+
+    if (!/^[a-zA-Z0-9\-_\. ,!`':?]+$/.test(title)) {
+        return res.status(400).json({ error: 'The title can only include numbers, letters, hyphens, underscores, periods, spaces, commas, exclamation marks, backticks, apostrophes, colons, and question marks.' });
+    }
+
+    if (!/^[a-zA-Z0-9\-_\. ,!`':?]+$/.test(description)) {
+        return res.status(400).json({ error: 'The description can only include numbers, letters, hyphens, underscores, periods, spaces, commas, exclamation marks, backticks, apostrophes, colons, and question marks.' });
+    }
+
     const apiKey = req.headers['api-key'];
     const isHealthCheck = apiKey === '0ec64d48-6a91-49a9-be13-71a6c1ac1944';
     const clientIdentifier = req.headers['client-identifier'];
@@ -164,6 +193,8 @@ router.post('/', authenticateApiKey, async (req, res) => {
             shortenedUrl: shortCode,
             createdAt: createdAt,
             isHealthCheck: isHealthCheck,
+            title: title,
+            description: description,
             clientIdentifier: clientIdentifier,
             expiryDate: expiryDate,
             signedUrl: signedUrl,

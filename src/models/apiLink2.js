@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const apilinkSchema = new mongoose.Schema({
+const apiLink2Schema = new mongoose.Schema({
     originalUrl: {
         type: String,
         required: true
@@ -51,9 +51,8 @@ const apilinkSchema = new mongoose.Schema({
     },
 });
 
+const ApiLink2 = mongoose.model('ApiLink2', apiLink2Schema);
 
-const apiLink = mongoose.model('apiLink', apilinkSchema);
+ApiLink2.createIndexes();
 
-apiLink.createIndexes();
-
-module.exports = apiLink;
+module.exports = ApiLink2;

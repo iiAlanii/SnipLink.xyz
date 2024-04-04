@@ -10,7 +10,7 @@ async function checkApiAvailability() {
             const expiryDate = Math.floor(Date.now() / 1000) + 60 * 60;
 
             const healthCheckResponse = await axios.post(
-                'http://localhost:3000/api/v1/shorten' || 'https://sniplink,xyz' || 'https://www.sniplink.xyz',
+                'http://localhost:3000/api/v1/shorten' || 'https://sniplink.xyz' || 'https://www.sniplink.xyz',
 
                 {
                     longUrl: 'https://www.google.com',

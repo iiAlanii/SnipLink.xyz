@@ -3,6 +3,9 @@ const http = require('http');
 const connectDB = require('../utils/db');
 const morgan = require('morgan')
 const port = normalizePort(process.env.PORT);
+const { SitemapStream, streamToPromise } = require('sitemap');
+const fs = require('fs');
+const path = require('path');
 app.set('port', port)
 
 
@@ -19,17 +22,45 @@ const { initializeLogger } = require('../utils/UserLogger');
 
 async function startServer() {
   try {
-
-    const { v4: uuidv4 } = require('uuid');
-    const newApiKey = uuidv4();
-    console.log("API KEY" + newApiKey);
-
     console.log('Starting server...')
     await connectDB();
     console.log('Database connected');
 
     await initializeLogger();
     console.log('UserLogger initialized successfully');
+
+    const urls = [
+      '/public/',
+      '/public/images/',
+      '/public/javascripts/',
+      '/public/stylesheets/',
+      '/fb/feedback',
+      '/fb/submitFeedback',
+      '/help/help-center',
+      '/help/suggestions',
+      '/legal/privacy-policy',
+      '/legal/terms-of-service',
+      '/404',
+      '/505',
+      '/analytics',
+      '/dashboard',
+      '/index',
+      '/login',
+      '/logout',
+      '/manage-links',
+      '/shortener',
+    ];
+
+    const smStream = new SitemapStream({ hostname: 'https://sniplink.xyz' });
+
+    urls.forEach(url => smStream.write({ url }));
+
+    smStream.end();
+
+    const sitemap = await streamToPromise(smStream).then(data => data.toString());
+    fs.writeFileSync(path.join(__dirname, '..', 'public', 'sitemap.xml'), sitemap);
+    console.log('Sitemap generated successfully');
+
 
     server = http.createServer(app);
     server.listen(port, host);

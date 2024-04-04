@@ -1,8 +1,9 @@
-async function generateShortCode(isUnique, length = 6) {
+async function generateShortCode(isUnique) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let shortCode = '';
+    let shortCode;
     do {
-        for (let i = 0; i < length; i++) {
+        shortCode = '';
+        for (let i = 0; i < 6; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length);
             shortCode += characters.charAt(randomIndex);
         }
