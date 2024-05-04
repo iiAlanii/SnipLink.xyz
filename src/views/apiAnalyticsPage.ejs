@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Analytics</title>
+    <link rel="stylesheet" href="/stylesheets/analytics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-jhyTJgt48fsckq5+5fK/hRvN5y5btq9nljsJNn6XACdjZ1LDw3IuzKM2MUC5zH1QkcotFqohTsyF+wlsS7wNkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<%- include('partials/navbar') %>
+
+<div class="container-dark">
+    <header class="site-header">
+        <h2>sniplink.xyz <i class="fas fa-link"></i> r.mtdv.me</h2>
+    </header>
+    <section class="analytics-section-dark">
+        <div class="analytics-header-dark">
+            <h1 class="analytics-title-dark"><i class="fas fa-chart-line"></i> Link Analytics</h1>
+        </div>
+
+        <div class="analytics-content-dark">
+            <article class="analytics-item-dark">
+                <div class="analytics-info-dark">
+                    <p><i class="fas fa-link fa-blue"></i> Shortened URL: <%= link.shortenedUrl %></p>
+                    <p><i class="fas fa-mouse-pointer fa-blue"></i> Number of Clicks: <%= link.numClicks || 0 %></p>
+                    <p><i class="far fa-calendar-alt fa-blue"></i> Last Click Date: <%= link.lastClickDate ? new Date(link.lastClickDate).toLocaleString() : 'Not available' %></p>
+                    <p><i class="fas fa-heading fa-blue"></i> Title: <%= link.title || 'No Title' %></p>
+                    <p><i class="fas fa-info-circle fa-blue"></i> Description: <%= link.description || 'No Description' %></p>
+                    <p><i class="far fa-calendar-times fa-blue"></i> Expiry Date: <%= link.expiryDate ? new Date(link.expiryDate * 1000).toLocaleString() : 'Not set' %></p>                </div>
+                <div class="analytics-image-dark">
+                    <img src="<%= link.image || 'https://sniplink.xyz/images/sniplink-logo.png' %>" alt="Fallback Shortened Link Image">
+                </div>
+
+            </article>
+            <button class="notice-button" disabled>Connect r.mtdv.me link with sniplink's website is coming soon</button>
+
+        </div>
+    </section>
+</div>
+
+<script src="/javascripts/analytics.js"></script>
+</body>
+</html>
+
+<style>
+
+    .notice-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: #888;
+        border: none;
+        border-radius: 5px;
+        cursor: not-allowed;
+        align-self: flex-start;
+    }
+
+    .site-header {
+        text-align: center;
+        padding: 20px;
+        color: #fff;
+    }
+
+    .site-header h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #283048, #859398);
+        color: #000;
+    }
+
+    .container-dark {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+
+    }
+
+    .analytics-section-dark {
+        background-color: #222;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .analytics-header-dark {
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .analytics-title-dark {
+        font-size: 36px;
+        color: #007bff;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .analytics-content-dark {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .analytics-item-dark {
+        display: flex;
+    }
+
+    .analytics-info-dark {
+        flex: 1;
+    }
+
+    .analytics-info-dark p {
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .analytics-info-dark p i {
+        margin-right: 10px;
+        color: #007bff;
+    }
+
+    .analytics-image-dark {
+        flex: 1;
+        text-align: center;
+    }
+
+    .analytics-image-dark img {
+        max-width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 600px) {
+        .analytics-content-dark, .analytics-item-dark {
+            flex-direction: column;
+        }
+
+        .analytics-info-dark, .analytics-image-dark {
+            margin-bottom: 20px;
+        }
+
+        .analytics-title-dark {
+            font-size: 24px;
+        }
+    }
+
+</style>

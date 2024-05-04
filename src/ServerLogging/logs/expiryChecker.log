@@ -251,3 +251,208 @@
 2024-03-28 19:08:28 [INFO]: Link expiration check completed.
 2024-03-28 19:08:28 [INFO]: Link expiration check completed.
 2024-03-28 19:08:28 [INFO]: Link expiration checker started
+2024-04-04 17:11:47 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-04 17:11:47 [INFO]: Link expiration checker started
+2024-04-04 17:11:47 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-04 17:12:12 [INFO]: Link expiration check completed.
+2024-04-04 17:12:12 [INFO]: Link expiration check completed.
+2024-04-04 17:12:12 [INFO]: Link expiration checker started
+2024-04-04 17:14:10 [INFO]: Link expiration check completed.
+2024-04-04 17:14:12 [INFO]: Link expiration check completed.
+2024-04-04 17:14:12 [INFO]: Link expiration checker started
+2024-04-04 17:16:21 [INFO]: Link expiration check completed.
+2024-04-04 17:16:21 [INFO]: Link expiration checker started
+2024-04-04 17:16:22 [INFO]: Link expiration check completed.
+2024-04-04 17:18:15 [INFO]: Link expiration check completed.
+2024-04-04 17:18:15 [INFO]: Link expiration check completed.
+2024-04-04 17:18:15 [INFO]: Link expiration checker started
+2024-04-04 17:20:07 [INFO]: Link expiration check completed.
+2024-04-04 17:20:07 [INFO]: Link expiration check completed.
+2024-04-04 17:20:07 [INFO]: Link expiration checker started
+2024-04-04 17:21:23 [INFO]: Link expiration check completed.
+2024-04-04 17:21:23 [INFO]: Link expiration check completed.
+2024-04-04 17:21:23 [INFO]: Link expiration checker started
+2024-04-04 17:23:59 [INFO]: Link expiration check completed.
+2024-04-04 17:23:59 [INFO]: Link expiration checker started
+2024-04-04 17:24:00 [INFO]: Link expiration check completed.
+2024-04-04 17:29:37 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-04 17:29:37 [INFO]: Link expiration checker started
+2024-04-04 17:29:37 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-04 17:30:07 [INFO]: Link expiration check completed.
+2024-04-04 17:30:08 [INFO]: Link expiration check completed.
+2024-04-04 17:30:08 [INFO]: Link expiration checker started
+2024-04-04 17:31:34 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-04 17:31:34 [INFO]: Link expiration checker started
+2024-04-04 17:31:34 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-04 17:32:29 [INFO]: Link expiration check completed.
+2024-04-04 17:32:29 [INFO]: Link expiration checker started
+2024-04-04 17:32:34 [INFO]: Link expiration check completed.
+2024-04-04 18:24:53 [INFO]: Link expiration check completed.
+2024-04-04 18:24:53 [INFO]: Link expiration check completed.
+2024-04-04 18:24:53 [INFO]: Link expiration checker started
+2024-04-04 18:26:27 [INFO]: Link expiration check completed.
+2024-04-04 18:26:27 [INFO]: Link expiration check completed.
+2024-04-04 18:26:27 [INFO]: Link expiration checker started
+2024-04-04 18:29:55 [INFO]: Link expiration check completed.
+2024-04-04 18:29:55 [INFO]: Link expiration check completed.
+2024-04-04 18:29:55 [INFO]: Link expiration checker started
+2024-04-04 18:32:19 [INFO]: Link expiration check completed.
+2024-04-04 18:32:19 [INFO]: Link expiration check completed.
+2024-04-04 18:32:19 [INFO]: Link expiration checker started
+2024-04-17 18:29:15 [INFO]: Link expiration check completed.
+2024-04-17 18:29:16 [INFO]: Link expiration check completed.
+2024-04-17 18:29:16 [INFO]: Link expiration checker started
+2024-04-18 17:14:25 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-18 17:14:25 [INFO]: Link expiration checker started
+2024-04-18 17:14:25 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-18 17:14:25 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-18 17:16:52 [INFO]: Link expiration check completed.
+2024-04-18 17:16:53 [INFO]: Link expiration check completed.
+2024-04-18 17:16:53 [INFO]: Link expiration checker started
+2024-04-18 17:16:53 [INFO]: Link expiration check completed.
+2024-04-18 17:23:00 [INFO]: Link expiration check completed.
+2024-04-18 17:23:00 [INFO]: Link expiration check completed.
+2024-04-18 17:23:00 [INFO]: Link expiration check completed.
+2024-04-18 17:23:00 [INFO]: Link expiration checker started
+2024-04-26 20:39:05 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-26 20:39:05 [INFO]: Link expiration checker started
+2024-04-26 20:39:05 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-26 20:42:07 [INFO]: Link expiration check completed.
+2024-04-26 20:42:07 [INFO]: Link expiration check completed.
+2024-04-26 20:42:09 [INFO]: Link expiration check completed.
+2024-04-26 20:42:09 [INFO]: Link expiration checker started
+2024-04-26 20:43:31 [INFO]: Link expiration check completed.
+2024-04-26 20:43:31 [INFO]: Link expiration check completed.
+2024-04-26 20:43:31 [INFO]: Link expiration check completed.
+2024-04-26 20:43:31 [INFO]: Link expiration checker started
+2024-04-30 16:06:28 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 16:06:28 [INFO]: Link expiration checker started
+2024-04-30 16:06:28 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 16:06:28 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 16:09:39 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 16:09:39 [INFO]: Link expiration checker started
+2024-04-30 16:09:39 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 16:09:39 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 16:11:53 [INFO]: Link expiration check completed.
+2024-04-30 16:11:53 [INFO]: Link expiration check completed.
+2024-04-30 16:11:53 [INFO]: Link expiration check completed.
+2024-04-30 16:11:53 [INFO]: Link expiration checker started
+2024-04-30 16:16:59 [INFO]: Link expiration check completed.
+2024-04-30 16:16:59 [INFO]: Link expiration check completed.
+2024-04-30 16:16:59 [INFO]: Link expiration check completed.
+2024-04-30 16:16:59 [INFO]: Link expiration checker started
+2024-04-30 16:23:15 [INFO]: Link expiration check completed.
+2024-04-30 16:23:15 [INFO]: Link expiration check completed.
+2024-04-30 16:23:15 [INFO]: Link expiration check completed.
+2024-04-30 16:23:15 [INFO]: Link expiration checker started
+2024-04-30 16:24:18 [INFO]: Link expiration check completed.
+2024-04-30 16:24:18 [INFO]: Link expiration check completed.
+2024-04-30 16:24:18 [INFO]: Link expiration checker started
+2024-04-30 16:24:18 [INFO]: Link expiration check completed.
+2024-04-30 16:24:48 [INFO]: Link expiration check completed.
+2024-04-30 16:24:48 [INFO]: Link expiration check completed.
+2024-04-30 16:24:48 [INFO]: Link expiration checker started
+2024-04-30 16:24:49 [INFO]: Link expiration check completed.
+2024-04-30 16:25:19 [INFO]: Link expiration check completed.
+2024-04-30 16:25:19 [INFO]: Link expiration check completed.
+2024-04-30 16:25:19 [INFO]: Link expiration check completed.
+2024-04-30 16:25:19 [INFO]: Link expiration checker started
+2024-04-30 16:45:07 [INFO]: Link expiration check completed.
+2024-04-30 16:45:07 [INFO]: Link expiration check completed.
+2024-04-30 16:45:07 [INFO]: Link expiration checker started
+2024-04-30 16:45:08 [INFO]: Link expiration check completed.
+2024-04-30 16:59:17 [INFO]: Link expiration check completed.
+2024-04-30 16:59:17 [INFO]: Link expiration check completed.
+2024-04-30 16:59:17 [INFO]: Link expiration check completed.
+2024-04-30 16:59:17 [INFO]: Link expiration checker started
+2024-04-30 17:04:50 [INFO]: Link expiration check completed.
+2024-04-30 17:04:50 [INFO]: Link expiration check completed.
+2024-04-30 17:04:50 [INFO]: Link expiration check completed.
+2024-04-30 17:04:50 [INFO]: Link expiration checker started
+2024-04-30 17:06:15 [INFO]: Link expiration check completed.
+2024-04-30 17:06:15 [INFO]: Link expiration check completed.
+2024-04-30 17:06:15 [INFO]: Link expiration check completed.
+2024-04-30 17:06:15 [INFO]: Link expiration checker started
+2024-04-30 18:30:09 [INFO]: Link expiration check completed.
+2024-04-30 18:30:09 [INFO]: Link expiration check completed.
+2024-04-30 18:30:09 [INFO]: Link expiration check completed.
+2024-04-30 18:30:09 [INFO]: Link expiration checker started
+2024-04-30 18:30:52 [INFO]: Link expiration check completed.
+2024-04-30 18:30:52 [INFO]: Link expiration check completed.
+2024-04-30 18:30:53 [INFO]: Link expiration check completed.
+2024-04-30 18:30:53 [INFO]: Link expiration checker started
+2024-04-30 18:35:53 [INFO]: 
+    Expired link deleted:
+    linkId=xiZJCA,
+    shortUrl=xiZJCA,
+    longUrl=https://www.youtube.com/,
+    createdAt=Mon Apr 29 2024 18:31:03 GMT+0200 (Central Africa Time),
+    eventName=Expiration Check
+    originalExpiryDate=1714494698
+
+2024-04-30 18:35:53 [INFO]: Link expiration check completed.
+2024-04-30 18:35:53 [INFO]: 
+    Expired link deleted:
+    linkId=xiZJCA,
+    shortUrl=xiZJCA,
+    longUrl=https://www.youtube.com/,
+    createdAt=Mon Apr 29 2024 18:31:03 GMT+0200 (Central Africa Time),
+    eventName=Expiration Check
+    originalExpiryDate=1714494698
+
+2024-04-30 18:35:53 [INFO]: Link expiration check completed.
+2024-04-30 18:35:54 [INFO]: Link expiration check completed.
+2024-04-30 18:40:54 [INFO]: Link expiration check completed.
+2024-04-30 18:40:54 [INFO]: Link expiration check completed.
+2024-04-30 21:40:05 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 21:40:05 [INFO]: Link expiration checker started
+2024-04-30 21:40:05 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 21:40:05 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-04-30 21:42:42 [INFO]: Link expiration check completed.
+2024-04-30 21:42:42 [INFO]: Link expiration check completed.
+2024-04-30 21:42:43 [INFO]: Link expiration check completed.
+2024-04-30 21:42:43 [INFO]: Link expiration checker started
+2024-05-01 21:07:08 [INFO]: Link expiration check completed.
+2024-05-01 21:07:08 [INFO]: Link expiration check completed.
+2024-05-01 21:07:08 [INFO]: Link expiration check completed.
+2024-05-01 21:07:08 [INFO]: Link expiration checker started
+2024-05-01 21:08:12 [INFO]: Link expiration check completed.
+2024-05-01 21:08:12 [INFO]: Link expiration check completed.
+2024-05-01 21:08:12 [INFO]: Link expiration check completed.
+2024-05-01 21:08:12 [INFO]: Link expiration checker started
+2024-05-01 21:09:02 [INFO]: Link expiration check completed.
+2024-05-01 21:09:02 [INFO]: Link expiration check completed.
+2024-05-01 21:09:02 [INFO]: Link expiration check completed.
+2024-05-01 21:09:02 [INFO]: Link expiration checker started
+2024-05-01 21:16:14 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-05-01 21:16:14 [INFO]: Link expiration checker started
+2024-05-01 21:16:14 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-05-01 21:16:14 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-05-01 21:16:42 [INFO]: Link expiration check completed.
+2024-05-01 21:16:42 [INFO]: Link expiration check completed.
+2024-05-01 21:16:42 [INFO]: Link expiration check completed.
+2024-05-01 21:16:42 [INFO]: Link expiration checker started
+2024-05-01 21:23:38 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-05-01 21:23:39 [INFO]: Link expiration checker started
+2024-05-01 21:23:39 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-05-01 21:23:39 [ERROR]: Error checking link expiration: Operation `links.find()` buffering timed out after 10000ms
+2024-05-01 21:25:28 [INFO]: Link expiration check completed.
+2024-05-01 21:25:28 [INFO]: Link expiration check completed.
+2024-05-01 21:25:28 [INFO]: Link expiration check completed.
+2024-05-01 21:25:28 [INFO]: Link expiration checker started
+2024-05-01 21:34:48 [INFO]: Link expiration check completed.
+2024-05-01 21:34:48 [INFO]: Link expiration check completed.
+2024-05-01 21:34:48 [INFO]: Link expiration check completed.
+2024-05-01 21:34:48 [INFO]: Link expiration checker started
+2024-05-01 21:35:14 [INFO]: Link expiration check completed.
+2024-05-01 21:35:14 [INFO]: Link expiration check completed.
+2024-05-01 21:35:14 [INFO]: Link expiration checker started
+2024-05-01 21:35:17 [INFO]: Link expiration check completed.
+2024-05-02 21:22:57 [ERROR]: Error checking link expiration: Cannot use a session that has ended
+2024-05-02 21:22:57 [ERROR]: Error checking link expiration: Server is closed
+2024-05-02 21:22:57 [INFO]: Link expiration checker started
+2024-05-02 21:22:57 [ERROR]: Error checking link expiration: Client must be connected before running operations
+2024-05-02 21:24:45 [INFO]: Link expiration check completed.
+2024-05-02 21:24:45 [INFO]: Link expiration check completed.
+2024-05-02 21:24:45 [INFO]: Link expiration check completed.
+2024-05-02 21:24:45 [INFO]: Link expiration checker started

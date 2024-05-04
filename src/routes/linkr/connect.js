@@ -1,3 +1,4 @@
+//src/routes/linkr/connect.js
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
@@ -6,7 +7,6 @@ const ApiLink = require('../../models/apiLink');
 const Link = require('../../models/link');
 const LinkedUrl = require('../../models/linkedUrl');
 const { authMiddleware } = require('../../middleware/authMiddleware');
-
 router.get('/link', authMiddleware, checkAuth, async (req, res) => {
     try {
         const user = req.user;

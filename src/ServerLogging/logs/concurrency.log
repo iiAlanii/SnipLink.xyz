@@ -215,3 +215,35 @@
     "expiryDate": 1711624183
   }
 }
+{
+  "timestamp": "2024-04-04T15:13:03.145Z",
+  "details": {
+    "action": "access",
+    "userId": "Guest",
+    "timestamp": "2024-04-04T15:13:03.145Z"
+  }
+}
+{
+  "timestamp": "2024-04-04T15:14:34.859Z",
+  "details": {
+    "action": "access",
+    "userId": "Guest",
+    "timestamp": "2024-04-04T15:14:34.859Z"
+  }
+}
+{
+  "timestamp": "2024-04-04T15:18:26.643Z",
+  "details": {
+    "action": "access",
+    "userId": "Guest",
+    "timestamp": "2024-04-04T15:18:26.643Z"
+  }
+}
+{
+  "timestamp": "2024-04-17T16:29:53.374Z",
+  "details": {
+    "action": "access",
+    "userId": "Guest",
+    "timestamp": "2024-04-17T16:29:53.374Z"
+  }
+}

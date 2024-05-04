@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const MaintenanceStatus = require('../models/maintenanceStatus');
-const apiLink = require('../models/apiLink'); // Assuming this is the correct path to your apiLink model
+const apiLink = require('../models/apiLink');
 
 let mongoConnection;
 

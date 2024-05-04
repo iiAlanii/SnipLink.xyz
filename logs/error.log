@@ -1,0 +1,107 @@
+{
+  "timestamp": "4/30/2024, 10:45:12 AM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:4\n    2| <!DOCTYPE html>\r\n    3| <html>\r\n >> 4| <%- include('partials/navbar') %>\r\n    5| \r\n    6| <head>\r\n    7|     <title>API Link Analytics</title>\r\n\nC:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\partials\\navbar.ejs:7\n    5|     <link rel=\"stylesheet\" href=\"/stylesheets/partials/navbar.css\">\r\n    6|     <style>\r\n >> 7|         <% if (user) { %>\r\n    8|         nav a:not(.login-button) {\r\n    9|             background-color: #1c1f29;\r\n    10|             color: #fff;\r\n\nuser is not defined",
+  "method": "GET",
+  "url": "/S2Yb1h/link-analytics",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:4\n    2| <!DOCTYPE html>\r\n    3| <html>\r\n >> 4| <%- include('partials/navbar') %>\r\n    5| \r\n    6| <head>\r\n    7|     <title>API Link Analytics</title>\r\n\nC:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\partials\\navbar.ejs:7\n    5|     <link rel=\"stylesheet\" href=\"/stylesheets/partials/navbar.css\">\r\n    6|     <style>\r\n >> 7|         <% if (user) { %>\r\n    8|         nav a:not(.login-button) {\r\n    9|             background-color: #1c1f29;\r\n    10|             color: #fff;\r\n\nuser is not defined",
+    "stack": "ReferenceError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:4\n    2| <!DOCTYPE html>\r\n    3| <html>\r\n >> 4| <%- include('partials/navbar') %>\r\n    5| \r\n    6| <head>\r\n    7|     <title>API Link Analytics</title>\r\n\nC:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\partials\\navbar.ejs:7\n    5|     <link rel=\"stylesheet\" href=\"/stylesheets/partials/navbar.css\">\r\n    6|     <style>\r\n >> 7|         <% if (user) { %>\r\n    8|         nav a:not(.login-button) {\r\n    9|             background-color: #1c1f29;\r\n    10|             color: #fff;\r\n\nuser is not defined\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\partials\\\\navbar.ejs\":12:8)\n    at navbar (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at include (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:701:39)\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\apiAnalyticsPage.ejs\":12:17)\n    at apiAnalyticsPage (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+      "cookie": "_csrf=eFHkNWcmJRPRpCt6nJHi9F1M; fusra_session_id=2c08371d-e94d-48c4-ad89-565758e75c58; connect.sid=s%3AV3d7eUm5a-_nwbHGHeEqrfBxor3bsT5M.bqRzpSr1TRC%2BG%2B88%2BxFEn9Sx8V3%2FhdBjiJ6h6QeY7iA",
+      "if-none-match": "W/\"126-5tZ+ew4tV2u9UbSl0qaQ44j1CUs\""
+    },
+    "body": {},
+    "params": {},
+    "requestId": "95f4121e-11d5-400c-b1be-45708768519f"
+  }
+}
+{
+  "timestamp": "4/30/2024, 11:10:07 AM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:16\n    14| \r\n    15|     <section class=\"analytics-content\">\r\n >> 16|         <% if (linkAnalytics.length === 0) { %>\r\n    17|             <p class=\"empty-message\">No link analytics available.</p>\r\n    18|         <% } else { %>\r\n    19|             <% linkAnalytics.forEach((analytics) => { %>\r\n\nlinkAnalytics is not defined",
+  "method": "GET",
+  "url": "/S2Yb1h/link-analytics",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:16\n    14| \r\n    15|     <section class=\"analytics-content\">\r\n >> 16|         <% if (linkAnalytics.length === 0) { %>\r\n    17|             <p class=\"empty-message\">No link analytics available.</p>\r\n    18|         <% } else { %>\r\n    19|             <% linkAnalytics.forEach((analytics) => { %>\r\n\nlinkAnalytics is not defined",
+    "stack": "ReferenceError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:16\n    14| \r\n    15|     <section class=\"analytics-content\">\r\n >> 16|         <% if (linkAnalytics.length === 0) { %>\r\n    17|             <p class=\"empty-message\">No link analytics available.</p>\r\n    18|         <% } else { %>\r\n    19|             <% linkAnalytics.forEach((analytics) => { %>\r\n\nlinkAnalytics is not defined\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\apiAnalyticsPage.ejs\":15:8)\n    at apiAnalyticsPage (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1057:7)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\apiLinkAnalytics.js:13:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+      "cookie": "_csrf=eFHkNWcmJRPRpCt6nJHi9F1M; fusra_session_id=2c08371d-e94d-48c4-ad89-565758e75c58; connect.sid=s%3AV3d7eUm5a-_nwbHGHeEqrfBxor3bsT5M.bqRzpSr1TRC%2BG%2B88%2BxFEn9Sx8V3%2FhdBjiJ6h6QeY7iA",
+      "if-none-match": "W/\"a83-Dy+YyJ3NwfD6xbHmo2kS38MQ300\""
+    },
+    "body": {},
+    "params": {},
+    "requestId": "5471f8ab-8d77-4955-8beb-dec007e13faf"
+  }
+}
+{
+  "timestamp": "4/30/2024, 11:10:32 AM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:18\n    16| \r\n    17|                 <article class=\"analytics-item\">\r\n >> 18|                     <h2 class=\"shortened-url\">Shortened URL: <%= analytics.shortenedUrl %></h2>\r\n    19|                     <p class=\"num-clicks\">Number of Clicks: <%= analytics.numClicks || 0 %></p>\r\n    20|                     <p class=\"last-click-date\">Last Click Date: <%= analytics.lastClickDate ? new Date(analytics.lastClickDate).toLocaleString() : 'Not available' %></p>\r\n    21|                     <a class=\"view-analytics-link\" href=\"/analytics/<%= analytics.shortenedUrl %>\">View Detailed Analytics</a>\r\n\nanalytics is not defined",
+  "method": "GET",
+  "url": "/S2Yb1h/link-analytics",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:18\n    16| \r\n    17|                 <article class=\"analytics-item\">\r\n >> 18|                     <h2 class=\"shortened-url\">Shortened URL: <%= analytics.shortenedUrl %></h2>\r\n    19|                     <p class=\"num-clicks\">Number of Clicks: <%= analytics.numClicks || 0 %></p>\r\n    20|                     <p class=\"last-click-date\">Last Click Date: <%= analytics.lastClickDate ? new Date(analytics.lastClickDate).toLocaleString() : 'Not available' %></p>\r\n    21|                     <a class=\"view-analytics-link\" href=\"/analytics/<%= analytics.shortenedUrl %>\">View Detailed Analytics</a>\r\n\nanalytics is not defined",
+    "stack": "ReferenceError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\apiAnalyticsPage.ejs:18\n    16| \r\n    17|                 <article class=\"analytics-item\">\r\n >> 18|                     <h2 class=\"shortened-url\">Shortened URL: <%= analytics.shortenedUrl %></h2>\r\n    19|                     <p class=\"num-clicks\">Number of Clicks: <%= analytics.numClicks || 0 %></p>\r\n    20|                     <p class=\"last-click-date\">Last Click Date: <%= analytics.lastClickDate ? new Date(analytics.lastClickDate).toLocaleString() : 'Not available' %></p>\r\n    21|                     <a class=\"view-analytics-link\" href=\"/analytics/<%= analytics.shortenedUrl %>\">View Detailed Analytics</a>\r\n\nanalytics is not defined\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\apiAnalyticsPage.ejs\":15:26)\n    at apiAnalyticsPage (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1057:7)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\apiLinkAnalytics.js:13:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
+      "cookie": "_csrf=eFHkNWcmJRPRpCt6nJHi9F1M; fusra_session_id=2c08371d-e94d-48c4-ad89-565758e75c58; connect.sid=s%3AV3d7eUm5a-_nwbHGHeEqrfBxor3bsT5M.bqRzpSr1TRC%2BG%2B88%2BxFEn9Sx8V3%2FhdBjiJ6h6QeY7iA"
+    },
+    "body": {},
+    "params": {},
+    "requestId": "94ee0924-4d37-45d0-9540-9f79c0ac3ccf"
+  }
+}

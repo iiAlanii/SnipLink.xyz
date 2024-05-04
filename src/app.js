@@ -115,6 +115,9 @@ app.use(session({
   secret: getSecretKey(),
   resave: false,
   saveUninitialized: false,
+  cookie: {
+    maxAge: 7 * 24 * 60 * 60 * 1000
+  }
   /*
   genid: (req) => {
   // Custom function to generate session IDs
@@ -223,16 +226,18 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.get('/getCaptchaKey', authMiddleware, middlewares.restrictToServer, (req, res) => {
+  res.json({ CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY });
+});
+
+//start of linkr
 const linkrRouter = require('./routes/linkr');
 const connectRouter = require('./routes/linkr/connect');
 
 app.get('/linkr/linkSuccess', middlewares.restrictToServer, (req, res) => {
   const shortenedUrl = req.query.shortenedUrl;
   res.render('linkr/linkSuccess', { shortenedUrl: shortenedUrl });
-});
-
-app.get('/getCaptchaKey', authMiddleware, middlewares.restrictToServer, (req, res) => {
-  res.json({ CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY });
 });
 
 app.get('/linkr/alreadyLinked', middlewares.restrictToServer, (req, res) => {
@@ -244,17 +249,24 @@ app.get('/linkr/invalidLink', middlewares.restrictToServer, (req, res) => {
 });
 
 app.get('/linkr/redirect', middlewares.restrictToServer, (req, res) => {
-
   res.redirect('/linkr/invalidLink');
 });
 
 app.use('/linkr', linkrRouter);
 
 app.use('/linkr/connect', connectRouter);
+
+
+
+//end of linkr
+
+
+const apiLinkAnalyticsRoute = require('./routes/apiLinkAnalytics');
+app.use('/', apiLinkAnalyticsRoute);
+
 const feedbackSubmitRouter = require('../src/routes/feedback/submitFeedback')
 
 app.use('/feedback/submitFeedback', feedbackSubmitRouter);
-
 app.get('/fb/feedback', authMiddleware, checkAuth, middlewares.restrictToServer, (req, res) => {
   res.render('fb/feedback', { user: req.user,  allowedTesters: allowedTesters });
 });

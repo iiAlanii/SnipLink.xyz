@@ -56,6 +56,7 @@
     "passport-discord": "^0.1.4",
     "path": "^0.12.7",
     "randomstring": "^1.3.0",
+    "redis": "^4.6.13",
     "sitemap": "^7.1.1",
     "systeminformation": "^5.21.20",
     "uglify-es": "^3.3.9",

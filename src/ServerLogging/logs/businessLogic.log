@@ -526,3 +526,75 @@
   }
 }
 
+{
+  "timestamp": "2024-04-26T18:42:53.425Z",
+  "details": {
+    "message": "[API] URL shortened successfully",
+    "Link ID": "lvh0swj0-djbh7i",
+    "Short URL": "http://localhost:3000/X24h6z",
+    "Long URL": "https://sniplink.xyz/",
+    "Created At": "26 April, 2024, 20:42:52",
+    "Request ID": "c9f88820-1210-48e7-ba5b-7f4b96d8cfea"
+  }
+}
+
+{
+  "timestamp": "2024-04-26T18:43:02.395Z",
+  "details": {
+    "message": "[API] URL shortened successfully",
+    "Link ID": "lvh0t3mj-t0sf7b",
+    "Short URL": "http://localhost:3000/36B4Up",
+    "Long URL": "https://sniplink.xyz/",
+    "Created At": "26 April, 2024, 20:43:1",
+    "Request ID": "fe9faf12-09cd-4c17-a020-f250aa98be57"
+  }
+}
+
+{
+  "timestamp": "2024-04-26T18:43:38.741Z",
+  "details": {
+    "message": "[API] URL shortened successfully",
+    "Link ID": "lvh0tvrm-w8f8ha",
+    "Short URL": "http://localhost:3000/iXnUR0",
+    "Long URL": "https://sniplink.xyz/",
+    "Created At": "26 April, 2024, 20:43:37",
+    "Request ID": "1221f370-98de-4344-8a95-58e7fea7dc51"
+  }
+}
+
+{
+  "timestamp": "2024-04-26T18:43:47.583Z",
+  "details": {
+    "message": "[API] URL shortened successfully",
+    "Link ID": "lvh0u12l-fuj0xz",
+    "Short URL": "http://localhost:3000/4DFdNZ",
+    "Long URL": "https://sniplink.xyz/",
+    "Created At": "26 April, 2024, 20:43:44",
+    "Request ID": "5dbf1a0b-9eda-4f89-b94e-77ea238277d0"
+  }
+}
+
+{
+  "timestamp": "2024-04-30T14:12:00.092Z",
+  "details": {
+    "message": "[API] URL shortened successfully",
+    "Link ID": "lvmgvya3-5k7peu",
+    "Short URL": "http://localhost:3000/S2Yb1h",
+    "Long URL": "https://sniplink.xyz/",
+    "Created At": "30 April, 2024, 16:11:59",
+    "Request ID": "063ecc58-f4d4-46f2-935e-6b78a244b0fe"
+  }
+}
+
+{
+  "timestamp": "2024-04-30T15:44:32.582Z",
+  "details": {
+    "message": "[API] URL shortened successfully",
+    "Link ID": "lvmk6ytt-9b53xl",
+    "Short URL": "http://localhost:3000/28w4xj",
+    "Long URL": "https://sniplink.xyz/",
+    "Created At": "30 April, 2024, 17:44:31",
+    "Request ID": "eb0f26c9-13b0-4fbd-ae9a-f9cc02b07919"
+  }
+}
+

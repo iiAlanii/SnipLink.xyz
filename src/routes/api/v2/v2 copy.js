@@ -7,58 +7,31 @@ const ApiStatus = require('../../../models/apiStatus');
 const { logApiBusinessEvent } = require('../../../ServerLogging/BusinessLogicLogger');
 const { DiscordWebhookLogger, GeneralErrorLogger } = require('../../../utils/discordWebhookLogger');
 const { checkLinkExpiration } = require('../../../utils/linkExpirationChecker');
+
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
+const discordLogger = new DiscordWebhookLogger();
+const generalErrorLogger = new GeneralErrorLogger(discordLogger);
+const logSecurityEvent = require('../../../ServerLogging/SecurityLogger');
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const async = require('async');
 const jwt = require('jsonwebtoken');
-const { generateShortCode } = require('../../../utils/codeGenerator');
-const {v4: uuidv4} = require("uuid");
-const logSecurityEvent = require('../../../ServerLogging/SecurityLogger');
 const defaultImage = 'https://sniplink.xyz/images/sniplink-banner.png';
-
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: true }));
-
-const discordLogger = new DiscordWebhookLogger();
-const generalErrorLogger = new GeneralErrorLogger(discordLogger);
-
-
-
-const validApiKeys = [
-    { key: 'b7225349-fe42-4c05-b83b-cb76a07ab888', identifier: 'r.mtdv.me' },
-    { key: '0ec64d48-6a91-49a9-be13-71a6c1ac1944', identifier: 'HealthCheckIdentifier' },
-];
 
 
 const workerQueue = async.queue(async function(task, callback) {
     try {
-        const response = await fetch(task.originalUrl);
-        if (!response.ok) {
-            console.log(`Failed to fetch URL: ${task.originalUrl}`);
-            return;
-        }
-
-        const contentType = response.headers.get('content-type');
-        if (!contentType || !contentType.includes('text/html')) {
-            console.log(`Invalid content type received for URL: ${task.originalUrl}`);
-            return
-        }
-
-        const html = await response.text();
-        const $ = cheerio.load(html);
-
-        const titleFromLink = $('meta[property="og:title"]').attr('content') || $('meta[name="twitter:title"]').attr('content') || $('title').text() || 'No Title';
-        const descriptionFromLink = $('meta[property="og:description"]').attr('content') || $('meta[name="twitter:description"]').attr('content') || $('meta[name="description"]').attr('content') || 'No Description';
-        const imageFromLink = $('meta[property="og:image"]').attr('content') || $('meta[name="twitter:image"]').attr('content') || defaultImage;
-
         const newLink = new apiLinks({
             ...task,
-            title: task.title || titleFromLink,
-            description: task.description || descriptionFromLink,
-            image: imageFromLink || defaultImage || null,
+            title: task.title || 'No Title',
+            description: task.description || 'No Description',
+            image: defaultImage || null,
         });
 
         await newLink.save();
+
+        fetchAndParseHtml(task.originalUrl, newLink._id);
     } catch (err) {
         console.error('Error saving link to the database:', err);
         generalErrorLogger.logError(err.message, err.stack, 'Worker', null, 'API Shorten');
@@ -67,8 +40,49 @@ const workerQueue = async.queue(async function(task, callback) {
     callback();
 }, 100);
 
+async function fetchAndParseHtml(url, linkId) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            console.log(`Failed to fetch URL: ${url}`);
+            return;
+        }
+
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('text/html')) {
+            console.log(`Invalid content type received for URL: ${url}`);
+            return;
+        }
+
+        const html = await response.text();
+        const $ = cheerio.load(html);
+
+        const titleFromLink = $('meta[property="og:title"]').attr('content') || $('meta[name="twitter:title"]').attr('content') || $('title').text();
+        const descriptionFromLink = $('meta[property="og:description"]').attr('content') || $('meta[name="twitter:description"]').attr('content') || $('meta[name="description"]').attr('content');
+        const imageFromLink = $('meta[property="og:image"]').attr('content') || $('meta[name="twitter:image"]').attr('content');
+
+        const link = await apiLinks.findById(linkId);
+        if (link) {
+            link.title = titleFromLink;
+            link.description = descriptionFromLink;
+            link.image = imageFromLink || defaultImage;
+            await link.save();
+        }
+    } catch (err) {
+        console.error('Error fetching and parsing HTML:', err);
+        generalErrorLogger.logError(err.message, err.stack, 'Worker', null, 'API Shorten');
+    }
+}
+
 checkLinkExpiration().then(() => console.log('API Link expiration checker started'));
 
+const { generateShortCode } = require('../../../utils/codeGenerator');
+const {v4: uuidv4} = require("uuid");
+
+const validApiKeys = [
+    { key: 'b7225349-fe42-4c05-b83b-cb76a07ab888', identifier: 'r.mtdv.me' },
+    { key: '0ec64d48-6a91-49a9-be13-71a6c1ac1944', identifier: 'HealthCheckIdentifier' },
+];
 
 function authenticateApiKey(req, res, next) {
     const apiKey = req.headers['api-key'];
