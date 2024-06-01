@@ -8,6 +8,13 @@ const bodyParser = require('body-parser');
 const passport = require('./config/passport-config');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
+
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+} else {
+  app.set('trust proxy', false);
+}
+
 const helmet = require('helmet');
 const checkAuth = require('./checkAuth/auth');
 const banCheckMiddleware = require('./middleware/banCheckMiddleware');
@@ -183,6 +190,9 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   app.set('trust proxy', false);
 }
+
+console.log('Trust proxy setting:', app.get('trust proxy'));
+console.log('NODE_ENV:', process.env.ENVIRONMENT);
 
 app.use(rateLimiterMiddleware);
 app.use(loginLimiter);

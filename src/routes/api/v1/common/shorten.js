@@ -21,15 +21,8 @@ const generalErrorLogger = new GeneralErrorLogger(discordLogger);
 
 const defaultImage = 'https://sniplink.xyz/images/sniplink-banner.png';
 
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    message: 'Too many requests from this IP, please try again after 15 minutes'
-});
-
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
-router.use(limiter);
 
 const workerQueue = async.queue(async function(task, callback) {
     try {
