@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <meta property="og:title" content="SnipLink.xyz - Link Shortener">
+    <meta property="og:description" content="Shorten your long URLs and share them easily with SnipLink.xyz.">
+    <meta property="og:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta property="og:url" content="https://sniplink.xyz">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SnipLink.xyz">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:title" content="SnipLink.xyz - Link Shortener">
+    <meta name="twitter:description" content="Shorten your long URLs and share them easily with SnipLink.xyz.">
+    <meta name="twitter:image" content="https://sniplink.xyz/images/sniplink-banner.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="keywords" content="SnipLink, SnipLink.xyz, link shortener, shorten links, URL shortener, link branding, link management, analytics, QR code links, API support, upcoming features, password protection">
+    <meta name="author" content="SnipLink">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="referrer" content="always">
+    <meta name="apple-mobile-web-app-title" content="SnipLink">
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!--   <link rel="stylesheet" href="/stylesheets/index.css">  Original index styling-->
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1720129279769578"
+            crossorigin="anonymous"></script>
+
+</head>
+
+<%- include('partials/preloader') %>
+
+<body>
+<%- include('partials/navbar') %>
+<section id="splash-screen">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="splash-content">
+                    <h1>Welcome to SnipLink.xyz</h1>
+                    <p class="lead">Shorten your long URLs and share them easily with SnipLink.xyz.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="shorten-form">
+                    <h2>Snip Your Links On The Go!</h2>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="original-url"><i class="fas fa-link"></i> Original URL</label>
+                            <input type="url" class="form-control" id="original-url" name="original-url" placeholder="Enter your long URL" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="custom-alias"><i class="fas fa-pen"></i> Customize Your Link</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">sniplink.xyz/</span>
+                                </div>
+                                <input type="text" class="form-control" id="custom-alias" name="custom-alias" placeholder="Enter custom alias (optional)">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Shorten URL</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="what-is-sniplink" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/images/sniplink-logo.png" alt="SnipLink Logo" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-4">What is SnipLink?</h2>
+                <p class="lead">SnipLink is a powerful URL shortening platform that allows you to easily shorten long URLs into more manageable and shareable links. Whether you're sharing links on social media, sending emails, or creating QR codes, SnipLink streamlines the process, making it simple and efficient.</p>
+                <p>With advanced features such as link customization, link analytics, and QR code generation, SnipLink offers everything you need to effectively manage and track your shortened links. Say goodbye to long and cumbersome URLs, and say hello to SnipLink – your all-in-one URL shortening solution.</p>
+                <a href="#" class="btn btn-primary mt-3">Get Started</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="how-it-works" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-5">
+                <h2 class="display-4">How It Works</h2>
+            </div>
+            <div class="col-md-4">
+                <div class="step mb-4">
+                    <i class="fas fa-link mb-3"></i>
+                    <h3 class="h4">1. Paste Your Link</h3>
+                    <p>Enter the URL that you want to shorten into the input field.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step mb-4">
+                    <i class="fas fa-compress-arrows-alt mb-3"></i>
+                    <h3 class="h4">2. Shorten</h3>
+                    <p>Click the "Shorten" button to get your shortened link.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="step mb-4">
+                    <i class="fas fa-share-alt mb-3"></i>
+                    <h3 class="h4">3. Share</h3>
+                    <p>Share your shortened link anywhere you want.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="who-should-use-sniplink" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="display-4 text-center mb-5">Who Should Use SnipLink?</h2>
+
+        <div class="who-section">
+            <div class="content">
+                <h3 class="text-primary">Businesses</h3>
+                <p>Businesses of all sizes can benefit from using SnipLink to create branded, shortened links for their marketing campaigns, social media posts, email newsletters, and more. With customizable links and detailed analytics, businesses can track the performance of their links and optimize their marketing efforts.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="/images/illustrations/business.svg" alt="Businesses Image" class="img-fluid mb-4">
+            </div>
+        </div>
+
+        <div class="who-section">
+            <div class="col-md-6">
+                <img src="/images/illustrations/alone.svg" alt="Individuals Image" class="img-fluid mb-4">
+            </div>
+            <div class="content">
+                <h3 class="text-primary">Individuals</h3>
+                <p>Individuals such as influencers, bloggers, and social media users can use SnipLink to shorten and customize their links, making them more shareable and visually appealing. Whether you're sharing content with your followers or promoting affiliate links, SnipLink simplifies the process and provides valuable insights into link engagement.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="customize-short-links" class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="/images/illustrations/link.svg" alt="Link Illustration" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-6">
+                <h2 class="display-4 text-primary">Your Brand, Your Links</h2>
+                <p class="lead">Make your short links reflect your brand identity. Customize the domain, alias, and even add your logo to create branded short links that build trust and recognition with your audience.</p>
+                <h3 class="text-primary">Branded Short Links</h3>
+                <p>Stand out from the crowd with branded short links that reinforce your brand image. Increase click-through rates and build brand credibility by creating memorable and trustworthy links.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="partners-section py-5 bg-light" id="partners" data-aos="fade-up" data-aos-duration="800" data-aos-once="true">
+    <div class="container">
+        <h2 class="display-4 text-center mb-5">Our Partner</h2>
+        <p class="text-center mb-5">Discover our exciting partnerships and integrations, including the Rick Roll Link generator, to enhance your link shortening experience.</p>
+        <div class="card mx-auto" style="max-width: 1200px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="/images/sponsor_logo.png" class="card-img" alt="Partner Logo">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">We've partnered with the Rick Roll Link generator to bring you a fun and entertaining way to share links with friends. Now you can surprise them with a classic Rick Astley video when they click the link!</p>
+                        <a href="https://r.mtdv.me/" class="btn btn-primary" target="_blank">View Partner</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="display-4 text-center mb-5">Features</h2>
+
+        <div class="row feature-section d-flex align-items-center">
+            <div class="col-md-6">
+                <img src="/images/illustrations/link.svg" alt="Shorten Links Image" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-6 text-center">
+                <h3 class="text-primary">Shorten Links</h3>
+                <p>SnipLink.xyz allows you to effortlessly shorten long URLs into concise and shareable links, saving you valuable character space.</p>
+            </div>
+        </div>
+
+        <div class="row feature-section d-flex align-items-center">
+            <div class="col-md-6 order-md-2">
+                <img src="/images/illustrations/analytics.svg" alt="Analytics Tracking Image" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-6 order-md-1 text-center">
+                <h3 class="text-primary">Analytics Tracking</h3>
+                <p>Track and analyze your links' performance with built-in analytics, helping you understand link engagement and reach.</p>
+            </div>
+        </div>
+
+        <div class="row feature-section d-flex align-items-center">
+            <div class="col-md-6">
+                <img src="/images/illustrations/collab.svg" alt="Collaboration Image" class="img-fluid mb-4">
+            </div>
+            <div class="col-md-6 text-center">
+                <h3 class="text-primary">Collaboration</h3>
+                <p>Effortless Discord collaboration with shortened links. Share and connect seamlessly on Snapchat, TikTok, Facebook, and other platforms for enhanced sharing!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    #features {
+        padding: 80px 0;
+        background-color: #f8f9fa;
+    }
+
+    .feature-section {
+        margin-bottom: 80px;
+    }
+
+    .feature-section img {
+        max-width: 100%;
+    }
+
+    .feature-section .content {
+        padding: 20px;
+    }
+
+    .feature-section h3 {
+        font-size: 32px;
+        color: #007bff;
+        font-family: 'Arial', sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .feature-section p {
+        font-size: 18px;
+        color: #333;
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .feature-section {
+            flex-direction: column;
+        }
+
+        .feature-section img {
+            margin-bottom: 20px;
+        }
+    }
+
+    .card .col-md-4 {
+        background-color: #1494c4;
+    }
+    .card .col-md-8 {
+        background-color: #1494c4;
+    }
+
+    .partners-section {
+        padding: 200px 0;
+        background: linear-gradient(to bottom right, #f8f9fa, #a0a0a0);
+
+    }
+
+    .partners-section h2 {
+        font-size: 2.5rem;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .partners-section p {
+        font-size: 1.2rem;
+        color: #6c757d;
+        text-align: center;
+        margin-bottom: 50px;
+        line-height: 1.4;
+    }
+
+    .card {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border: none;
+    }
+
+    .card .card-body {
+        padding: 30px;
+    }
+
+    .card .card-text {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        text-align: center;
+        line-height: 1.4;
+        color: #333;
+    }
+
+    .card .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .card .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .card-img {
+        height: 250px;
+        object-fit: cover;
+
+    }
+
+    #customize-short-links {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+    }
+
+    #customize-short-links h2 {
+        font-size: 2.5rem;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    #customize-short-links .lead {
+        font-size: 1.2rem;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+
+    #customize-short-links h3 {
+        font-size: 2rem;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+    #customize-short-links p {
+        font-size: 1rem;
+        color: #6c757d;
+        line-height: 1.6;
+    }
+
+    #customize-short-links img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #what-is-sniplink {
+        padding: 100px 0;
+        background-color: #f8f9fa;
+    }
+
+    #what-is-sniplink .container {
+        max-width: 1200px;
+    }
+
+    #what-is-sniplink .row {
+        align-items: center;
+    }
+
+    #what-is-sniplink .content {
+        padding: 0 30px;
+    }
+
+    #what-is-sniplink h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    #what-is-sniplink p {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    #what-is-sniplink .image-wrapper {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    #what-is-sniplink img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #what-is-sniplink .btn-primary {
+        display: block;
+        margin: 0 auto;
+        background-color: #007bff;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    #what-is-sniplink .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        #what-is-sniplink {
+            padding: 80px 0;
+        }
+
+        #what-is-sniplink .content {
+            padding: 0;
+        }
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #007bff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        border-bottom: #1a1a1a 2px solid;
+        text-align: center;
+        padding: 20px 0 20px;
+        margin: 0 auto;
+        max-width: 80%;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+    #who-should-use-sniplink {
+        padding: 50px 0;
+    }
+
+    #who-should-use-sniplink h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    #who-should-use-sniplink p {
+        font-size: 1.2rem;
+        color: #6c757d;
+        line-height: 1.6;
+    }
+
+    #who-should-use-sniplink img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #who-should-use-sniplink .row {
+        margin-bottom: 50px;
+    }
+
+    #who-should-use-sniplink .row:last-child {
+        margin-bottom: 0;
+    }
+
+    .who-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .who-section .content {
+        max-width: 50%;
+    }
+
+    .who-section .content h3 {
+        text-align: center;
+    }
+
+    .who-section .content p {
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .who-section {
+            flex-direction: column;
+        }
+
+        .who-section .content {
+            max-width: 100%;
+            text-align: center;
+        }
+    }
+
+    .text-primary {
+        color: #007bff;
+    }
+
+    .splash-content h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    #splash-screen {
+        background-color: #007bff;
+        color: #fff;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .splash-content p {
+        font-size: 1.2rem;
+    }
+
+    .shorten-form {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .splash-content h1 {
+            font-size: 2rem;
+        }
+
+        .splash-content p {
+            font-size: 1rem;
+        }
+    }
+
+    .shorten-form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .shorten-form h2 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        color: #007bff;
+    }
+
+    .shorten-form label {
+        font-weight: bold;
+        color: #000000;
+    }
+
+    .form-control {
+        border-radius: 5px;
+    }
+
+    .input-group-text {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+
+    #how-it-works {
+        background-color: #f5f5f5;
+        font-family: 'Arial', sans-serif;
+        padding: 50px 0;
+    }
+
+    #how-it-works h2 {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .step {
+        text-align: center;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .step:hover {
+        transform: translateY(-5px);
+    }
+
+    .step i {
+        color: #007bff;
+        font-size: 3rem;
+    }
+
+    .step h3 {
+        font-weight: bold;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .step p {
+        color: #6c757d;
+        font-size: 1.2rem;
+    }
+</style>
+</body>
+<script>
+    window.onload = function() {
+        var script1 = document.createElement('script');
+        script1.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+        document.body.appendChild(script1);
+
+        var script2 = document.createElement('script');
+        script2.src = 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js';
+        document.body.appendChild(script2);
+
+        script2.onload = function() {
+            AOS.init();
+        }
+    }
+</script>
+<script src="/javascripts/index.js" async></script>
+</html>

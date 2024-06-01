@@ -9,7 +9,8 @@ const { authMiddleware } = require('../middleware/authMiddleware');
 
 router.delete('/delete-link/:id', authMiddleware, checkAuth, async (req, res) => {
     try {
-        const linkIdToDelete = req.params.id;
+        let linkIdToDelete = req.params.id;
+        linkIdToDelete = String(linkIdToDelete);
 
         logConcurrencyEvent('LinkDeletion', {
             action: 'delete',

@@ -5,7 +5,8 @@ const { Link } = require('../models');
 const generatePreviewHtml = require('./generatePreviewHtml');
 
 router.get('/:shortCode', async (req, res) => {
-    const { shortCode } = req.params;
+    let { shortCode } = req.params;
+    shortCode = String(shortCode);
     const link = await Link.findOne({ shortenedUrl: shortCode });
 
     if (link) {

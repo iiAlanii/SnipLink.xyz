@@ -14,16 +14,20 @@ const generateShortUUID = () => {
 };
 
 router.get('/:shortCode', async (req, res, next) => {
-    const { shortCode } = req.params;
+    let { shortCode } = req.params;
+    shortCode = String(shortCode);
+
     const userId = req.user ? req.user.id : 'Guest';
     const ipAddress = req.ip;
     const userAgent = req.headers['user-agent'];
 
     try {
         let link = await Link.findOne({ shortenedUrl: shortCode });
+        let isApiLink = false;
 
         if (!link) {
             link = await ApiLink.findOne({ shortenedUrl: shortCode });
+            isApiLink = true;
         }
 
         if (link) {
@@ -31,30 +35,33 @@ router.get('/:shortCode', async (req, res, next) => {
                 return res.status(400).send('A shortened URL cannot point to itself.');
             }
 
-            const clickId = generateShortUUID();
-            const referrer = req.headers.referer || req.headers.Referrer || 'Direct';
+            if (!isApiLink) { //TODO: For further development, log more data for API users.
+                const clickId = generateShortUUID();
+                const referrer = req.headers.referer || req.headers.Referrer || 'Direct';
 
-            const geo = geoip.lookup(ipAddress);
-            const country = geo && geo.country ? geo.country : 'Unknown';
-            const socialMedia = identifySocialMedia(referrer, userAgent);
+                const geo = geoip.lookup(ipAddress);
+                const country = geo && geo.country ? geo.country : 'Unknown';
+                const socialMedia = identifySocialMedia(referrer, userAgent);
 
-            if (socialMedia === 'Bot') {
-                return res.status(204).send();
+                if (socialMedia === 'Bot') {
+                    return res.status(204).send();
+                }
+
+                const newClick = new Click({
+                    linkId: link._id,
+                    ip: ipAddress,
+                    referrer: referrer,
+                    userAgent: userAgent,
+                    clickId: clickId,
+                    country: country,
+                    socialMedia: socialMedia,
+                });
+
+                await newClick.save();
+                link.clicks.push(newClick);
+                await link.save();
+
             }
-
-            const newClick = new Click({
-                linkId: link._id,
-                ip: ipAddress,
-                referrer: referrer,
-                userAgent: userAgent,
-                clickId: clickId,
-                country: country,
-                socialMedia: socialMedia,
-            });
-
-            await newClick.save();
-            link.clicks.push(newClick);
-            await link.save();
 
             let title, description, image;
             if (link.linkPreview) {

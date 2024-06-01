@@ -5,7 +5,7 @@ let mongoConnection;
 const connectDB = async () => {
     let mongoURI;
     if (process.env.ENVIRONMENT === 'development') {
-        mongoURI = process.env.MONGO_URI; //DEV_MONGO_URI
+        mongoURI = process.env.DEV_MONGO_URI; //MONGO_URI - original test db
     } else {
         mongoURI = process.env.PROD_MONGO_URI; //PROD_MONGO_URI
     }
@@ -17,11 +17,11 @@ const connectDB = async () => {
             });
 
             mongoose.connection.on('connected', () => {
-                console.log('Mongoose successfully connected to MongoDB server');
+                console.log('[MONGO DATABASE] Mongoose successfully connected to MongoDB server');
             });
 
             mongoose.connection.on('disconnected', () => {
-                console.log('Mongoose disconnected from MongoDB server');
+                console.log('[MONGO DATABASE] Mongoose disconnected from MongoDB server');
                 mongoConnection = null;
             });
             await ApiLink.createIndexes();
@@ -33,7 +33,11 @@ const connectDB = async () => {
                 await initialStatus.save();
             }
         } catch (err) {
-            console.error('Error connecting to MongoDB:', err);
+            if (err.message.includes("isn't whitelisted")) {
+                console.error('[MONGO DATABASE] Your IP address is not whitelisted. Please add current IP address to your MongoDB Atlas cluster\'s IP whitelist.');
+            } else {
+                console.error('[MONGO DATABASE] Error connecting to Database:', err);
+            }
             console.log('Reconnecting in 5 seconds...');
             await new Promise(resolve => setTimeout(resolve, 5000));
         }
@@ -52,11 +56,11 @@ async function cleanupAndExit(message) {
     if (mongoConnection) {
         mongoose.connection.close()
             .then(() => {
-                console.log('MongoDB connection closed');
+                console.log('[MONGO DATABASE] MongoDB connection closed');
                 process.exit(0);
             })
             .catch((err) => {
-                console.error('Error closing MongoDB connection:', err);
+                console.error('[MONGO DATABASE] Error closing MongoDB connection:', err);
                 process.exit(1);
             });
     } else {
@@ -65,11 +69,11 @@ async function cleanupAndExit(message) {
 }
 
 process.on('exit', (code) => {
-    console.log(`About to exit with code: ${code}`);
+    console.log(`[MONGO DATABASE] About to exit with code: ${code}`);
 });
 
 process.on('disconnect', () => {
-    console.log('Parent process has disconnected');
+    console.log('[MONGO DATABASE] Parent process has disconnected');
 });
 
 module.exports = connectDB;

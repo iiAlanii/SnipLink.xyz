@@ -8,7 +8,8 @@ const { generateToken } = require('../utils/tokenUtils');
 const token = generateToken();
 
 router.get('/:shortCode', async (req, res, next) => {
-    const { shortCode } = req.params;
+    let { shortCode } = req.params;
+    shortCode = String(shortCode);
     console.log('User Agent:', req.headers['user-agent']);
     const userId = req.user ? req.user.id : 'Guest';
 

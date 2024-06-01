@@ -9,12 +9,12 @@ const { v4: uuidv4 } = require('uuid');
 const rateLimit = require('express-rate-limit');
 const async = require('async');
 
-const { apiStatus, ApiLink  } = require('../../../models/index');
-const { logApiBusinessEvent } = require('../../../ServerLogging/BusinessLogicLogger');
-const { DiscordWebhookLogger, GeneralErrorLogger } = require('../../../utils/discordWebhookLogger');
-const { checkLinkExpiration } = require('../../../utils/linkExpirationChecker');
-const { generateShortCode } = require('../../../utils/codeGenerator');
-const logSecurityEvent = require('../../../ServerLogging/SecurityLogger');
+const { apiStatus, ApiLink  } = require('../../../../models');
+const { logApiBusinessEvent } = require('../../../../ServerLogging/BusinessLogicLogger');
+const { DiscordWebhookLogger, GeneralErrorLogger } = require('../../../../utils/discordWebhookLogger');
+const { checkLinkExpiration } = require('../../../../utils/linkExpirationChecker');
+const { generateShortCode } = require('../../../../utils/codeGenerator');
+const logSecurityEvent = require('../../../../ServerLogging/SecurityLogger');
 
 const discordLogger = new DiscordWebhookLogger();
 const generalErrorLogger = new GeneralErrorLogger(discordLogger);

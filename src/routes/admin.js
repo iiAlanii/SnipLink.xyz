@@ -151,7 +151,8 @@ router.get('/health', checkAuth, checkAdminRole, isAdminMiddleware, async (req, 
 
 router.get('/:page', checkAuth, checkAdminRole, isAdminMiddleware, async (req, res, next) => {
     if (req.user.id === '417237496007753738') {
-        const { page } = req.params;
+        let { page } = req.params;
+        page = String(page);
         const allowedPages = ['dashboard', 'api', 'general-settings', 'link-analytics', 'link-management', 'user-management'];
 
         if (!allowedPages.includes(page)) {

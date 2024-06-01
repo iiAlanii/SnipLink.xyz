@@ -47,7 +47,7 @@ const logoutRoute = require('./routes/logout');
 const shortCodeRedirectRoute = require('./routes/shortCodeRedirect');
 const adminRoute = require('./routes/admin');
 const availabilityRoute = require('./routes/availability');
-const apiRoute = require('./routes/api/v1/shorten');
+const apiRoute = require('./routes/api/v1/common/shorten');
 const apiRoute2 = require('./routes/api/v2/shorten');
 const apiShortenRoute = require('./routes/apiShorten');
 const editLinkRoute = require('./routes/editLink');
@@ -362,7 +362,8 @@ app.use('/', shortCodeRedirectRoute); //TODO: remove the comment from this to us
 app.use('/ad', adRoute); //TODO: Replace this with /ad if you want to use the shortCodeRedirectRoute
 app.use('/analytics', analyticsRoute);
 app.use('/api', apiShortenRoute);
-app.use('/api/v1/shorten', apiRoute);
+app.use('/api/v1/common/shorten', apiRoute);
+
 app.use('/api/v2/shorten', apiRoute2);
 //apiLinks = require('./models/apiLink');
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { ApiLink } = require('../models/index');
+const allowedTesters = require("../utils/allowedTesters");
 
 router.get('/:shortUrl/link-analytics', async (req, res) => {
     try {
@@ -10,8 +11,8 @@ router.get('/:shortUrl/link-analytics', async (req, res) => {
         if (!link) {
             return res.status(404).render('404');
         }
-        res.render('apiAnalyticsPage', { link: link, user: null });
-    } catch (err) {
+        res.render('apiAnalyticsPage', { link: link, user: req.user, allowedTesters: allowedTesters });    }
+    catch (err) {
         console.error(err);
         res.status(500).send('Server error');
     }
