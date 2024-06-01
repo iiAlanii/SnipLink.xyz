@@ -7,3 +7,4 @@ package-lock.json
 .idea
 *.log
 ServerLogging/logs/*
+/logs
