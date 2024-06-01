@@ -1,0 +1,117 @@
+{
+  "timestamp": "5/22/2024, 5:07:30 PM",
+  "level": "ERROR",
+  "message": "ApiLink is not defined",
+  "error": {
+    "message": "ApiLink is not defined",
+    "stack": "ReferenceError: ApiLink is not defined\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\shortCodeRedirect.js:27:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "requestId": "1f016ed3-1530-4b41-86b2-18e85a3989df",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}
+{
+  "timestamp": "5/24/2024, 5:34:08 PM",
+  "level": "ERROR",
+  "message": "Click validation failed: clickId: Path `clickId` is required.",
+  "error": {
+    "message": "Click validation failed: clickId: Path `clickId` is required.",
+    "stack": "ValidationError: Click validation failed: clickId: Path `clickId` is required.\n    at Document.invalidate (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\mongoose\\lib\\document.js:3289:32)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\mongoose\\lib\\document.js:3050:17\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\mongoose\\lib\\schemaType.js:1388:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"
+  },
+  "request": {
+    "requestId": "0731fa59-961e-4c81-8d78-6a4e16276c1f",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}
+{
+  "timestamp": "5/24/2024, 5:34:33 PM",
+  "level": "ERROR",
+  "message": "Click validation failed: clickId: Path `clickId` is required.",
+  "error": {
+    "message": "Click validation failed: clickId: Path `clickId` is required.",
+    "stack": "ValidationError: Click validation failed: clickId: Path `clickId` is required.\n    at Document.invalidate (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\mongoose\\lib\\document.js:3289:32)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\mongoose\\lib\\document.js:3050:17\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\mongoose\\lib\\schemaType.js:1388:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"
+  },
+  "request": {
+    "requestId": "e83719ec-7a4a-4b87-8a3a-ee6845c20fc8",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}
+{
+  "timestamp": "5/30/2024, 11:28:59 AM",
+  "level": "ERROR",
+  "message": "Class constructor ObjectId cannot be invoked without 'new'",
+  "error": {
+    "message": "Class constructor ObjectId cannot be invoked without 'new'",
+    "stack": "TypeError: Class constructor ObjectId cannot be invoked without 'new'\n    at clickSchema.statics.getTopReferrers (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\models\\click.js:22:48)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\analytics.js:34:42\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "requestId": "9cab64cf-43f7-4647-9387-2fdff63eff45",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}
+{
+  "timestamp": "5/31/2024, 11:13:08 AM",
+  "level": "ERROR",
+  "message": "Class constructor ObjectId cannot be invoked without 'new'",
+  "error": {
+    "message": "Class constructor ObjectId cannot be invoked without 'new'",
+    "stack": "TypeError: Class constructor ObjectId cannot be invoked without 'new'\n    at clickSchema.statics.getTopReferrers (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\models\\click.js:16:44)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\analytics.js:34:42\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "requestId": "7f68aa03-206e-4884-bb91-be097737078f",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}
+{
+  "timestamp": "5/31/2024, 11:15:12 AM",
+  "level": "ERROR",
+  "message": "Class constructor ObjectId cannot be invoked without 'new'",
+  "error": {
+    "message": "Class constructor ObjectId cannot be invoked without 'new'",
+    "stack": "TypeError: Class constructor ObjectId cannot be invoked without 'new'\n    at clickSchema.statics.getTopReferrers (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\models\\click.js:18:44)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\analytics.js:34:42\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "requestId": "59f7e7ca-d8cf-41af-aaf6-cdec61bd2cda",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}
+{
+  "timestamp": "5/31/2024, 11:40:19 AM",
+  "level": "ERROR",
+  "message": "utmSource is not defined",
+  "error": {
+    "message": "utmSource is not defined",
+    "stack": "ReferenceError: utmSource is not defined\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\shortCodeRedirect.js:40:74\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "requestId": "2b486821-f4d9-4ee9-8bf2-71081064fe49",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}
+{
+  "timestamp": "5/31/2024, 11:40:21 AM",
+  "level": "ERROR",
+  "message": "utmSource is not defined",
+  "error": {
+    "message": "utmSource is not defined",
+    "stack": "ReferenceError: utmSource is not defined\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\shortCodeRedirect.js:40:74\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "requestId": "5b9eb42f-ce3d-4dd1-a082-3a9982a145da",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}
+{
+  "timestamp": "5/31/2024, 11:40:23 AM",
+  "level": "ERROR",
+  "message": "utmSource is not defined",
+  "error": {
+    "message": "utmSource is not defined",
+    "stack": "ReferenceError: utmSource is not defined\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\shortCodeRedirect.js:40:74\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "requestId": "470bf7f7-3389-469f-800c-88899459b4b2",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+  }
+}

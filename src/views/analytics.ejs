@@ -192,21 +192,14 @@
 
         <div class="analytics-item">
             <h3>Top Referrers</h3>
-            <p>Coming soon</p>
+            <div id="topReferrersList">
+            </div>
         </div>
 
         <div class="analytics-item">
             <h3>Total Clicks by Country</h3>
-            <p>
-                Coming soon
-            </p>
-        </div>
-
-        <div class="analytics-item">
-            <h3>Link Metadata</h3>
-            <p>
-                Coming soon
-            </p>
+            <div id="totalClicksByCountryList">
+            </div>
         </div>
     </div>
 </div>
@@ -297,5 +290,57 @@
                 }
             }
         });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        const linkId = '<%= link._id %>';
+
+        const fetchTopReferrers = async () => {
+            try {
+                const response = await fetch(`/api/analytics/top-referrers/${linkId}`);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching top referrers:', error);
+                return [];
+            }
+        };
+
+        const fetchTotalClicksByCountry = async () => {
+            try {
+                const response = await fetch(`/api/analytics/clicks-by-country/${linkId}`);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching total clicks by country:', error);
+                return [];
+            }
+        };
+
+        const topReferrers = await fetchTopReferrers();
+        const totalClicksByCountry = await fetchTotalClicksByCountry();
+
+        const topReferrersList = document.getElementById('topReferrersList');
+        if (topReferrers.length > 0) {
+            topReferrers.forEach(referrer => {
+                const referrerItem = document.createElement('div');
+                referrerItem.textContent = `${referrer._id}: ${referrer.count}`;
+                topReferrersList.appendChild(referrerItem);
+            });
+        } else {
+            topReferrersList.innerHTML = '<p>No data available</p>';
+        }
+
+        const totalClicksByCountryList = document.getElementById('totalClicksByCountryList');
+        if (totalClicksByCountry.length > 0) {
+            totalClicksByCountry.forEach(country => {
+                const countryItem = document.createElement('div');
+                countryItem.textContent = `${country._id}: ${country.count}`;
+                totalClicksByCountryList.appendChild(countryItem);
+            });
+        } else {
+            totalClicksByCountryList.innerHTML = '<p>No data available</p>';
+        }
     });
 </script>

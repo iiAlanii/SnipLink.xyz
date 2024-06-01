@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const ApiKey = require('../models/apiKey');
+const { ApiKey } = require('../models/index');
+
 const logGeneralError = require('../middleware/generalErrorLogger');
 const checkAuth = require("../checkAuth/auth");
 const isAdminMiddleware = require("../middleware/isAdminMiddleware");

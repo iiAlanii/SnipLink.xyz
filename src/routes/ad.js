@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Link = require('../models/link');
-const Click = require('../models/click');
+const { Link, Click} = require('../models');
 const { v4: uuidv4 } = require("uuid");
 //const logGeneralError = require('../middleware/generalErrorLogger'); //TODO Implement in ad.js
 const { generateToken } = require('../utils/tokenUtils');
@@ -94,7 +93,5 @@ function identifySocialMedia(referrer, userAgent) {
 
     return 'Unknown';
 }
-
-
 
 module.exports = router;

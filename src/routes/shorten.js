@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
-const Link = require('../models/link');
+const { Link } = require('../models/index');
+
 const checkAuth = require('../checkAuth/auth');
 const { generateShortCode } = require('../utils/codeGenerator.js');
 const checkLinkShortenerStatus = require('../middleware/checkLinkShortenerStatus');

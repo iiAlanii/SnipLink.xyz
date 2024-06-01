@@ -23,7 +23,7 @@ async function checkServerLoad() {
     const totalTxSec = networkStats.reduce((total, stats) => total + stats.tx_sec, 0);
     const networkUsage = (totalRxSec + totalTxSec) / 2;
 
-    const stats = await fs.stat('/'); // Use fs.promises.stat
+    const stats = await fs.stat('/');
 
     const diskUsage = (stats.size / stats.blksize) * 100;
 

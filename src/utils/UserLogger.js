@@ -21,7 +21,7 @@ class UserLogger {
 
         this.logFilePath = path.join(userLogsDir, `${discordId}.log`);
 
-        this.logger = createLogger({
+        this.consoleLogger = createLogger({
             level: 'info',
             format: combine(
                 timestamp(),
@@ -29,38 +29,60 @@ class UserLogger {
             ),
             transports: [
                 new transports.Console(),
+            ]
+        });
+
+        this.fileLogger = createLogger({
+            level: 'info',
+            format: combine(
+                timestamp(),
+                customFormat
+            ),
+            transports: [
                 new transports.File({ filename: this.logFilePath }),
             ]
         });
+
+        if (!fs.existsSync(this.logFilePath)) {
+            this.logUserInfo();
+        }
+    }
+
+    logUserInfo() {
+        const userInfo = {
+            discordId: this.discordId,
+            username: this.username,
+            email: this.email,
+            pfp: this.pfp,
+        };
+        this.fileLogger.info(`User Info: ${JSON.stringify(userInfo, null, 2)}`);
     }
 
     log(page, action, actionDetails = {}) {
-        let logEntry = {
-            page: page,
-            action: action,
-            actionDetails: {
-                ...actionDetails,
-                date: actionDetails.date ? new Date(actionDetails.date).toLocaleString() : undefined,
-            },
-        };
-
-        if (!UserLogger.loggedUsers.has(this.discordId)) {
-            logEntry = {
-                discordId: this.discordId,
-                username: this.username,
-                email: this.email,
-                pfp: this.pfp,
-                ...logEntry
-            };
-
-            UserLogger.loggedUsers.add(this.discordId);
+        const excludedPages = ['/generateAuthKey', '/getCaptchaKey'];
+        if (excludedPages.includes(page)) {
+            return;
         }
 
-        this.logger.info(JSON.stringify(logEntry, null, 2));
+        let logMessage = `${this.username} (${this.discordId}) visited ${page} at ${new Date().toLocaleString()}.`;
+
+        if (action) {
+            logMessage += ` Action: ${action}.`;
+        }
+
+        if (actionDetails.date) {
+            logMessage += ` Details: ${JSON.stringify({
+                ...actionDetails,
+                date: new Date(actionDetails.date).toLocaleString(),
+            }, null, 2)}`;
+        } else {
+            logMessage += ` Details: ${JSON.stringify(actionDetails, null, 2)}`;
+        }
+
+        this.consoleLogger.info(`${this.username} visited ${page} at ${new Date().toLocaleString()}.`);
+        this.fileLogger.info(logMessage);
     }
 }
-
-UserLogger.loggedUsers = new Set();
 
 function initializeLogger() {
     return new Promise((resolve, reject) => {

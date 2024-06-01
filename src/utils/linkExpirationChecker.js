@@ -1,5 +1,5 @@
-const Link = require('../models/link');
-const apiLink = require('../models/apiLink');
+const { Link, ApiLink } = require('../models');
+
 const expiryCheckerLogger = require('../ServerLogging/ExpiryCheckerLogger');
 const { DiscordWebhookLogger, ApiLinkExpirationLogger, LinkExpirationLogger } = require('../utils/discordWebhookLogger');
 const MessageQueue = require('../utils/MessageQueue');
@@ -28,7 +28,7 @@ async function getMinExpiryDuration(currentUnixTimestampInSeconds) {
             return Infinity;
         });
 
-    const minExpiryDurationApiLink = await apiLink
+    const minExpiryDurationApiLink = await ApiLink
         .find({ expiryDate: { $ne: null } })
         .sort({ expiryDate: 1 })
         .limit(1)
@@ -42,9 +42,12 @@ async function getMinExpiryDuration(currentUnixTimestampInSeconds) {
     return Math.min(minExpiryDurationLink, minExpiryDurationApiLink);
 }
 
+
+const loggedLinks = new Set();
+
 async function deleteExpiredLinks(currentUnixTimestampInSeconds) {
     const expiredLinksLink = await Link.find({ expiryDate: { $lte: currentUnixTimestampInSeconds } });
-    const expiredLinksApiLink = await apiLink.find({ expiryDate: { $lte: currentUnixTimestampInSeconds } });
+    const expiredLinksApiLink = await ApiLink.find({ expiryDate: { $lte: currentUnixTimestampInSeconds } });
 
     const expiredLinks = [...expiredLinksLink, ...expiredLinksApiLink];
 
@@ -59,6 +62,12 @@ async function deleteExpiredLinks(currentUnixTimestampInSeconds) {
         const title = link.linkPreview ? link.linkPreview.title : 'No Title';
         const originalExpiryDate = link.expiryDate;
 
+        if (loggedLinks.has(shortUrl)) {
+            continue;
+        }
+
+        loggedLinks.add(shortUrl);
+
         await link.constructor.findByIdAndDelete(linkId);
 
         expiryCheckerLogger.info(`
@@ -71,7 +80,7 @@ async function deleteExpiredLinks(currentUnixTimestampInSeconds) {
     originalExpiryDate=${originalExpiryDate}
 `);
 
-        if (link instanceof apiLink) {
+        if (link instanceof ApiLink) {
             apiLinkExpirationDiscordLogger.logApiLinkExpiration({
                 originalUrl: longUrl,
                 shortenedUrl: shortUrl,
@@ -101,7 +110,6 @@ async function deleteExpiredLinks(currentUnixTimestampInSeconds) {
         }
     }
 }
-
 async function checkLinkExpiration() {
     try {
         const currentUnixTimestampInSeconds = Math.floor(Date.now() / 1000);

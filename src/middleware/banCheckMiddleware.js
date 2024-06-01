@@ -1,7 +1,7 @@
-const { GeneralErrorLogger, DiscordWebhookLogger } = require('../utils/discordWebhookLogger'); // Update the path accordingly
+const { GeneralErrorLogger, DiscordWebhookLogger } = require('../utils/discordWebhookLogger');
 const discordLogger = new DiscordWebhookLogger();
 const generalErrorLogger = new GeneralErrorLogger(discordLogger);
-
+const { Ban } = require('../models/index');
 async function banCheckMiddleware(req, res, next) {
     try {
         const ip = req.ip;
@@ -10,7 +10,7 @@ async function banCheckMiddleware(req, res, next) {
 
         const fingerprint = req.session.fingerprint;
 
-        const banRecord = await UserBan.findOne({
+        const banRecord = await Ban.findOne({
             $or: [
                 { ip: ip, userAgent: userAgent },
                 { discordId: discordId },

@@ -1,48 +1,76 @@
 const { v4: uuidv4 } = require('uuid');
-const ApiStatus = require("../models/apiStatus");
 const axios = require('axios');
+const{ LinkShortenerStatus, ApiStatus } = require('../models/index');
 
 class DiscordWebhookLogger {
+
     static webhookURL =  process.env.API_LINK_CREATION;
+    static MESSAGE_DELAY = 1100;
 
     constructor(webhookURL) {
         this.webhookURL = webhookURL || DiscordWebhookLogger.webhookURL;
+        this.messageQueue = [];
+        this.isSending = false;
     }
 
 
     async logMessage(title, linkId, createdAt, clientIdentifier, shortUrl, longUrl, fields, thumbnailUrl, color) {
+        this.messageQueue.push({
+            title,
+            linkId,
+            createdAt,
+            clientIdentifier,
+            shortUrl,
+            longUrl,
+            fields,
+            thumbnailUrl,
+            color
+        });
+
+        if (!this.isSending) {
+            this.isSending = true;
+            await this.sendNextMessage();
+        }
+    }
+    async sendNextMessage() {
+        if (this.messageQueue.length === 0) {
+            this.isSending = false;
+            return;
+        }
+
+        const message = this.messageQueue.shift();
         const axiosConfig = {
             timeout: 5000,
         };
 
-        if (clientIdentifier === 'HealthCheckIdentifier') {
+        if (message.clientIdentifier === 'HealthCheckIdentifier') {
             return;
         }
 
-        const requestIdField = fields && fields.find(field => field.name === 'Request ID');
+        const requestIdField = message.fields && message.fields.find(field => field.name === 'Request ID');
         const requestId = requestIdField ? requestIdField.value : uuidv4();
 
         const embed = {
-            title: title,
+            title: message.title,
             thumbnail: {
-                url: thumbnailUrl
+                url: message.thumbnailUrl
             },
-            fields: fields || [
-                { name: 'Link ID', value: linkId },
-                { name: 'Created At', value: createdAt },
-                { name: 'Shortened URL', value: shortUrl },
-                { name: 'Original URL', value: longUrl },
-                { name: 'Client Identifier', value: clientIdentifier },
+            fields: message.fields || [
+                { name: 'Link ID', value: message.linkId },
+                { name: 'Created At', value: message.createdAt },
+                { name: 'Shortened URL', value: message.shortUrl },
+                { name: 'Original URL', value: message.longUrl },
+                { name: 'Client Identifier', value: message.clientIdentifier },
                 { name: 'Request ID', value: requestId },
             ],
-            color: color
+            color: message.color
         };
 
         try {
-            return await axios.post(this.webhookURL, {
+            await axios.post(this.webhookURL, {
                 embeds: [embed],
-            });
-        }  catch (error) {
+            }, axiosConfig);
+        } catch (error) {
             console.error('Error logging message to Discord:', error.message);
 
             if (error.response) {
@@ -59,8 +87,9 @@ class DiscordWebhookLogger {
                 throw error;
             }
         }
-    }
 
+        setTimeout(() => this.sendNextMessage(), DiscordWebhookLogger.MESSAGE_DELAY);
+    }
 }
 
 class RateLimitLogger {
@@ -291,7 +320,6 @@ class ServerStartupNotifier {
     }
 
     async getServiceStatus() {
-        const LinkShortenerStatus = require('../models/linkShortenerStatus');
 
         const apiStatus = await ApiStatus.findOne();
         const linkShortenerStatus = await LinkShortenerStatus.findOne();

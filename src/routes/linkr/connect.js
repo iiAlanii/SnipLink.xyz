@@ -3,9 +3,8 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const checkAuth = require('../../checkAuth/auth');
-const ApiLink = require('../../models/apiLink');
-const Link = require('../../models/link');
-const LinkedUrl = require('../../models/linkedUrl');
+const { Link, User, ApiLink, LinkedUrl } = require('../../models');
+
 const { authMiddleware } = require('../../middleware/authMiddleware');
 router.get('/link', authMiddleware, checkAuth, async (req, res) => {
     try {

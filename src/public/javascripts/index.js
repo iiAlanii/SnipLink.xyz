@@ -25,7 +25,6 @@ async function fetchStatistics() {
             throw new Error('No data returned from server');
         }
 
-        // Store the new values in localStorage
         localStorage.setItem('totalLinks', data.totalLinks);
         localStorage.setItem('totalUsers', data.totalUsers);
 
@@ -39,7 +38,6 @@ async function fetchStatistics() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize the values from localStorage
     document.getElementById('total-links-count').innerText = localStorage.getItem('totalLinks') || '0';
     document.getElementById('total-users-count').innerText = localStorage.getItem('totalUsers') || '0';
 

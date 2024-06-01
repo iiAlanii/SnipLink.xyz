@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Link = require('../models/link');
+const { Link } = require('../models/index');
+
 const logGeneralError = require('../middleware/generalErrorLogger');
 const { authMiddleware } = require('../middleware/authMiddleware');
 

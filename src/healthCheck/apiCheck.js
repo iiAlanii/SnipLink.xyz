@@ -1,5 +1,5 @@
 const axios = require('axios');
-
+const { ApiLink } = require('../models/index');
 async function checkApiAvailability() {
     try {
         const checks = 5;
@@ -48,9 +48,9 @@ async function checkApiAvailability() {
             }
 
             const linkId = healthCheckResponse.data.debug.linkId;
-            const linkToDelete = await apiLinks.findOne({ apiLinkId: linkId });
+            const linkToDelete = await ApiLink.findOne({ apiLinkId: linkId });
             if (linkToDelete && linkToDelete.isHealthCheck && linkToDelete.clientIdentifier === 'HealthCheckIdentifier') {
-                await apiLinks.findOneAndDelete({ apiLinkId: linkId });
+                await ApiLink.findOneAndDelete({ apiLinkId: linkId });
             }
         }
 

@@ -1,23 +1,35 @@
 const express = require('express');
 const router = express.Router();
-const apiLinks = require('../../../models/apiLink');
 const bodyParser = require('body-parser');
 const validUrl = require('valid-url');
-const ApiStatus = require('../../../models/apiStatus');
+const fetch = require('node-fetch');
+const cheerio = require('cheerio');
+const jwt = require('jsonwebtoken');
+const { v4: uuidv4 } = require('uuid');
+const rateLimit = require('express-rate-limit');
+const async = require('async');
+
+const { apiStatus, ApiLink  } = require('../../../models/index');
 const { logApiBusinessEvent } = require('../../../ServerLogging/BusinessLogicLogger');
 const { DiscordWebhookLogger, GeneralErrorLogger } = require('../../../utils/discordWebhookLogger');
 const { checkLinkExpiration } = require('../../../utils/linkExpirationChecker');
+const { generateShortCode } = require('../../../utils/codeGenerator');
+const logSecurityEvent = require('../../../ServerLogging/SecurityLogger');
+
+const discordLogger = new DiscordWebhookLogger();
+const generalErrorLogger = new GeneralErrorLogger(discordLogger);
+
+const defaultImage = 'https://sniplink.xyz/images/sniplink-banner.png';
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: 'Too many requests from this IP, please try again after 15 minutes'
+});
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
-const discordLogger = new DiscordWebhookLogger();
-const generalErrorLogger = new GeneralErrorLogger(discordLogger);
-const logSecurityEvent = require('../../../ServerLogging/SecurityLogger');
-const fetch = require('node-fetch');
-const cheerio = require('cheerio');
-const async = require('async');
-const jwt = require('jsonwebtoken');
-const defaultImage = 'https://sniplink.xyz/images/sniplink-banner.png';
+router.use(limiter);
 
 const workerQueue = async.queue(async function(task, callback) {
     try {
@@ -30,7 +42,7 @@ const workerQueue = async.queue(async function(task, callback) {
         const contentType = response.headers.get('content-type');
         if (!contentType || !contentType.includes('text/html')) {
             console.log(`Invalid content type received for URL: ${task.originalUrl}`);
-            return
+            return;
         }
 
         const html = await response.text();
@@ -40,7 +52,7 @@ const workerQueue = async.queue(async function(task, callback) {
         const descriptionFromLink = $('meta[property="og:description"]').attr('content') || $('meta[name="twitter:description"]').attr('content') || $('meta[name="description"]').attr('content') || 'No Description';
         const imageFromLink = $('meta[property="og:image"]').attr('content') || $('meta[name="twitter:image"]').attr('content') || defaultImage;
 
-        const newLink = new apiLinks({
+        const newLink = new ApiLink({
             ...task,
             title: task.title || titleFromLink,
             description: task.description || descriptionFromLink,
@@ -58,16 +70,14 @@ const workerQueue = async.queue(async function(task, callback) {
 
 checkLinkExpiration().then(() => console.log('API Link expiration checker started'));
 
-const { generateShortCode } = require('../../../utils/codeGenerator');
-
 const validApiKeys = [
-    { key: 'b7225349-fe42-4c05-b83b-cb76a07ab888', identifier: 'r.mtdv.me' },
-    { key: '0ec64d48-6a91-49a9-be13-71a6c1ac1944', identifier: 'HealthCheckIdentifier' },
+    { key: process.env.MTDV_API_KEY, identifier: 'r.mtdv.me' },
+    { key: process.env.HEALTHCHECK_API_KEY, identifier: 'HealthCheckIdentifier' },
 ];
 
 function authenticateApiKey(req, res, next) {
     const apiKey = req.headers['api-key'];
-    const isHealthCheck = apiKey === '0ec64d48-6a91-49a9-be13-71a6c1ac1944';
+    const isHealthCheck = apiKey === process.env.HEALTHCHECK_API_KEY;
     const clientIdentifier = req.headers['client-identifier'];
     const ip = req.ip;
     const userAgent = req.headers['user-agent'];
@@ -109,19 +119,20 @@ function formatTimestamp(timestamp) {
 }
 
 router.post('/', authenticateApiKey, async (req, res) => {
-    const apiStatus = await ApiStatus.findOne();
+    const ApiStatus = await apiStatus.findOne();
 
-    if (!apiStatus) {
+    if (!ApiStatus) {
         return res.status(500).json({ error: 'Unable to retrieve API status.' });
     }
 
-    if (apiStatus && !apiStatus.isApiRunning) {
+    if (ApiStatus && !ApiStatus.isApiRunning) {
         return res.status(503).json({ error: 'API is currently stopped. Please try again later.' });
     }
+    const apiKey = req.headers['api-key'];
 
     const { longUrl, title, description, expiryDate } = req.body;
     if (!longUrl) {
-        return res.status(500).json({ error: 'longUrl is required.' });
+        return res.status(400).json({ error: 'longUrl is required.' });
     }
 
     const currentUnixTimestamp = Math.floor(Date.now() / 1000);
@@ -153,27 +164,21 @@ router.post('/', authenticateApiKey, async (req, res) => {
         return res.status(400).json({ error: 'The description can only include numbers, letters, hyphens, underscores, periods, spaces, commas, exclamation marks, backticks, apostrophes, colons, and question marks.' });
     }
 
-    const apiKey = req.headers['api-key'];
-    const isHealthCheck = apiKey === '0ec64d48-6a91-49a9-be13-71a6c1ac1944';
-    const clientIdentifier = req.headers['client-identifier'];
-
-    if(!clientIdentifier) {
-        logSecurityEvent(`/api Unauthorized access attempt with invalid client identifier.`);
-        return res.status(401).json({ error: 'Unauthorized. Invalid client Identifier.' });    }
     if (!validUrl.isWebUri(longUrl)) {
         return res.status(400).json({ error: 'Invalid longUrl. Please provide a valid URL.' });
     }
 
+    const clientIdentifier = req.headers['client-identifier'];
+    if (!clientIdentifier) {
+        logSecurityEvent(`/api Unauthorized access attempt with invalid client identifier.`);
+        return res.status(401).json({ error: 'Unauthorized. Invalid client Identifier.' });
+    }
+
     try {
-        const { v4: uuidv4 } = require('uuid');
-
-        const uniqueIdentifier = generateUniqueId();
-
         const requestId = uuidv4();
         const humanReadableExpiryDate = formatTimestamp(expiryDate * 1000);
-        const apiLinkId = generateUniqueId();
         const isUnique = async (shortCode) => {
-            const link = await apiLinks.findOne({ shortenedUrl: shortCode });
+            const link = await ApiLink.findOne({ shortenedUrl: shortCode });
             return !link;
         };
 
@@ -181,24 +186,23 @@ router.post('/', authenticateApiKey, async (req, res) => {
         const createdAt = Date.now();
 
         const signedUrlPayload = {
-            identifier: uniqueIdentifier,
+            identifier: uuidv4(),
             shortCode: shortCode,
             originalUrl: longUrl,
         };
         const signedUrl = generateSignedUrl(signedUrlPayload);
 
         const newLink = {
-            apiLinkId: generateUniqueId(),
+            apiLinkId: uuidv4(),
             originalUrl: longUrl,
             shortenedUrl: shortCode,
             createdAt: createdAt,
-            isHealthCheck: isHealthCheck,
+            isHealthCheck: apiKey === process.env.HEALTHCHECK_API_KEY,
             title: title,
             description: description,
             clientIdentifier: clientIdentifier,
             expiryDate: expiryDate,
             signedUrl: signedUrl,
-
         };
 
         workerQueue.push(newLink);
@@ -207,7 +211,7 @@ router.post('/', authenticateApiKey, async (req, res) => {
 
         const debugMessage = {
             message: '[API] URL shortened successfully',
-            linkId: apiLinkId,
+            linkId: newLink.apiLinkId,
             createdAt: formatTimestamp(createdAt),
             shortUrl: shortUrl,
             longUrl: longUrl,
@@ -229,8 +233,8 @@ router.post('/', authenticateApiKey, async (req, res) => {
             { name: 'Expiry Date (Human Readable)', value: humanReadableExpiryDate.substring(0, 1024) },
             { name: 'Expiry Date (Unix Timestamp)', value: String(expiryDate) },
             { name: 'Request ID', value: requestId.substring(0, 1024) },
-
         ].slice(0, 25);
+
         await discordLogger.logMessage(debugMessage.message, debugMessage.linkId, debugMessage.createdAt, debugMessage.clientIdentifier, debugMessage.shortUrl, debugMessage.longUrl, fields);
 
         logApiBusinessEvent(
@@ -242,7 +246,6 @@ router.post('/', authenticateApiKey, async (req, res) => {
             requestId
         );
 
-
         res.setHeader('Content-Type', 'application/json');
         res.status(201).json({ shortUrl, longUrl, signedUrl, debug: debugMessage });
     } catch (err) {
@@ -253,14 +256,8 @@ router.post('/', authenticateApiKey, async (req, res) => {
 });
 
 function generateSignedUrl(payload) {
-    const secretKey = 'your-secret-key';
+    const secretKey = process.env.JWT_SECRET_KEY;
     return jwt.sign(payload, secretKey);
-}
-
-function generateUniqueId() {
-    const timestamp = Date.now().toString(36);
-    const randomString = Math.random().toString(36).substring(2, 8);
-    return `${timestamp}-${randomString}`;
 }
 
 module.exports = router;

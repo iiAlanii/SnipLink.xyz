@@ -11,53 +11,18 @@ const clickSchema = new mongoose.Schema({
     socialMedia: { type: String },
 });
 
-clickSchema.virtual('clickCount').get(function () {
-    return this.clicks.length;
-});
-
 clickSchema.statics.getTopReferrers = async function (linkId, limit) {
-    try {
-        return await this.aggregate([
-            {$match: {linkId: linkId, referrer: {$ne: null}}},
-            {
-                $group: {
-                    _id: '$referrer',
-                    count: {$sum: 1},
-                },
-            },
-            {$sort: {count: -1}},
-            {$limit: limit},
-            {
-                $lookup: {
-                    from: 'User',
-                    localField: '_id',
-                    foreignField: 'discordId',
-                    as: 'referrerInfo',
-                },
-            },
-            {
-                $unwind: '$referrerInfo',
-            },
-            {
-                $project: {
-                    _id: 0,
-                    referrer: '$referrerInfo.username',
-                    discordId: '$referrerInfo.discordId',
-                    profilePicture: '$referrerInfo.profilePicture',
-                    email: '$referrerInfo.email',
-                    count: 1,
-                },
-            },
-        ]).exec();
-    } catch (error) {
-        console.error('Error fetching top referrers:', error);
-        throw error;
-    }
+    return this.aggregate([
+        { $match: { linkId: new mongoose.Types.ObjectId(linkId) } },
+        { $group: { _id: "$referrer", count: { $sum: 1 } } },
+        { $sort: { count: -1 } },
+        { $limit: limit }
+    ]);
 };
 
-clickSchema.statics.getTopCountries = function (linkId, limit) {
+clickSchema.statics.getTopCountries = async function (linkId, limit) {
     return this.aggregate([
-        { $match: { linkId: linkId, country: { $ne: null } } },
+        { $match: { linkId: new mongoose.Types.ObjectId(linkId), country: { $ne: null } } },
         {
             $group: {
                 _id: '$country',
@@ -65,10 +30,9 @@ clickSchema.statics.getTopCountries = function (linkId, limit) {
             },
         },
         { $sort: { count: -1 } },
-        { $limit: limit },
+        { $limit: limit }
     ]);
 };
 
 const Click = mongoose.model('Click', clickSchema);
-
 module.exports = Click;

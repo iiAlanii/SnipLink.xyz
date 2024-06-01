@@ -1,4 +1,4 @@
-const LinkShortenerStatus = require('../models/linkShortenerStatus');
+const { LinkShortenerStatus } = require('../models/index');
 const { GeneralErrorLogger, DiscordWebhookLogger } = require('../utils/discordWebhookLogger');
 const discordLogger = new DiscordWebhookLogger();
 const generalErrorLogger = new GeneralErrorLogger(discordLogger);

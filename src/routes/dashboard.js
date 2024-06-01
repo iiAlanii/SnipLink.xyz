@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Link = require('../models/link');
-const User = require('../models/user');
+const { Link, User } = require('../models/index');
+
 const checkAuth = require('../checkAuth/auth');
 const logGeneralError = require('../middleware/generalErrorLogger');
 const allowedTesters = require('../utils/allowedTesters');

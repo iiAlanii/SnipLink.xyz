@@ -1,5 +1,4 @@
-const Link = require('../models/link');
-const User = require('../models/user');
+const { Link, User } = require('../models');
 
 async function getTotalLinks() {
     try {

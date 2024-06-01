@@ -1,4 +1,4 @@
-const underConstructionStatus = require('../models/underConstruction');
+const { underConstructionStatus } = require('../models/index');
 
 async function underConstructionMiddleware(req, res, next) {
     const underConstruction = await underConstructionStatus.findOne({ isUnderConstruction: true });

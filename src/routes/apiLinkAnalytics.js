@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const apiLink = require('../models/apiLink');
+const { ApiLink } = require('../models/index');
 
 router.get('/:shortUrl/link-analytics', async (req, res) => {
     try {
         const shortUrl = req.params.shortUrl;
-        const link = await apiLink.findOne({ shortenedUrl: shortUrl });
+        const link = await ApiLink.findOne({ shortenedUrl: shortUrl });
 
         if (!link) {
             return res.status(404).render('404');

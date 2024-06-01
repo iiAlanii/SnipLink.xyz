@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const apiLinks = require('../../../models/apiLink');
+const { apiLinks, ApiStatus } = require ('../../../models/index')
 const bodyParser = require('body-parser');
 const validUrl = require('valid-url');
-const ApiStatus = require('../../../models/apiStatus');
 const { logApiBusinessEvent } = require('../../../ServerLogging/BusinessLogicLogger');
 const { DiscordWebhookLogger, GeneralErrorLogger } = require('../../../utils/discordWebhookLogger');
 const { checkLinkExpiration } = require('../../../utils/linkExpirationChecker');
@@ -67,7 +66,7 @@ const workerQueue = async.queue(async function(task, callback) {
     callback();
 }, 100);
 
-checkLinkExpiration().then(() => console.log('API Link expiration checker started'));
+//checkLinkExpiration().then(() => console.log('API Link expiration checker started'));
 
 
 function authenticateApiKey(req, res, next) {

@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const ApiKey = require('../models/apiKey');
+const { ApiKey } = require('../models/index');
+
 const logGeneralError = require('../middleware/generalErrorLogger');
 const checkAuth = require("../checkAuth/auth");
 const isAdminMiddleware = require("../middleware/isAdminMiddleware");
 const logSecurityEvent = require("../ServerLogging/SecurityLogger");
 
-const checkAdminRole = (req, res, next) => { //Create a file called checkAdminRole and/or import it in files that require them
+const checkAdminRole = (req, res, next) => {
     if (req.user.id === '417237496007753738') {
         next();
     } else {

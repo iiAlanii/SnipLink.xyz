@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Link = require('../models/link');
+const { Link } = require('../models');
+
 const logGeneralError = require('../middleware/generalErrorLogger');
 const checkAuth = require("../checkAuth/auth");
 const isAdminMiddleware = require("../middleware/isAdminMiddleware");

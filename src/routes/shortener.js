@@ -1,7 +1,7 @@
 const checkAuth = require('../checkAuth/auth');
 const express = require('express');
 const router = express.Router();
-const Link = require('../models/link');
+const { Link } = require('../models');
 const logGeneralError = require('../middleware/generalErrorLogger');
 const allowedTesters = require('../utils/allowedTesters');
 

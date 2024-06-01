@@ -105,3 +105,369 @@
     "requestId": "94ee0924-4d37-45d0-9540-9f79c0ac3ccf"
   }
 }
+{
+  "timestamp": "5/22/2024, 5:29:06 PM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:68\n    66|                                     <span><i class=\"fas fa-clock\"></i> <%= link.expiryDate ? new Date(link.expiryDate).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'Never' %></span>\r\n    67|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n >> 68|                                     <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span>\r\n    69|                                 </div>\r\n    70|                             </div>\r\n    71|                             <div class=\"link-actions\">\r\n\nCannot read properties of undefined (reading 'length')",
+  "method": "GET",
+  "url": "/manage-links",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:68\n    66|                                     <span><i class=\"fas fa-clock\"></i> <%= link.expiryDate ? new Date(link.expiryDate).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'Never' %></span>\r\n    67|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n >> 68|                                     <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span>\r\n    69|                                 </div>\r\n    70|                             </div>\r\n    71|                             <div class=\"link-actions\">\r\n\nCannot read properties of undefined (reading 'length')",
+    "stack": "TypeError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:68\n    66|                                     <span><i class=\"fas fa-clock\"></i> <%= link.expiryDate ? new Date(link.expiryDate).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'Never' %></span>\r\n    67|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n >> 68|                                     <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span>\r\n    69|                                 </div>\r\n    70|                             </div>\r\n    71|                             <div class=\"link-actions\">\r\n\nCannot read properties of undefined (reading 'length')\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":49:37)\n    at Array.forEach (<anonymous>)\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":30:14)\n    at manage-links (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=fx1M558DmB6SnhNwe8f9V1oj; connect.sid=s%3AmGW8zeoLAez4oEFJ5VRSkR-2yzPHxiVu.H6g1x87uirkx97UoFEnpuQPkU4Kee89PPh2dlmd0xHc",
+      "if-none-match": "W/\"3231-eWt3/X3zwgUG08KyAA2EAgg5fPs\""
+    },
+    "body": {},
+    "params": {},
+    "requestId": "e2f605d0-df02-4a3a-843e-a2ba64057e3a"
+  }
+}
+{
+  "timestamp": "5/22/2024, 5:30:39 PM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:68\n    66|                                     <span><i class=\"fas fa-clock\"></i> <%= link.expiryDate ? new Date(link.expiryDate).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'Never' %></span>\r\n    67|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n >> 68|                                     <!-- <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span> -->\r\n    69|                                 </div>\r\n    70|                             </div>\r\n    71|                             <div class=\"link-actions\">\r\n\nCannot read properties of undefined (reading 'length')",
+  "method": "GET",
+  "url": "/manage-links",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:68\n    66|                                     <span><i class=\"fas fa-clock\"></i> <%= link.expiryDate ? new Date(link.expiryDate).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'Never' %></span>\r\n    67|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n >> 68|                                     <!-- <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span> -->\r\n    69|                                 </div>\r\n    70|                             </div>\r\n    71|                             <div class=\"link-actions\">\r\n\nCannot read properties of undefined (reading 'length')",
+    "stack": "TypeError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:68\n    66|                                     <span><i class=\"fas fa-clock\"></i> <%= link.expiryDate ? new Date(link.expiryDate).toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : 'Never' %></span>\r\n    67|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n >> 68|                                     <!-- <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span> -->\r\n    69|                                 </div>\r\n    70|                             </div>\r\n    71|                             <div class=\"link-actions\">\r\n\nCannot read properties of undefined (reading 'length')\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":49:37)\n    at Array.forEach (<anonymous>)\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":30:14)\n    at manage-links (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=fx1M558DmB6SnhNwe8f9V1oj; connect.sid=s%3AcsbqAy9ANl-beKERT0G1zbaNcH1Hwaif.stfzdIX9qY2iaT9QIFDefofbiogfnJtxzByr%2FlkLHoc"
+    },
+    "body": {},
+    "params": {},
+    "requestId": "6d0a80b0-f93c-4779-941a-f04c5ac8e6a3"
+  }
+}
+{
+  "timestamp": "5/22/2024, 5:38:46 PM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:65\n    63|                                 <h3 class=\"short-url\"><%= 'https://sniplink.xyz/'+link.shortenedUrl %></h3>\r\n    64|                                 <div class=\"link-stats\">\r\n >> 65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n    67|                                     <span><i class=\"fas fa-calendar-alt\"></i> Expires in <%= link.expiry %></span>\r\n    68|                                 </div>\r\n\nCannot read properties of undefined (reading 'length')",
+  "method": "GET",
+  "url": "/manage-links",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:65\n    63|                                 <h3 class=\"short-url\"><%= 'https://sniplink.xyz/'+link.shortenedUrl %></h3>\r\n    64|                                 <div class=\"link-stats\">\r\n >> 65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n    67|                                     <span><i class=\"fas fa-calendar-alt\"></i> Expires in <%= link.expiry %></span>\r\n    68|                                 </div>\r\n\nCannot read properties of undefined (reading 'length')",
+    "stack": "TypeError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:65\n    63|                                 <h3 class=\"short-url\"><%= 'https://sniplink.xyz/'+link.shortenedUrl %></h3>\r\n    64|                                 <div class=\"link-stats\">\r\n >> 65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.views.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.clicks.length %></span>\r\n    67|                                     <span><i class=\"fas fa-calendar-alt\"></i> Expires in <%= link.expiry %></span>\r\n    68|                                 </div>\r\n\nCannot read properties of undefined (reading 'length')\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":40:37)\n    at Array.forEach (<anonymous>)\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":30:14)\n    at manage-links (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=fx1M558DmB6SnhNwe8f9V1oj; connect.sid=s%3AcsbqAy9ANl-beKERT0G1zbaNcH1Hwaif.stfzdIX9qY2iaT9QIFDefofbiogfnJtxzByr%2FlkLHoc",
+      "if-none-match": "W/\"31db-yLP/O/wRE9BCGbrvXUa+RVFNew8\""
+    },
+    "body": {},
+    "params": {},
+    "requestId": "366b4b5a-1362-4629-9768-37e2eb932234"
+  }
+}
+{
+  "timestamp": "5/23/2024, 2:21:34 AM",
+  "level": "ERROR",
+  "message": "Failed to lookup view \"error\" in views directory \"C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\"",
+  "method": "GET",
+  "url": "/analytics/swtQ2w",
+  "status": 500,
+  "error": {
+    "message": "Failed to lookup view \"error\" in views directory \"C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\"",
+    "stack": "Error: Failed to lookup view \"error\" in views directory \"C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\"\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:597:17)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\analytics.js:15:36\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=Jm5yaYA5vqMSJ-jKctr16b0i; connect.sid=s%3AWluJq6au8146k3F6npKDIRIU3Lbcuu_m.0lcfZXzc6bgj1jv9d5q7w1gbdSAWMr7PLdJTIIO6e1o"
+    },
+    "body": {},
+    "params": {},
+    "requestId": "d37ffdbf-6fcb-4bbe-a130-5b77089fff1e"
+  }
+}
+{
+  "timestamp": "5/23/2024, 2:21:51 AM",
+  "level": "ERROR",
+  "message": "Failed to lookup view \"error\" in views directory \"C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\"",
+  "method": "GET",
+  "url": "/analytics/swtQ2w",
+  "status": 500,
+  "error": {
+    "message": "Failed to lookup view \"error\" in views directory \"C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\"",
+    "stack": "Error: Failed to lookup view \"error\" in views directory \"C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\"\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:597:17)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\analytics.js:15:36\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "pragma": "no-cache",
+      "cache-control": "no-cache",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=Jm5yaYA5vqMSJ-jKctr16b0i; connect.sid=s%3AWluJq6au8146k3F6npKDIRIU3Lbcuu_m.0lcfZXzc6bgj1jv9d5q7w1gbdSAWMr7PLdJTIIO6e1o"
+    },
+    "body": {},
+    "params": {},
+    "requestId": "6508ef8a-e816-4428-a902-e7abea74b1d4"
+  }
+}
+{
+  "timestamp": "5/24/2024, 5:18:56 PM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\analytics.ejs:208\n    206|         <div class=\"analytics-item\">\r\n    207|             <h3>Total Clicks by Country</h3>\r\n >> 208|             <% if (clicksByCountry.length > 0) { %>\r\n    209|                 <ul>\r\n    210|                     <% clicksByCountry.forEach(country => { %>\r\n    211|                         <li><%= country._id %> - <%= country.count %> clicks</li>\r\n\nclicksByCountry is not defined",
+  "method": "GET",
+  "url": "/analytics/t6jeQU",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\analytics.ejs:208\n    206|         <div class=\"analytics-item\">\r\n    207|             <h3>Total Clicks by Country</h3>\r\n >> 208|             <% if (clicksByCountry.length > 0) { %>\r\n    209|                 <ul>\r\n    210|                     <% clicksByCountry.forEach(country => { %>\r\n    211|                         <li><%= country._id %> - <%= country.count %> clicks</li>\r\n\nclicksByCountry is not defined",
+    "stack": "ReferenceError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\analytics.ejs:208\n    206|         <div class=\"analytics-item\">\r\n    207|             <h3>Total Clicks by Country</h3>\r\n >> 208|             <% if (clicksByCountry.length > 0) { %>\r\n    209|                 <ul>\r\n    210|                     <% clicksByCountry.forEach(country => { %>\r\n    211|                         <li><%= country._id %> - <%= country.count %> clicks</li>\r\n\nclicksByCountry is not defined\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\analytics.ejs\":106:8)\n    at analytics (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)\n    at C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\routes\\analytics.js:40:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "none",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=LDQLkM8mw1y5K9tqz28T6bP_; connect.sid=s%3Aibo3MSeSu-Lv0yexq6TQSlwwIybg6Nhn.cKTeIWqEPD4AZsBlbdBgne3i88CA8JtixtrdQYW3Sf4"
+    },
+    "body": {},
+    "params": {},
+    "requestId": "eb3ef08e-ab82-42f4-81a7-8a4341b96baf"
+  }
+}
+{
+  "timestamp": "5/31/2024, 4:02:26 PM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined",
+  "method": "GET",
+  "url": "/manage-links",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined",
+    "stack": "ReferenceError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":46:7)\n    at Array.forEach (<anonymous>)\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":30:14)\n    at manage-links (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "same-origin",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "referer": "http://localhost:3000/dashboard",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=mmMzjWCdDXQGyL9s_ck5N4ov; connect.sid=s%3Aoq0Y4kI_4gOSwEXITDGP9PvzI-2Ov1_l.j6uLLFVnqtLqZHVRBB67T6ovNw55AyiVHFj5wDBm7FU",
+      "if-none-match": "W/\"3595-N5rRSsKb4h295h1YIIJI7WOnURc\""
+    },
+    "body": {},
+    "params": {},
+    "requestId": "9cc2dc57-9902-4d46-9397-62ebc1aaa945"
+  }
+}
+{
+  "timestamp": "5/31/2024, 4:02:33 PM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined",
+  "method": "GET",
+  "url": "/manage-links",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined",
+    "stack": "ReferenceError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":46:7)\n    at Array.forEach (<anonymous>)\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":30:14)\n    at manage-links (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "same-origin",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "referer": "http://localhost:3000/dashboard",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=mmMzjWCdDXQGyL9s_ck5N4ov; connect.sid=s%3Aoq0Y4kI_4gOSwEXITDGP9PvzI-2Ov1_l.j6uLLFVnqtLqZHVRBB67T6ovNw55AyiVHFj5wDBm7FU"
+    },
+    "body": {},
+    "params": {},
+    "requestId": "14ad4180-7a81-4cb1-8378-fa6f689c64b4"
+  }
+}
+{
+  "timestamp": "5/31/2024, 4:03:26 PM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span> <!-- Total views -->\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span> <!-- Unique views -->\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined",
+  "method": "GET",
+  "url": "/manage-links",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span> <!-- Total views -->\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span> <!-- Unique views -->\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined",
+    "stack": "ReferenceError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:67\n    65|                                     <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span> <!-- Total views -->\r\n    66|                                     <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span> <!-- Unique views -->\r\n >> 67|                                     <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    68|                                 </div>\r\n    69| \r\n    70|                                 <script>\r\n\ngetExpiryText is not defined\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":46:7)\n    at Array.forEach (<anonymous>)\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":30:14)\n    at manage-links (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "cache-control": "max-age=0",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "same-origin",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "referer": "http://localhost:3000/dashboard",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=mmMzjWCdDXQGyL9s_ck5N4ov; connect.sid=s%3Aoq0Y4kI_4gOSwEXITDGP9PvzI-2Ov1_l.j6uLLFVnqtLqZHVRBB67T6ovNw55AyiVHFj5wDBm7FU"
+    },
+    "body": {},
+    "params": {},
+    "requestId": "314892c2-e2c5-4c95-8ac6-bf17fda2e2e4"
+  }
+}
+{
+  "timestamp": "6/1/2024, 5:23:35 AM",
+  "level": "ERROR",
+  "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:69\n    67|             <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    68|             <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 69|             <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    70|         </div>\r\n    71|     </div>\r\n    72|     <div class=\"link-actions\">\r\n\ngetExpiryText is not defined",
+  "method": "GET",
+  "url": "/manage-links",
+  "status": 500,
+  "error": {
+    "message": "C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:69\n    67|             <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    68|             <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 69|             <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    70|         </div>\r\n    71|     </div>\r\n    72|     <div class=\"link-actions\">\r\n\ngetExpiryText is not defined",
+    "stack": "ReferenceError: C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\src\\views\\manage-links.ejs:69\n    67|             <span><i class=\"fas fa-eye\"></i> <%= link.clicks.length %></span>\r\n    68|             <span><i class=\"fas fa-mouse-pointer\"></i> <%= link.uniqueClicks %></span>\r\n >> 69|             <span><i class=\"fas fa-calendar-alt\"></i> <%= getExpiryText(link.expiryDate) %></span>\r\n    70|         </div>\r\n    71|     </div>\r\n    72|     <div class=\"link-actions\">\r\n\ngetExpiryText is not defined\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":46:7)\n    at Array.forEach (<anonymous>)\n    at eval (\"C:\\\\Users\\\\Mirko\\\\Documents\\\\GitHub\\\\SnipLink.xyz\\\\src\\\\views\\\\manage-links.ejs\":30:14)\n    at manage-links (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:703:17)\n    at tryHandleCache (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:274:36)\n    at exports.renderFile [as engine] (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\ejs\\lib\\ejs.js:491:10)\n    at View.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\view.js:135:8)\n    at tryRender (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:657:10)\n    at Function.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\application.js:609:3)\n    at ServerResponse.render (C:\\Users\\Mirko\\Documents\\GitHub\\SnipLink.xyz\\node_modules\\express\\lib\\response.js:1048:7)"
+  },
+  "request": {
+    "headers": {
+      "host": "localhost:3000",
+      "connection": "keep-alive",
+      "pragma": "no-cache",
+      "cache-control": "no-cache",
+      "sec-ch-ua": "\"Brave\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "\"Windows\"",
+      "upgrade-insecure-requests": "1",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+      "sec-gpc": "1",
+      "accept-language": "en-US,en",
+      "sec-fetch-site": "same-origin",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-user": "?1",
+      "sec-fetch-dest": "document",
+      "referer": "http://localhost:3000/dashboard",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cookie": "_csrf=QEapnokC_E6F_yFYGEtZYKyY; connect.sid=s%3AhA92Ol5sDSLIHNRRO5fw72ACRCt4OYGk.wsj4pMLclRF73rwjIy14u7JG9uU%2BRVuSryRy2H1O92o"
+    },
+    "body": {},
+    "params": {},
+    "requestId": "57695d1e-0c9f-44a0-bfdb-e40d22388031"
+  }
+}

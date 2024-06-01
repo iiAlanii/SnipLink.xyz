@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const algorithm = process.env.ALGORITHM || 'aes-256-ctr';
 const key = Buffer.from(process.env.KEY || 'defaultKey', 'hex');
-const originalIv = process.env.IV || 'defaultIV'; //After changing the key, IV and algorithm, change the ones here too after the '||'
+const originalIv = process.env.IV || 'defaultIV';
 let iv = Buffer.from(process.env.IV || 'defaultIV', 'hex');
 
 if (iv.length !== 16) {

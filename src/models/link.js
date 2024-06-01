@@ -9,10 +9,7 @@ const linkSchema = new mongoose.Schema({
     dateCreated: { type: Date, default: Date.now },
     clicks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Click' }],
     discordUserProfilePictureUrl: { type: String },
-    expiryDate: {
-        type: Number,
-        default: null
-    },
+    expiryDate: { type: Number, default: null },
     metadataSource: { type: String },
     linkPreview: {
         title: String,
@@ -20,9 +17,12 @@ const linkSchema = new mongoose.Schema({
         image: String,
     },
     linkIdentifier: { type: String },
-
 });
 
-const Link = mongoose.model('Link', linkSchema);
+linkSchema.methods.getClickCount = async function () {
+    const Click = require('./click');
+    return Click.countDocuments({linkId: this._id});
+}
 
+const Link = mongoose.model('Link', linkSchema);
 module.exports = Link;

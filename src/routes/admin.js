@@ -3,22 +3,16 @@ const router = express.Router();
 const fs = require('fs');
 const archiver = require('archiver');
 const { v4: uuidv4 } = require("uuid");
+const { Click, Ban } = require('../models/index');
 
-// Middleware
 const checkAuth = require('../checkAuth/auth');
 const isAdminMiddleware = require('../middleware/isAdminMiddleware');
 const path = require('path');
 const { authMiddleware } = require('../middleware/authMiddleware');
 
-// Models
-const ApiKey = require('../models/apiKey');
-const User = require('../models/user');
-const Link = require('../models/link');
-const apiStatus = require('../models/linkShortenerStatus');
-const ApiStatus = require('../models/apiStatus');
-const MaintenanceStatus = require('../models/maintenanceStatus');
+const { Link, User, ApiKey, apiStatus, ApiStatus, MaintenanceStatus } = require('../models');
 
-// Health Check
+
 const { checkApiAvailability } = require('../healthCheck/apiCheck');
 const { checkDatabaseConnection } = require('../healthCheck/databaseCheck');
 const { checkServerLoad } = require('../healthCheck/serverCheck');
@@ -368,7 +362,7 @@ router.get('/user-management/:id/export', authMiddleware, async (req, res) => {
             return;
         }
 
-        const linkData = await Link.find({ discordId: discordId }).populate('clicks'); // Populate the clicks array
+        const linkData = await Link.find({ discordId: discordId }).populate('clicks');
         const userData = {
             username: user.username,
             ip: user.ip,
@@ -424,7 +418,6 @@ router.get('/user-management/:id/export', authMiddleware, async (req, res) => {
     }
 });
 
-const Click = require('../models/click');
 router.get('/click-details/:clickId', authMiddleware, checkAuth, checkAdminRole, isAdminMiddleware, async (req, res) => {
     const { clickId } = req.params;
 
@@ -441,7 +434,6 @@ router.get('/click-details/:clickId', authMiddleware, checkAuth, checkAdminRole,
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-const Ban = require('../models/BanSchema');
 
 router.post('/admin/ban', authMiddleware, checkAuth, checkAdminRole, isAdminMiddleware, async (req, res) => {
     const { userAgent, ipAddress } = req.body;

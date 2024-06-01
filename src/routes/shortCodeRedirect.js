@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
-const Click = require('../models/click');
-const Link = require('../models/link');
+const { Link, Click, ApiLink } = require('../models/index');
 const fs = require('fs').promises;
 const path = require('path');
 const logGeneralError = require('../middleware/generalErrorLogger');
 const defaultImage = 'https://sniplink.xyz/images/sniplink-logo.png';
-const ejs = require('ejs'); // Add this line
+const ejs = require('ejs');
+const geoip = require('geoip-lite');
 
 const generateShortUUID = () => {
     return uuidv4().replace(/-/g, '');
@@ -15,17 +15,15 @@ const generateShortUUID = () => {
 
 router.get('/:shortCode', async (req, res, next) => {
     const { shortCode } = req.params;
-    console.log('User Agent:', req.headers['user-agent']);
     const userId = req.user ? req.user.id : 'Guest';
     const ipAddress = req.ip;
     const userAgent = req.headers['user-agent'];
-    
 
     try {
         let link = await Link.findOne({ shortenedUrl: shortCode });
 
         if (!link) {
-            link = await apiLinks.findOne({ shortenedUrl: shortCode });
+            link = await ApiLink.findOne({ shortenedUrl: shortCode });
         }
 
         if (link) {
@@ -33,28 +31,28 @@ router.get('/:shortCode', async (req, res, next) => {
                 return res.status(400).send('A shortened URL cannot point to itself.');
             }
 
-
             const clickId = generateShortUUID();
             const referrer = req.headers.referer || req.headers.Referrer || 'Direct';
-            console.log('Referrer:', req.headers.referer);
-            console.log('User Agent:', req.headers['user-agent']);
+
+            const geo = geoip.lookup(ipAddress);
+            const country = geo && geo.country ? geo.country : 'Unknown';
+            const socialMedia = identifySocialMedia(referrer, userAgent);
+
+            if (socialMedia === 'Bot') {
+                return res.status(204).send();
+            }
 
             const newClick = new Click({
                 linkId: link._id,
-                userId: userId,
                 ip: ipAddress,
                 referrer: referrer,
                 userAgent: userAgent,
                 clickId: clickId,
-                socialMedia: identifySocialMedia(referrer),
+                country: country,
+                socialMedia: socialMedia,
             });
 
             await newClick.save();
-
-            if (!link.clicks) {
-                link.clicks = [];
-            }
-
             link.clicks.push(newClick);
             await link.save();
 
@@ -70,8 +68,6 @@ router.get('/:shortCode', async (req, res, next) => {
             }
 
             const loadingTemplate = await fs.readFile(path.join(__dirname, '..', 'views', 'loading.ejs'), 'utf8');
-
-            // Render the EJS template to a string
             const loadingContent = ejs.render(loadingTemplate, { link: link });
 
             const html = `
@@ -106,10 +102,8 @@ router.get('/:shortCode', async (req, res, next) => {
     </body>
 </html>
 `;
-
             res.setHeader('Content-Type', 'text/html');
             res.send(html);
-
         } else {
             next('route');
         }
@@ -120,20 +114,44 @@ router.get('/:shortCode', async (req, res, next) => {
     }
 });
 
-function identifySocialMedia(referrer, utmSource) {
+function identifySocialMedia(referrer, userAgent, utmSource) {
+    const socialMediaPatterns = [
+        { name: 'Discord', patterns: ['discord.com', 'discord.gg'] },
+        { name: 'Twitter', patterns: ['twitter.com'] },
+        { name: 'Instagram', patterns: ['instagram.com'] },
+        { name: 'Facebook', patterns: ['facebook.com', 'fb.com'] },
+        { name: 'LinkedIn', patterns: ['linkedin.com'] },
+        { name: 'Reddit', patterns: ['reddit.com'] },
+        { name: 'Pinterest', patterns: ['pinterest.com'] },
+        { name: 'Snapchat', patterns: ['snapchat.com'] },
+        { name: 'TikTok', patterns: ['tiktok.com'] },
+        { name: 'WhatsApp', patterns: ['whatsapp.com'] }
+    ];
+
+    const botUserAgents = [
+        'Discordbot', 'Twitterbot', 'FacebookExternalHit', 'LinkedInBot', 'Pinterestbot',
+        'SnapchatBot', 'Slackbot', 'WhatsApp', 'TelegramBot', 'Instagram', 'Googlebot',
+        'Bingbot', 'Baiduspider', 'YandexBot', 'DuckDuckBot'
+    ];
+
+    if (botUserAgents.some(bot => userAgent.includes(bot))) {
+        return 'Bot';
+    }
+
     if (utmSource) {
-        if (utmSource.toLowerCase() === 'discord') {
-            return 'Discord';
+        const normalizedSource = utmSource.toLowerCase();
+        for (const platform of socialMediaPatterns) {
+            if (normalizedSource === platform.name.toLowerCase()) {
+                return platform.name;
+            }
         }
     }
 
     if (referrer) {
-        if (referrer.includes('discord.com') || referrer.includes('discord.gg')) {
-            return 'Discord';
-        } else if (referrer.includes('twitter.com')) {
-            return 'Twitter';
-        } else if (referrer.includes('instagram.com')) {
-            return 'Instagram';
+        for (const platform of socialMediaPatterns) {
+            if (platform.patterns.some(pattern => referrer.includes(pattern))) {
+                return platform.name;
+            }
         }
     }
 

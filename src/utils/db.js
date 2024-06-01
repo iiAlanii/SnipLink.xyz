@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
-const MaintenanceStatus = require('../models/maintenanceStatus');
-const apiLink = require('../models/apiLink');
-
+const { MaintenanceStatus, ApiLink } = require('../models/index');
 let mongoConnection;
 
 const connectDB = async () => {
+    let mongoURI;
+    if (process.env.ENVIRONMENT === 'development') {
+        mongoURI = process.env.MONGO_URI; //DEV_MONGO_URI
+    } else {
+        mongoURI = process.env.PROD_MONGO_URI; //PROD_MONGO_URI
+    }
     while (!mongoConnection) {
         try {
-            mongoConnection = await mongoose.connect(process.env.MONGO_URI, {
+            mongoConnection = await mongoose.connect(mongoURI, {
                 serverSelectionTimeoutMS: 10000,
                 socketTimeoutMS: 10000,
             });
@@ -20,7 +24,7 @@ const connectDB = async () => {
                 console.log('Mongoose disconnected from MongoDB server');
                 mongoConnection = null;
             });
-            await apiLink.createIndexes();
+            await ApiLink.createIndexes();
 
 
             const existingStatus = await MaintenanceStatus.findOne();

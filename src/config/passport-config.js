@@ -1,6 +1,6 @@
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
-const User = require('../models/user');
+const { User } = require('../models/index');
 const logSecurityEvent = require('../ServerLogging/SecurityLogger');
 const { DiscordWebhookLogger, UserLoginLogger } = require('../utils/discordWebhookLogger');
 const { encrypt } = require('../utils/encryptionUtils');
@@ -10,7 +10,13 @@ const userLoginLogger = new UserLoginLogger(discordLogger);
 
 const clientID = process.env.CLIENTID;
 const clientSecret = process.env.CLIENTSECRET;
-const redirectURI = process.env.REDIRECTURI;
+
+let redirectURI;
+if (process.env.ENVIRONMENT === 'development') {
+    redirectURI = process.env.DEV_REDIRECTURI;
+} else {
+    redirectURI = process.env.PROD_REDIRECTURI;
+}
 
 passport.use(new DiscordStrategy({
     clientID: clientID,

@@ -57,21 +57,40 @@
                     </li>
                 <% } else { %>
                     <% links.forEach((link) => { %>
-                        <li class="link-item">
-                            <div class="link-info">
-                                <img src="<%= link.linkPreview.image %>" alt="Link Preview Image" class="link-thumbnail">
-                                <br>
-                                <a href="<%= link.originalUrl %>" target="_blank" class="original-url"><%= link.originalUrl.substring(0, 50) %>...</a>
-                                <p class="date-created">Date Created: <%= link.dateCreated.toLocaleDateString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }) %></p>
-                                <p>Short URL: <%= 'https://sniplink.xyz/'+link.shortenedUrl %></p>
-                                <p>Clicks: <%= link.clicks.length %></p>
+                            <li class="link-item">
+                                <div class="link-info">
+                                    <div class="link-info-top">
+                                        <img src="<%= link.linkPreview.image %>" alt="Link Preview Image" class="link-thumbnail">
+                                        <h3 class="short-url"><%= 'https://sniplink.xyz/'+link.shortenedUrl %></h3>
+                                    </div>
+                                    <div class="link-stats">
+                                        <span><i class="fas fa-eye"></i> <%= link.clicks.length %></span>
+                                        <span><i class="fas fa-mouse-pointer"></i> <%= link.uniqueClicks %></span>
+                                        <span><i class="fas fa-calendar-alt"></i> <%= getExpiryText(link.expiryDate) %></span>
+                                    </div>
+
+                                <%
+                                    function getExpiryText(expiryDate) {
+                                        if (expiryDate === null) {
+                                            return "Never expires";
+                                        }
+
+                                        const expiryDateMilliseconds = expiryDate * 1000;
+                                        const daysLeft = Math.ceil((expiryDateMilliseconds - Date.now()) / (1000 * 60 * 60 * 24));
+
+                                        if (daysLeft > 1) {
+                                            return `Expires in ${daysLeft} days`;
+                                        } else if (daysLeft === 1) {
+                                            return `Expires in ${daysLeft} day`;
+                                        }
+                                    }
+                                %>
                             </div>
-                            <div class="link-actions">
-                                <button class="copy-button" data-clipboard-text="<%= link.shortenedUrl %>">Copy Link</button>
-                                <!--<button class="edit-button" data-id="<%= link.shortenedUrl %>">Edit Link</button> -->
-                                <button class="delete-button" data-id="<%= link._id %>">Delete</button>
-                                <button class="analytics-button" data-id="<%= link.shortenedUrl %>">Analytics</button>
-                            </div>
+                                <div class="link-actions">
+                                    <button class="copy-button" data-clipboard-text="<%= link.shortenedUrl %>"><i class="fas fa-copy"></i> Copy Link</button>
+                                    <button class="delete-button" data-id="<%= link._id %>"><i class="fas fa-trash"></i> Delete</button>
+                                    <button class="analytics-button" data-id="<%= link.shortenedUrl %>"><i class="fas fa-chart-line"></i> Analytics</button>
+                                </div>
                         </li>
                     <% }); %>
                 <% } %>

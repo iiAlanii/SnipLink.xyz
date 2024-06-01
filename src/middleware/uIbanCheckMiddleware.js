@@ -1,4 +1,4 @@
-const Ban = require('../models/BanSchema');
+const  { Ban }  = require('../models/index');
 
 const uIbanCheckMiddleware = async (req, res, next) => {
     const ipAddress = req.ip;

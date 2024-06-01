@@ -1,4 +1,4 @@
-const MaintenanceStatus = require('../models/maintenanceStatus');
+const { MaintenanceStatus } = require('../models/index');
 
 async function checkMaintenanceMode(req, res, next) {
     const maintenanceStatus = await MaintenanceStatus.findOne({isMaintenanceMode: true});

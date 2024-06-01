@@ -1,0 +1,137 @@
+const mongoose = require('mongoose');
+
+const {
+    AccessLevel,
+    ApiKey,
+    ApiLink,
+    ApiLink2,
+    ApiStatus,
+    BanSchema,
+    Click,
+    Link,
+    LinkCount,
+    LinkedUrl,
+    LinkInfo,
+    apiStatus,
+    UserBanSchema,
+    User,
+    UnderConstruction,
+    NewCollection,
+    MaintenanceStatus
+} = require('../models/index');
+let mongoConnection;
+
+
+const connectDB = async () => {
+    try {
+        const testDB = await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('Connected to test database');
+
+        const prodDB = await mongoose.createConnection(process.env.PROD_MONGO_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('Connected to Production database');
+
+        const migrationResult = await migrateData(testDB, prodDB);
+
+        await testDB.disconnect();
+        await prodDB.close();
+        console.log('Disconnected from databases');
+
+        console.log(`Total items transferred: ${migrationResult.total}`);
+        console.log(`Successful transfers: ${migrationResult.success}`);
+        console.log(`Failed transfers: ${migrationResult.failure}`);
+    } catch (error) {
+        console.error('Error migrating data:', error);
+    }
+};
+
+const migrateData = async (testDB, prodDB) => {
+    let total = 0;
+    let success = 0;
+    let failure = 0;
+
+    try {
+        const testCollections = [
+            { model: Link, name: 'Link' },
+            { model: User, name: 'User' },
+            { model: ApiKey, name: 'ApiKey' },
+            { model: ApiLink, name: 'ApiLink' },
+            { model: ApiLink2, name: 'ApiLink2' },
+            { model: ApiStatus, name: 'ApiStatus' },
+            { model: BanSchema, name: 'BanSchema' },
+            { model: Click, name: 'Click' },
+            { model: LinkCount, name: 'LinkCount' },
+            { model: LinkedUrl, name: 'LinkedUrl' },
+            { model: LinkInfo, name: 'LinkInfo' },
+            { model: apiStatus, name: 'apiStatus' },
+            { model: UserBanSchema, name: 'UserBanSchema' },
+            { model: UnderConstruction, name: 'UnderConstruction' },
+            { model: NewCollection, name: 'NewCollection' },
+            { model: MaintenanceStatus, name: 'MaintenanceStatus' },
+
+
+        ];
+
+        for (const { model, name } of testCollections) {
+            const testData = await model.find();
+            const ProdModel = prodDB.model(name, model.schema);
+
+            try {
+                const insertResult = await ProdModel.insertMany(testData.map(item => ({ ...item.toObject(), _id: null })), { ordered: false });
+                success += insertResult.length;
+            } catch (error) {
+                if (error.code !== 11000) {
+                    throw error;
+                }
+            }
+            total += testData.length;
+        }
+
+        console.log('Data migrated successfully');
+    } catch (error) {
+        console.error('Error migrating data:', error);
+        failure += total - success;
+    }
+
+    return { total, success, failure };
+};
+
+
+process.on('SIGINT', cleanupAndExit.bind(null, 'MongoDB connection closed due to application termination'));
+process.on('SIGTERM', cleanupAndExit.bind(null, 'MongoDB connection closed due to SIGTERM'));
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+async function cleanupAndExit(message) {
+    console.log(message);
+
+    if (mongoConnection) {
+        mongoose.connection.close()
+            .then(() => {
+                console.log('MongoDB connection closed');
+                process.exit(0);
+            })
+            .catch((err) => {
+                console.error('Error closing MongoDB connection:', err);
+                process.exit(1);
+            });
+    } else {
+        process.exit(0);
+    }
+}
+
+process.on('exit', (code) => {
+    console.log(`About to exit with code: ${code}`);
+});
+
+process.on('disconnect', () => {
+    console.log('Parent process has disconnected');
+});
+
+module.exports = connectDB;

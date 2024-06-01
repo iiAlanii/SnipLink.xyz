@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Link = require('../models/link');
+const { Link } = require('../models');
+
 const generatePreviewHtml = require('./generatePreviewHtml');
 
 router.get('/:shortCode', async (req, res) => {

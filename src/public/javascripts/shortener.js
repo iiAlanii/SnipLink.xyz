@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let visibleLinks = defaultVisibleLinks;
 
     const toggleLinkVisibility = () => {
-        // Store linkItems so we don't query the DOM every time
+        //store linkItems so we don't query the DOM every time
         const linkItems = linkListContainer.querySelectorAll(".link-item");
         linkItems.forEach((link, index) => {
             link.style.display = index < visibleLinks ? "block" : "none";

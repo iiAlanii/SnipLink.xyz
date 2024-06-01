@@ -1,5 +1,5 @@
 const express = require('express');
-const Link = require('../models/link');
+const { Link } = require('../models');
 const checkAuth = require('../checkAuth/auth');
 const logConcurrencyEvent = require('../ServerLogging/ConcurrencyLogger');
 
@@ -39,7 +39,17 @@ router.get('/manage-links', checkAuth, async (req, res) => {
             timestamp: new Date().toISOString(),
         });
 
-        const links = await Link.find({ discordId: req.user.id });
+        const links = await Link.find({ discordId: req.user.id }).populate('clicks');
+
+        if (!Array.isArray(links)) {
+            return res.status(500).send('Internal Server Error: Links data is not an array');
+        }
+
+        links.forEach(link => {
+            const uniqueIps = new Set(link.clicks.map(click => click.ip));
+            link.uniqueClicks = uniqueIps.size;
+        });
+
         res.render('manage-links', { user: req.user, links, allowedTesters: allowedTesters });
     } catch (error) {
         console.error(error);

@@ -9,7 +9,6 @@ const passport = require('./config/passport-config');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
 const helmet = require('helmet');
-// Middleware
 const checkAuth = require('./checkAuth/auth');
 const banCheckMiddleware = require('./middleware/banCheckMiddleware');
 const requestLoggerMiddleware = require('./middleware/requestLoggerMiddleware');
@@ -17,7 +16,12 @@ const errorHandlerMiddleware = require('./middleware/errorHandlerMiddleware');
 const rateLimiterMiddleware = require('./middleware/rateLimiterMiddleware');
 const accessLogger = require('./ServerLogging/AccessLogger');
 // const securityHeadersMiddleware = require('./middleware/securityHeadersMiddleware');
-const middlewares = require('../src/middleware/serverRestrictions'); // Import the middleware
+const middlewares = require('../src/middleware/serverRestrictions');
+
+
+const clicksByCountryRoute = require('./routes/analytics/clicksByCountry');
+const topReferrersRoute = require('./routes/analytics/topReferrers');
+
 
 app.use((req, res, next) => {
   try {
@@ -33,7 +37,6 @@ app.use((req, res, next) => {
 });
 
 
-// Routes
 const authRoutes = require('./routes/auth');
 const dashboardRoute = require('./routes/dashboard');
 const analyticsRoute = require('./routes/analytics');
@@ -52,7 +55,6 @@ const apiPageRoute = require('./routes/apiPage');
 const linkRoutes = require('./routes/linkRoutes');
 const cors = require('cors');
 
-//Utils
 const { getTotalLinks, getTotalUsers } = require('../src/utils/statisticsUtils');
 const allowedTesters = require('./utils/allowedTesters');
 
@@ -81,7 +83,6 @@ app.use(cors({
 }));
 const loginLimiter = require('./middleware/loginRateLimiter'); //TODO: Implement this into the server
 
-// Logging
 const { DiscordWebhookLogger, ServerErrorLogger } = require('./utils/discordWebhookLogger');
 const discordLogger = new DiscordWebhookLogger();
 const checkMaintenanceMode = require('./middleware/maintenanceMode');
@@ -120,7 +121,7 @@ app.use(session({
   }
   /*
   genid: (req) => {
-  // Custom function to generate session IDs
+  //custom function to generate session IDs
   return uuid(); // use UUIDs for session IDs using genid
 },
    */
@@ -169,14 +170,19 @@ app.use((req, res, next) => {
   uIbanCheckMiddleware(req, res, next);
 });
 
-app.use((req, res, next) => {
+ /*app.use((req, res, next) => {
   if (req.originalUrl.startsWith('/public')) {
     return next();
   }
-  banCheckMiddleware(req, res, next);
+  // banCheckMiddleware(req, res, next);
 });
+*/
 
-app.set('trust proxy', 1);
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+} else {
+  app.set('trust proxy', false);
+}
 
 app.use(rateLimiterMiddleware);
 app.use(loginLimiter);
@@ -197,7 +203,7 @@ app.get('/auth/isAuthenticated', authMiddleware, (req, res) => {
 });
 const tokens = new Set();
 
-UserBan = require('./models/UserBanSchema');
+//UserBan = require('./models/UserBanSchema');
 app.use('/checkAvailability', availabilityRoute);
 const underConstructionMiddleware = require('./middleware/underConstructionMiddleware');
 app.use(requestLoggerMiddleware);
@@ -205,10 +211,12 @@ app.use(accessLogger);
 app.use(checkMaintenanceMode);
 app.use(underConstructionMiddleware);
 
-
 const { UserLogger } = require('./utils/UserLogger');
 
 const checkAuthRoute = require('./routes/checkAuth');
+
+app.use('/api/analytics/clicks-by-country', clicksByCountryRoute);
+app.use('/api/analytics/top-referrers', topReferrersRoute);
 
 app.use('/checkAuth', checkAuthRoute)
 app.use((req, res, next) => {
@@ -356,7 +364,7 @@ app.use('/analytics', analyticsRoute);
 app.use('/api', apiShortenRoute);
 app.use('/api/v1/shorten', apiRoute);
 app.use('/api/v2/shorten', apiRoute2);
-apiLinks = require('./models/apiLink');
+//apiLinks = require('./models/apiLink');
 
 
 
@@ -364,7 +372,6 @@ app.use('/api', apiPageRoute);
 require('./utils/linkExpirationChecker');
 
 
-//404 discord logger
 let errorCount = 0;
 let firstErrorTime = null;
 const ERROR_LIMIT = 10;

@@ -1,25 +1,15 @@
 User-agent: *
 Disallow: /admin/
 Disallow: /linkr/
-Disallow: /partials/
-Allow: /public/
-Allow: /public/images/
-Allow: /public/javascripts/
-Allow: /public/stylesheets/
 Allow: /fb/feedback
 Allow: /fb/submitFeedback
 Allow: /help/help-center
 Allow: /help/suggestions
 Allow: /legal/privacy-policy
 Allow: /legal/terms-of-service
-Allow: /404
-Allow: /505
-Allow: /analytics
-Allow: /dashboard
-Allow: /index
+Allow: /
 Allow: /login
 Allow: /logout
-Allow: /manage-links
 Allow: /shortener
 
 Sitemap: https://sniplink.xyz/sitemap.xml
