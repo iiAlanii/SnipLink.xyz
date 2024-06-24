@@ -22,18 +22,17 @@
             <article class="analytics-item-dark">
                 <div class="analytics-info-dark">
                     <p><i class="fas fa-link fa-blue"></i> Shortened URL: <%= link.shortenedUrl %></p>
-                    <p><i class="fas fa-mouse-pointer fa-blue"></i> Number of Clicks: <%= link.numClicks || 0 %></p>
+                    <p><i class="fas fa-mouse-pointer fa-blue"></i> Number of Clicks: <%= link.clicks || 0 %></p>
                     <p><i class="far fa-calendar-alt fa-blue"></i> Last Click Date: <%= link.lastClickDate ? new Date(link.lastClickDate).toLocaleString() : 'Not available' %></p>
                     <p><i class="fas fa-heading fa-blue"></i> Title: <%= link.title || 'No Title' %></p>
                     <p><i class="fas fa-info-circle fa-blue"></i> Description: <%= link.description || 'No Description' %></p>
-                    <p><i class="far fa-calendar-times fa-blue"></i> Expiry Date: <%= link.expiryDate ? new Date(link.expiryDate * 1000).toLocaleString() : 'Not set' %></p>                </div>
+                    <p><i class="far fa-calendar-times fa-blue"></i> Expiry Date: <%= link.expiryDate ? new Date(link.expiryDate * 1000).toLocaleString() : 'Not set' %></p>
+                </div>
                 <div class="analytics-image-dark">
                     <img src="<%= link.image || 'https://sniplink.xyz/images/sniplink-logo.png' %>" alt="Fallback Shortened Link Image">
                 </div>
-
             </article>
             <button class="notice-button" disabled>Connect r.mtdv.me link with sniplink's website is coming soon</button>
-
         </div>
     </section>
 </div>

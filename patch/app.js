@@ -2,8 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
-
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
@@ -12,35 +10,13 @@ const { v4: uuidv4 } = require('uuid');
 const app = express();
 const identifyRoute = require('./routes/api/v1/discord/identify');
 
-
-
-const getMongoUri = () => {
-  switch (process.env.ENVIRONMENT) {
-    case 'production':
-      return process.env.PROD_MONGO_URI;
-    case 'development':
-      return process.env.DEV_MONGO_URI;
-    default:
-      return process.env.MONGO_URI;
-  }
-};
-
-const sessionOptions = {
-  secret: process.env.SESSION_SECRET || 'defaultsecret',
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: getMongoUri() }),
-  cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 }
-};
-
 console.log('NODE_ENV:', process.env.ENVIRONMENT);
 
 if (process.env.ENVIRONMENT === 'production') {
-  sessionOptions.cookie.secure = true;
+  app.set('trust proxy', true);
+} else {
+  app.set('trust proxy', false);
 }
-
-//app.set('trust proxy', process.env.ENVIRONMENT === 'production' ? 2 : false);
-app.set('trust proxy', process.env.ENVIRONMENT === 'production' ? 2 : false);
 
 console.log('Trust proxy setting:', app.get('trust proxy'));
 
@@ -151,8 +127,21 @@ function getSecretKey() {
 }
 
 
-app.use(session(sessionOptions));
 
+app.use(session({
+  secret: getSecretKey(),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 7 * 24 * 60 * 60 * 1000
+  }
+  /*
+  genid: (req) => {
+  //custom function to generate session IDs
+  return uuid(); // use UUIDs for session IDs using genid
+},
+   */
+}));
 
 //app.use(securityHeadersMiddleware);
 app.use(passport.initialize());

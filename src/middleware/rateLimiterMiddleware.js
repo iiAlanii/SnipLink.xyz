@@ -6,7 +6,7 @@ const rateLimitLogger = new RateLimitLogger();
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 100,
+    max: 50,
     skipSuccessfulRequests: true,
     handler: function(req, res) {
         rateLimitLogger.logRateLimit(req.ip, req.user ? req.user.id : 'Guest', req.id, 'General');

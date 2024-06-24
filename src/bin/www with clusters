@@ -1,3 +1,5 @@
+const cluster = require('cluster');
+const os = require('os');
 const app = require('../app');
 const http = require('http');
 const https = require('https');
@@ -20,7 +22,7 @@ app.set('port', port);
 
 morgan.token('url', (req) => req.originalUrl.split('?')[0]);
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
-
+//TODO: Implement logging with Winston and Discord webhook
 function normalizePort(val) {
   const port = parseInt(val, 10);
   if (isNaN(port)) return val;
@@ -112,6 +114,32 @@ async function startServer() {
   }
 }
 
-startServer().then(() => {
-  console.log(`Server started in ====> [${environment.toUpperCase()}] <==== mode`);
-}).catch(err => console.error('Error starting server:', err));
+async function main() {
+  if (cluster.isMaster) {
+    const numCPUs = os.cpus().length;
+    console.log(`Master ${process.pid} is running`);
+    console.log(`Forking for ${numCPUs} CPUs`);
+
+    await connectDB();
+
+    for (let i = 0; i < numCPUs; i++) {
+      cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+      console.log(`Worker ${worker.process.pid} died with code: ${code}, and signal: ${signal}`);
+      console.log('Starting a new worker');
+      cluster.fork();
+    });
+
+  } else {
+    startServer().then(() => {
+      console.log(`Worker ${process.pid} started in ====> [${environment.toUpperCase()}] <==== mode`);
+    }).catch(err => console.error('Error starting server:', err));
+  }
+}
+
+main().catch(err => {
+  console.error('Error in main function:', err);
+  process.exit(1);
+});

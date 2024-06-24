@@ -1,5 +1,28 @@
 const mongoose = require('mongoose');
 
+const clickDetailSchema = new mongoose.Schema({
+    clickDate: {
+        type: Date,
+        default: Date.now,
+    },
+    referrer: {
+        type: String,
+        default: null,
+    },
+    clientIp: {
+        type: String,
+        default: null,
+    },
+    country: {
+        type: String,
+        default: null,
+    },
+    socialMedia: {
+        type: String,
+        default: null,
+    }
+});
+
 const apilinkSchema = new mongoose.Schema({
     originalUrl: {
         type: String,
@@ -10,6 +33,10 @@ const apilinkSchema = new mongoose.Schema({
         required: true,
         unique: true,
         index: true,
+    },
+    clicks: {
+        type: Number,
+        default: 0
     },
     createdAt: {
         type: Date,
@@ -49,8 +76,12 @@ const apilinkSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    lastClickDate: {
+        type: Date,
+        default: null
+    },
+    clickDetails: [clickDetailSchema]
 });
-
 
 const apiLink = mongoose.model('apiLink', apilinkSchema);
 

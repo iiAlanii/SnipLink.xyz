@@ -1,10 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
-const Link = require('../../../../models/link');
-
-
-// Middleware to authenticate the request
+const User = require('../../../../models/user');
 router.use((req, res, next) => {
     const token = req.headers['authorization'];
 
@@ -22,9 +19,15 @@ router.use((req, res, next) => {
     });
 });
 
-// Route to shorten a URL
-router.post('/shorten', async (req, res) => {
-    // Your existing code to shorten a URL goes here
-});
+router.get('/identify', async (req, res) => {
+    const discordId = req.clientIdentifier;
 
+    const user = await User.findOne({ discordId: discordId });
+
+    if (user) {
+        res.json({ exists: true });
+    } else {
+        res.json({ exists: false });
+    }
+});
 module.exports = router;

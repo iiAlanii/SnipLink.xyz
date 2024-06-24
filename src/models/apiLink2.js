@@ -53,6 +53,4 @@ const apiLink2Schema = new mongoose.Schema({
 
 const ApiLink2 = mongoose.model('ApiLink2', apiLink2Schema);
 
-ApiLink2.createIndexes();
-
 module.exports = ApiLink2;

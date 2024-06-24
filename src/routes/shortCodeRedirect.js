@@ -35,33 +35,13 @@ router.get('/:shortCode', async (req, res, next) => {
                 return res.status(400).send('A shortened URL cannot point to itself.');
             }
 
-            if (!isApiLink) { //TODO: For further development, log more data for API users.
-                const clickId = generateShortUUID();
-                const referrer = req.headers.referer || req.headers.Referrer || 'Direct';
+            const clickId = generateShortUUID();
+            const referrer = req.headers.referer || req.headers.Referrer || 'Direct';
+            const clientIp = ipAddress;
 
-                const geo = geoip.lookup(ipAddress);
-                const country = geo && geo.country ? geo.country : 'Unknown';
-                const socialMedia = identifySocialMedia(referrer, userAgent);
-
-                if (socialMedia === 'Bot') {
-                    return res.status(204).send();
-                }
-
-                const newClick = new Click({
-                    linkId: link._id,
-                    ip: ipAddress,
-                    referrer: referrer,
-                    userAgent: userAgent,
-                    clickId: clickId,
-                    country: country,
-                    socialMedia: socialMedia,
-                });
-
-                await newClick.save();
-                link.clicks.push(newClick);
-                await link.save();
-
-            }
+            const geo = geoip.lookup(clientIp);
+            const country = geo && geo.country ? geo.country : 'Unknown';
+            const socialMedia = identifySocialMedia(referrer, userAgent);
 
             let title, description, image;
             if (link.linkPreview) {
@@ -109,6 +89,39 @@ router.get('/:shortCode', async (req, res, next) => {
     </body>
 </html>
 `;
+
+            if (socialMedia === 'Bot') {
+                res.setHeader('Content-Type', 'text/html');
+                return res.send(html);
+            }
+
+            const newClick = new Click({
+                linkId: link._id,
+                ip: ipAddress,
+                referrer: referrer,
+                userAgent: userAgent,
+                clickId: clickId,
+                country: country,
+                socialMedia: socialMedia,
+            });
+
+            await newClick.save();
+            if (isApiLink) {
+                link.clicks += 1;
+                link.lastClickDate = new Date();
+                link.clickDetails.push({
+                    clickDate: new Date(),
+                    referrer: referrer,
+                    clientIp: clientIp,
+                    country: country,
+                    socialMedia: socialMedia,
+                });
+                await link.save();
+            } else {
+                link.clicks.push(newClick);
+                link.lastClickDate = new Date();
+                await link.save();
+            }
             res.setHeader('Content-Type', 'text/html');
             res.send(html);
         } else {
@@ -121,7 +134,7 @@ router.get('/:shortCode', async (req, res, next) => {
     }
 });
 
-function identifySocialMedia(referrer, userAgent, utmSource) {
+function identifySocialMedia(referrer, userAgent) {
     const socialMediaPatterns = [
         { name: 'Discord', patterns: ['discord.com', 'discord.gg'] },
         { name: 'Twitter', patterns: ['twitter.com'] },
@@ -145,20 +158,19 @@ function identifySocialMedia(referrer, userAgent, utmSource) {
         return 'Bot';
     }
 
-    if (utmSource) {
-        const normalizedSource = utmSource.toLowerCase();
-        for (const platform of socialMediaPatterns) {
-            if (normalizedSource === platform.name.toLowerCase()) {
-                return platform.name;
-            }
-        }
-    }
-
     if (referrer) {
-        for (const platform of socialMediaPatterns) {
-            if (platform.patterns.some(pattern => referrer.includes(pattern))) {
-                return platform.name;
+        try {
+            const referrerUrl = new URL(referrer);
+            for (const platform of socialMediaPatterns) {
+                for (const pattern of platform.patterns) {
+                    const regex = new RegExp(pattern, 'i');
+                    if (regex.test(referrerUrl.hostname)) {
+                        return platform.name;
+                    }
+                }
             }
+        } catch (err) {
+            return 'Unknown';
         }
     }
 
