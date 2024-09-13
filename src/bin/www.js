@@ -1,6 +1,5 @@
 const app = require('../app');
 const http = require('http');
-const https = require('https');
 const fs = require('fs');
 const connectDB = require('../utils/db');
 const morgan = require('morgan');
@@ -52,6 +51,7 @@ function onListening(server) {
 }
 
 async function generateSitemap() {
+  app.set('generateSitemap', generateSitemap);
   const urls = [
     '/public/',
     '/public/images/',
@@ -76,9 +76,8 @@ async function generateSitemap() {
   urls.forEach(url => smStream.write({ url }));
   smStream.end();
 
-  const sitemap = await streamToPromise(smStream).then(data => data.toString());
-  fs.writeFileSync(path.join(__dirname, '..', 'public', 'sitemap.xml'), sitemap);
-  console.log('Sitemap generated successfully');
+  return await streamToPromise(smStream).then(data => data.toString());
+
 }
 
 async function startServer() {
@@ -92,15 +91,7 @@ async function startServer() {
 
     await generateSitemap();
 
-    const options = environment === 'production' ? {
-      key: fs.readFileSync('/etc/ssl/sniplink.xyz/sniplink_xyz.key'),
-      cert: fs.readFileSync('/etc/ssl/sniplink.xyz/sniplink_xyz.crt'),
-      ca: fs.readFileSync('/etc/ssl/sniplink.xyz/sniplink_xyz.ca-bundle')
-    } : {};
-
-    const server = environment === 'production'
-        ? https.createServer(options, app)
-        : http.createServer(app);
+    const server = http.createServer(app);
 
     server.listen(port, host);
     server.on('error', onError);
@@ -115,3 +106,4 @@ async function startServer() {
 startServer().then(() => {
   console.log(`Server started in ====> [${environment.toUpperCase()}] <==== mode`);
 }).catch(err => console.error('Error starting server:', err));
+module.exports.generateSitemap = generateSitemap;

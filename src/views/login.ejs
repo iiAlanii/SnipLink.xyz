@@ -31,6 +31,20 @@
     <meta name="referrer" content="always">
     <meta name="apple-mobile-web-app-title" content="SnipLink">
     <meta name="theme-color" content="#007bff">
+    <script>
+        function onRecaptchaLoad() {
+            const recaptchaElement = document.getElementById('recaptcha');
+            if (recaptchaElement && recaptchaElement.innerHTML.trim() === '') {
+                grecaptcha.render('recaptcha', {
+                    sitekey: captchaSiteKey,
+                    size: 'visible',
+                    callback: (recaptchaToken) => {
+                        window.recaptchaToken = recaptchaToken;
+                    }
+                });
+            }
+        }
+    </script>
     <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad" async defer></script>
 </head>
 
@@ -60,7 +74,7 @@
 
 </style>
 
-<script src="/javascripts/login.js"></script>
 <script>
     const captchaSiteKey = '<%= process.env.CAPTCHA_V2_SITE_KEY %>';
 </script>
+<script src="/javascripts/login.js"></script>

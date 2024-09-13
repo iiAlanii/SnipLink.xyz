@@ -132,6 +132,7 @@ async function checkLinkExpiration() {
     }
 }
 
-checkLinkExpiration().then(() => expiryCheckerLogger.info('Link expiration checker started'));
+//TODO: disabled Link expiry checker
+//checkLinkExpiration().then(() => expiryCheckerLogger.info('Link expiration checker started'));
 
 module.exports = { checkLinkExpiration };

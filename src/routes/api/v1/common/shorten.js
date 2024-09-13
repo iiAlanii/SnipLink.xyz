@@ -60,8 +60,8 @@ const workerQueue = async.queue(async function(task, callback) {
 
     callback();
 }, 100);
-
-checkLinkExpiration().then(() => console.log('API Link expiration checker started'));
+//TODO: disabled the link expiry checker
+//checkLinkExpiration().then(() => console.log('API Link expiration checker started'));
 
 const validApiKeys = [
     { key: process.env.MTDV_API_KEY, identifier: 'r.mtdv.me' },
